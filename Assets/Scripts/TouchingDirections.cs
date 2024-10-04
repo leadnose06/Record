@@ -6,7 +6,7 @@ using UnityEngine;
 public class TouchingDirections : MonoBehaviour
 {
     public ContactFilter2D castFilter;
-    BoxCollider2D touchingCol;
+    CapsuleCollider2D touchingCol;
 
     RaycastHit2D[] groundHits = new RaycastHit2D[5];
 
@@ -23,7 +23,7 @@ public class TouchingDirections : MonoBehaviour
     
 
     private void Awake(){
-        touchingCol = GetComponent<BoxCollider2D>();
+        touchingCol = GetComponent<CapsuleCollider2D>();
     }
 
     void FixedUpdate()

@@ -5,16 +5,16 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public float speed = 5f;
+    public bool IsMoving { get; private set; }
+    public float jumpImpulse = 10f;
+    Rigidbody2D rb;
+    TouchingDirections touchingDirections;
     Vector2 moveInput;
 
-    public float speed = 5f;
-
-    public bool IsMoving { get; private set; }
-
-    Rigidbody2D rb;
-
-   private void Awake(){
+    private void Awake(){
         rb = GetComponent<Rigidbody2D>();
+        touchingDirections = GetComponent<TouchingDirections>();
     }
 
 
@@ -38,5 +38,12 @@ public class PlayerController : MonoBehaviour
         moveInput = context.ReadValue<Vector2>();
 
         IsMoving = moveInput != Vector2.zero;
+    }
+
+    public void onJump(InputAction.CallbackContext context){
+        //TODO check if alive so no jumping during death animations
+        if(context.started && touchingDirections.isGrounded){
+            rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
+        }
     }
 }
