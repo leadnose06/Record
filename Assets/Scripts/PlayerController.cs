@@ -11,10 +11,15 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     TouchingDirections touchingDirections;
     Vector2 moveInput;
+    private Animator moveAnimator;
+    public GameObject player;
+    private bool firstFrameOfInput;
+
 
     private void Awake(){
         rb = GetComponent<Rigidbody2D>();
         touchingDirections = GetComponent<TouchingDirections>();
+        moveAnimator = GetComponent<Animator>();
     }
 
 
@@ -27,7 +32,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //flips player based on horizontal movement
+        if (Input.GetAxis("Horizontal") > 0.01f) {transform.localScale = Vector3.one;}
+        else if (Input.GetAxis("Horizontal") < -0.01f) {transform.localScale = new Vector3(-1,1,1);}
         
+        //triggers movement/idle animation based on whether or not the player is moving
+    
+       Debug.Log("" + rb.velocity.x);
+       moveAnimator.SetBool("IsRunning", IsMoving);
     }
 
     private void FixedUpdate() {
@@ -37,7 +49,11 @@ public class PlayerController : MonoBehaviour
     public void onMove(InputAction.CallbackContext context) {
         moveInput = context.ReadValue<Vector2>();
 
-        IsMoving = moveInput != Vector2.zero;
+        //IsMoving = moveInput != Vector2.zero;
+        IsMoving = moveInput.x != 0f;
+      
+        
+        
     }
 
     public void onJump(InputAction.CallbackContext context){
