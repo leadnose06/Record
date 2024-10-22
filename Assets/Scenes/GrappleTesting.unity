@@ -233,6 +233,8 @@ MonoBehaviour:
   - {fileID: 523010817}
   - {fileID: 972995451}
   - {fileID: 1693269084}
+  elites: []
+  boss: []
 --- !u!1 &523010817 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4679279038825148547, guid: 0e7beeb003a7e47dba482b3d3557a2a1, type: 3}
@@ -375,6 +377,8 @@ MonoBehaviour:
   IsGrappling: 0
   grappleHookPattern: {fileID: 1852022530}
   grappleHook: {fileID: 0}
+  attached: {fileID: 0}
+  grappleSpeed: 15
 --- !u!1001 &972995450
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -551,7 +555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8152393842238308476, guid: 0e7beeb003a7e47dba482b3d3557a2a1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8152393842238308476, guid: 0e7beeb003a7e47dba482b3d3557a2a1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -591,6 +595,63 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4679279038825148547, guid: 0e7beeb003a7e47dba482b3d3557a2a1, type: 3}
   m_PrefabInstance: {fileID: 1693269083}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1736418715
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1452393261216797715, guid: e43d4c147af5e4c3f840371fb30833fc, type: 3}
+      propertyPath: m_Name
+      value: Wall (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305887115924093934, guid: e43d4c147af5e4c3f840371fb30833fc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305887115924093934, guid: e43d4c147af5e4c3f840371fb30833fc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305887115924093934, guid: e43d4c147af5e4c3f840371fb30833fc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305887115924093934, guid: e43d4c147af5e4c3f840371fb30833fc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305887115924093934, guid: e43d4c147af5e4c3f840371fb30833fc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305887115924093934, guid: e43d4c147af5e4c3f840371fb30833fc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305887115924093934, guid: e43d4c147af5e4c3f840371fb30833fc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305887115924093934, guid: e43d4c147af5e4c3f840371fb30833fc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305887115924093934, guid: e43d4c147af5e4c3f840371fb30833fc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305887115924093934, guid: e43d4c147af5e4c3f840371fb30833fc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e43d4c147af5e4c3f840371fb30833fc, type: 3}
 --- !u!1 &1852022530
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,6 +981,10 @@ PrefabInstance:
       value: GrapplePoint
       objectReference: {fileID: 0}
     - target: {fileID: 8152393842238308476, guid: 0e7beeb003a7e47dba482b3d3557a2a1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8152393842238308476, guid: 0e7beeb003a7e47dba482b3d3557a2a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.81
       objectReference: {fileID: 0}
@@ -977,3 +1042,4 @@ SceneRoots:
   - {fileID: 1906269670}
   - {fileID: 1852022532}
   - {fileID: 279625374}
+  - {fileID: 1736418715}

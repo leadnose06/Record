@@ -43,7 +43,9 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        rb.velocity = new Vector2(moveInput.x * speed, rb.velocity.y);
+        if(!touchingDirections.isOnWall && !GetComponent<GrapplingScript>().IsGrappling){
+            rb.velocity = new Vector2(moveInput.x * speed, rb.velocity.y);
+        }
     }
 
     public void onMove(InputAction.CallbackContext context) {

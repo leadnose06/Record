@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Grappleable
   - Wall
+  - Elite
+  - Boss
   layers:
   - Default
   - TransparentFX

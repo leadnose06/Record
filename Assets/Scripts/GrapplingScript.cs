@@ -16,8 +16,10 @@ public class GrapplingScript : MonoBehaviour
     public GameObject grappleHookPattern;
     public GameObject grappleHook;
     private float grappleCooldown;
-
+    public GameObject attached;
+    Rigidbody2D rb;
     private float minMax = 20f;
+    public float grappleSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,7 @@ public class GrapplingScript : MonoBehaviour
     }
     void Awake(){
         grappleables = objectTracker.GetComponent<ObjectTrackerScript>().enemies.Concat(objectTracker.GetComponent<ObjectTrackerScript>().grapples).ToArray();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -36,6 +39,31 @@ public class GrapplingScript : MonoBehaviour
         }
 
     }
+    public void onConnect(){
+        IsGrappling = true;
+        rb.gravityScale = 0;
+        rb.velocity = new Vector2(0, 0);
+    }
+
+    public void onDisconnect(){
+
+    }
+
+    public void onArrival(){
+
+    }
+    //todo: update for elites and bosses
+    private void FixedUpdate(){
+        if(IsGrappling){
+            RaycastHit2D grappleCheck = Physics2D.Raycast(transform.position, attached.transform.position - transform.position, 100f);
+            if(grappleCheck.collider.tag == "Grappleable" || grappleCheck.collider.tag == "Enemy" ){
+                Vector2 direction = attached.transform.position - transform.position;
+                rb.velocity = direction.normalized * grappleSpeed;
+            }
+
+        }
+    }
+
     public void onFire(InputAction.CallbackContext context){
         if(!IsGrappling){
             var gamepad = Gamepad.current;

@@ -19,7 +19,6 @@ public class GrappleHookScript : MonoBehaviour
         triggerrb = GetComponent<Rigidbody2D>();
         if(!target){
             triggerrb.velocity = new Vector2(Mathf.Cos(Mathf.Deg2Rad*targetDir), Mathf.Sin(Mathf.Deg2Rad*targetDir)) * speed;
-            //triggerrb.velocity = new Vector2(5, 5) * speed;
         } else{
             triggerrb.velocity = Direction * speed;
 
@@ -27,20 +26,18 @@ public class GrappleHookScript : MonoBehaviour
     }
 
     void Update()
-    {/*
-        if(!target){
-            transform.position += new Vector3(Mathf.Cos(Mathf.Deg2Rad*targetDir), Mathf.Sin(Mathf.Deg2Rad*targetDir)) * speed * Time.deltaTime;
-            triggerrb.velocity = new Vector2(Mathf.Cos(Mathf.Deg2Rad*targetDir), Mathf.Sin(Mathf.Deg2Rad*targetDir)) * speed;
-        } else{
-            transform.position += Direction * speed * Time.deltaTime;
-
-        }*/
+    {
     }
 
     public void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {
         if(collision.tag != "Player"){
             if(collision.tag == "Grappleable" || collision.tag == "Enemy"){
+                player.GetComponent<GrapplingScript>().attached = collision.gameObject;
+                player.GetComponent<GrapplingScript>().onConnect();
+                Destroy(gameObject);
+
+            }else if(collision.tag == "Elite" || collision.tag == "Boss"){
 
             }else{
                 Destroy(gameObject);

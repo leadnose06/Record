@@ -6,6 +6,8 @@ public class ObjectTrackerScript : MonoBehaviour
 {
     public GameObject[] enemies;
     public GameObject[] grapples;
+    public GameObject[] elites;
+    public GameObject[] boss;
 
 
     // Start is called before the first frame update
