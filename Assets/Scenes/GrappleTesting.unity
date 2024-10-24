@@ -379,6 +379,7 @@ MonoBehaviour:
   grappleHook: {fileID: 0}
   attached: {fileID: 0}
   grappleSpeed: 15
+  line: {fileID: 1906269668}
 --- !u!1001 &972995450
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -790,8 +791,9 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetDir: 0
   Direction: {x: 0, y: 0, z: 0}
-  speed: 10
+  speed: 15
   target: 0
+  line: {fileID: 0}
 --- !u!50 &1852022535
 Rigidbody2D:
   serializedVersion: 4
@@ -836,7 +838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1906269668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -901,8 +903,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 1
+        time: 0.66012573
+        value: 0.12820244
         inSlope: 0
         outSlope: 0
         tangentMode: 0

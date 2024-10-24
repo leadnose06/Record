@@ -13,6 +13,7 @@ public class GrappleHookScript : MonoBehaviour
     public float speed = 3f;
     public bool target;
     Rigidbody2D triggerrb;
+    public lr_LineController line;
     void Awake()
     {
         Direction = (targetPos - transform.position).normalized;
