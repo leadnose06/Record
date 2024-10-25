@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
         
         //triggers movement/idle animation based on whether or not the player is moving
     
-       Debug.Log("" + rb.velocity.x);
+       //Debug.Log("" + rb.velocity.x);
        moveAnimator.SetBool("IsRunning", IsMoving);
     }
 

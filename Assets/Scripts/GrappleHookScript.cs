@@ -42,6 +42,7 @@ public class GrappleHookScript : MonoBehaviour
 
             }else{
                 Destroy(gameObject);
+                line.Reset();
             }
         }
     }
