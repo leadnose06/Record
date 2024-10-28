@@ -14,12 +14,20 @@ public class PlayerController : MonoBehaviour
     private Animator moveAnimator;
     public GameObject player;
     private bool firstFrameOfInput;
+    public bool animationLock;
+    public float dashTimer = 0f;
+    public bool dashReady;
+    private float dashSign;
+    public bool isDashing;
+    private float dashDist;
 
 
     private void Awake(){
         rb = GetComponent<Rigidbody2D>();
         touchingDirections = GetComponent<TouchingDirections>();
         moveAnimator = GetComponent<Animator>();
+        animationLock = false;
+        dashReady = true;
     }
 
 
@@ -38,13 +46,29 @@ public class PlayerController : MonoBehaviour
         
         //triggers movement/idle animation based on whether or not the player is moving
     
-       //Debug.Log("" + rb.velocity.x);
-       moveAnimator.SetBool("IsRunning", IsMoving);
+        //Debug.Log("" + rb.velocity.x);
+        moveAnimator.SetBool("IsRunning", IsMoving);
+        
+        if(isDashing){
+            if(Time.time + Time.deltaTime >= dashTimer){
+                animationLock = false;
+                isDashing = false;
+                rb.gravityScale = 1;
+                dashTimer = Time.time + 0.5f;
+                Debug.Log(transform.position.x - dashDist);
+            }
+        }
+        if(!isDashing && !dashReady && Time.time >= dashTimer && touchingDirections.isGrounded){
+            dashReady = true;
+        }
     }
 
     private void FixedUpdate() {
-        if(!touchingDirections.isOnWall && !GetComponent<GrapplingScript>().IsGrappling){
+        if(!touchingDirections.isOnWall && !animationLock){
             rb.velocity = new Vector2(moveInput.x * speed, rb.velocity.y);
+        }
+        if(isDashing){
+            rb.MovePosition(new Vector2(transform.position.x + (dashSign * 8f * Time.fixedDeltaTime), transform.position.y));
         }
     }
 
@@ -60,8 +84,20 @@ public class PlayerController : MonoBehaviour
 
     public void onJump(InputAction.CallbackContext context){
         //TODO check if alive so no jumping during death animations
-        if(context.started && touchingDirections.isGrounded){
+        if(context.performed && touchingDirections.isGrounded && !animationLock){
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
+        }
+    }
+    public void onDash(InputAction.CallbackContext context){
+        if(context.performed && dashReady && !animationLock){
+            dashSign = transform.localScale.x;
+            dashTimer = Time.time + 0.135f;
+            dashReady = false;
+            animationLock = true;
+            isDashing = true;
+            rb.velocity = new Vector2(0, 0);
+            rb.gravityScale = 0;
+            dashDist = transform.position.x;
         }
     }
 }

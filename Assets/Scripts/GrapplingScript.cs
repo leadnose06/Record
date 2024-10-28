@@ -44,6 +44,7 @@ public class GrapplingScript : MonoBehaviour
     public void onConnect(){
         line.GetComponent<lr_LineController>().SetUpLine(new Transform[2]{transform, attached.transform});
         IsGrappling = true;
+        gameObject.GetComponent<PlayerController>().animationLock = true;
         rb.gravityScale = 0;
         rb.velocity = new Vector2(0, 0);
     }
@@ -52,6 +53,7 @@ public class GrapplingScript : MonoBehaviour
         Destroy(grappleHook);
         line.GetComponent<lr_LineController>().Reset();
         IsGrappling = false;
+        gameObject.GetComponent<PlayerController>().animationLock = false;
         rb.gravityScale = 1;
         rb.velocity = new Vector2(0, 0);
         distToTarget = 100f;
@@ -74,7 +76,7 @@ public class GrapplingScript : MonoBehaviour
     }
 
     public void onFire(InputAction.CallbackContext context){
-        if(Time.time >= grappleCooldown && !IsGrappling && context.performed == true){
+        if(Time.time >= grappleCooldown && !IsGrappling && context.performed == true && !gameObject.GetComponent<PlayerController>().animationLock){
             var gamepad = Gamepad.current;
             Vector2 move = gamepad.rightStick.ReadValue();
             grappleables = objectTracker.GetComponent<ObjectTrackerScript>().enemies.Concat(objectTracker.GetComponent<ObjectTrackerScript>().grapples).ToArray();
