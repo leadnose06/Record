@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,6 +21,10 @@ public class PlayerController : MonoBehaviour
     private float dashSign;
     public bool isDashing;
     private float dashDist;
+
+    private float max=100;
+    private float all=0;
+    private int num = 0;
 
 
     private void Awake(){
@@ -49,15 +54,7 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("" + rb.velocity.x);
         moveAnimator.SetBool("IsRunning", IsMoving);
         
-        if(isDashing){
-            if(Time.time + Time.deltaTime >= dashTimer){
-                animationLock = false;
-                isDashing = false;
-                rb.gravityScale = 1;
-                dashTimer = Time.time + 0.5f;
-                Debug.Log(transform.position.x - dashDist);
-            }
-        }
+        
         if(!isDashing && !dashReady && Time.time >= dashTimer && touchingDirections.isGrounded){
             dashReady = true;
         }
@@ -69,6 +66,18 @@ public class PlayerController : MonoBehaviour
         }
         if(isDashing){
             rb.MovePosition(new Vector2(transform.position.x + (dashSign * 8f * Time.fixedDeltaTime), transform.position.y));
+        }
+        if(isDashing){
+            if(Time.fixedTime >= dashTimer){
+                animationLock = false;
+                isDashing = false;
+                rb.gravityScale = 1;
+                dashTimer = Time.time + 0.5f;
+                num++;
+                all+=Mathf.Abs(transform.position.x - dashDist);
+                if(Mathf.Abs(transform.position.x - dashDist)<max){max = Mathf.Abs(transform.position.x - dashDist);}
+                Debug.Log("avg: "+all/num + " max: "+max);
+            }
         }
     }
 
@@ -91,7 +100,7 @@ public class PlayerController : MonoBehaviour
     public void onDash(InputAction.CallbackContext context){
         if(context.performed && dashReady && !animationLock){
             dashSign = transform.localScale.x;
-            dashTimer = Time.time + 0.135f;
+            dashTimer = Time.fixedTime + 0.135f;
             dashReady = false;
             animationLock = true;
             isDashing = true;
