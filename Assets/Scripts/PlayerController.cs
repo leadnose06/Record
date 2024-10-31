@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     TouchingDirections touchingDirections;
     Vector2 moveInput;
     private Animator moveAnimator;
-    public GameObject player;
     private bool firstFrameOfInput;
     public bool animationLock;
     public float dashTimer = 0f;
