@@ -15,11 +15,13 @@ public class LevelChanger : MonoBehaviour
 
     [SerializeField]
     private Transform spawnPoint;
+    [SerializeField]
+    private GameObject player;
     // Start is called before the first frame update
     void Start()
     {
         if(_connection == LevelConnection.ActiveConnection){
-            GameObject.FindWithTag("Player").transform.position = spawnPoint.position;
+            player.transform.position = spawnPoint.position;
         }
     }
 
@@ -30,9 +32,11 @@ public class LevelChanger : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision){
-        if (collision.collider.tag == "Player"){
+        Debug.Log("o");
+        if (collision.collider.tag.Equals("Player")){
             LevelConnection.ActiveConnection = _connection;
             SceneManager.LoadScene(targetSceneName);
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(targetSceneName));
         }
     }
 }
