@@ -62,6 +62,9 @@ public class PlayerController : MonoBehaviour
         //TODO check if alive so no jumping during death animations
         if(context.started && touchingDirections.isGrounded){
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
+            moveAnimator.SetTrigger("Player Jump");
+            Debug.Log("jump trigger");
         }
+        
     }
 }

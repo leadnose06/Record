@@ -39,17 +39,21 @@ public class TouchingDirections : MonoBehaviour
         _isOnCeiling = value;
     } }
     
+    private Animator moveAnimator;
     
 
     private void Awake(){
         touchingCol = GetComponent<CapsuleCollider2D>();
+        moveAnimator = GetComponent<Animator>();
     }
 
     void FixedUpdate()
     {
         isGrounded = touchingCol.Cast(Vector2.down, castFilter, groundHits, groundDistance) > 0;
+        if (isGrounded) {moveAnimator.SetBool("Falling", false);}
         isOnWall = touchingCol.Cast(wallCheckDirection, castFilter, wallHits, wallDistance) > 0;
         isOnCeiling = touchingCol.Cast(Vector2.up, castFilter, ceilingHits, ceilingDistance) > 0;
+        
     }
 
 
