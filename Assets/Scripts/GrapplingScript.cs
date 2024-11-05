@@ -20,6 +20,8 @@ public class GrapplingScript : MonoBehaviour
     Rigidbody2D rb;
     private float minMax = 20f;
     public float grappleSpeed;
+    private float distToTarget = 100f;
+    public lr_LineController line;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,39 +35,48 @@ public class GrapplingScript : MonoBehaviour
     void Update()
     {
         if(IsGrappling){
-            if(Time.time >= grappleCooldown+1.5f){
-                IsGrappling = false;
+            if(distToTarget <= 1.005f){
+                onDisconnect();
             }
         }
 
     }
     public void onConnect(){
+        line.GetComponent<lr_LineController>().SetUpLine(new Transform[2]{transform, attached.transform});
         IsGrappling = true;
+        gameObject.GetComponent<PlayerController>().animationLock = true;
         rb.gravityScale = 0;
         rb.velocity = new Vector2(0, 0);
     }
-
+    //todo: refresh dash and double jump
     public void onDisconnect(){
-
+        Destroy(grappleHook);
+        line.GetComponent<lr_LineController>().Reset();
+        IsGrappling = false;
+        gameObject.GetComponent<PlayerController>().animationLock = false;
+        rb.gravityScale = 1;
+        rb.velocity = new Vector2(0, 0);
+        distToTarget = 100f;
+        grappleCooldown = Time.time + 1f;
     }
 
-    public void onArrival(){
-
-    }
     //todo: update for elites and bosses
     private void FixedUpdate(){
         if(IsGrappling){
-            RaycastHit2D grappleCheck = Physics2D.Raycast(transform.position, attached.transform.position - transform.position, 100f);
+            RaycastHit2D grappleCheck = Physics2D.Raycast(transform.position, attached.transform.position - transform.position);
             if(grappleCheck.collider.tag == "Grappleable" || grappleCheck.collider.tag == "Enemy" ){
                 Vector2 direction = attached.transform.position - transform.position;
                 rb.velocity = direction.normalized * grappleSpeed;
+                distToTarget = grappleCheck.distance;
+            } else{
+                onDisconnect();
             }
 
         }
     }
 
     public void onFire(InputAction.CallbackContext context){
-        if(!IsGrappling){
+        if(Time.time >= grappleCooldown && !IsGrappling && context.performed == true && !gameObject.GetComponent<PlayerController>().animationLock){
             var gamepad = Gamepad.current;
             Vector2 move = gamepad.rightStick.ReadValue();
             grappleables = objectTracker.GetComponent<ObjectTrackerScript>().enemies.Concat(objectTracker.GetComponent<ObjectTrackerScript>().grapples).ToArray();
@@ -73,12 +84,11 @@ public class GrapplingScript : MonoBehaviour
             LegalAngleDiffs = new List<float>();
             if(Mathf.Abs(move.x) > 0.001f || Mathf.Abs(move.y) > 0.001f){
                 float JoystickAngle = (Mathf.Rad2Deg*Mathf.Atan2(move.y, move.x)+360)%360;
-                //
                 float min = (JoystickAngle - minMax + 360)%360;
                 float max = (JoystickAngle + minMax)%360;
                 foreach(GameObject a in grappleables){
                     RaycastHit2D grappleCheck = Physics2D.Raycast(transform.position, a.transform.position - transform.position, 100f);
-                    float TargetAngle = (Mathf.Rad2Deg * Mathf.Atan2(grappleCheck.transform.position.y, grappleCheck.transform.position.x)+360)%360;
+                    float TargetAngle = (Mathf.Rad2Deg * Mathf.Atan2(grappleCheck.transform.position.y-transform.position.y, grappleCheck.transform.position.x-transform.position.x)+360)%360;
                     if(grappleCheck.collider.tag == "Grappleable" || grappleCheck.collider.tag == "Enemy" ){
                         if(max + 180 < min) {
                             if(TargetAngle > min || TargetAngle < max){
@@ -93,28 +103,33 @@ public class GrapplingScript : MonoBehaviour
                             }
                         }
                     }
-                }//
-                        
+                }                                
                 grappleHook = Instantiate(grappleHookPattern);
                 grappleHook.transform.position = new Vector3(transform.position.x, transform.position.y);
                 grappleHook.GetComponent<GrappleHookScript>().player = gameObject;
-                Debug.Log("Angle: "+ JoystickAngle);
-                Debug.Log("min: "+ min);
-                Debug.Log("max: "+ max);
-                //Debug.Log(LegalTargets[0].position.x);
+                //Debug.Log("Angle: "+ JoystickAngle);
+                //Debug.Log("min: "+ min);
+                //Debug.Log("max: "+ max);
                 if(LegalTargets.Count > 0 && LegalAngleDiffs.Count > 0){
+                    //Debug.Log("Target Angle: "+ (Mathf.Rad2Deg * Mathf.Atan2(LegalTargets[LegalAngleDiffs.IndexOf(LegalAngleDiffs.Min())].position.y-transform.position.y, LegalTargets[LegalAngleDiffs.IndexOf(LegalAngleDiffs.Min())].position.x-transform.position.x)+360)%360);
                     grappleHook.GetComponent<GrappleHookScript>().targetPos = LegalTargets[LegalAngleDiffs.IndexOf(LegalAngleDiffs.Min())].position;
                     grappleHook.GetComponent<GrappleHookScript>().target = true;
                 }else{
                     grappleHook.GetComponent<GrappleHookScript>().targetDir = JoystickAngle;
                     grappleHook.GetComponent<GrappleHookScript>().target = false;
                 }
+                grappleHook.GetComponent<GrappleHookScript>().line = this.line;
                 grappleHook.SetActive(true);
-                IsGrappling = true;
+                line.GetComponent<lr_LineController>().SetUpLine(new Transform[2]{transform, grappleHook.transform});
                 grappleCooldown = Time.time;
             }
-
-
+        }
+    }
+    public void onRelease(InputAction.CallbackContext context){
+        if(IsGrappling){
+            if(context.canceled == true){
+                onDisconnect();
+            }
         }
     }
 }

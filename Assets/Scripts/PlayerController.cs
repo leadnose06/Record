@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,22 +13,28 @@ public class PlayerController : MonoBehaviour
     TouchingDirections touchingDirections;
     Vector2 moveInput;
     private Animator moveAnimator;
-    public GameObject player;
     private bool firstFrameOfInput;
+    public bool animationLock;
+    public float dashTimer = 0f;
+    public bool dashReady;
+    private float dashSign;
+    public bool isDashing;
+    private float dashDist;
+
+    private float max=100;
+    private float all=0;
+    private int num = 0;
 
 
     private void Awake(){
         rb = GetComponent<Rigidbody2D>();
         touchingDirections = GetComponent<TouchingDirections>();
         moveAnimator = GetComponent<Animator>();
+        animationLock = false;
+        dashReady = true;
     }
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -38,13 +45,33 @@ public class PlayerController : MonoBehaviour
         
         //triggers movement/idle animation based on whether or not the player is moving
     
-       Debug.Log("" + rb.velocity.x);
-       moveAnimator.SetBool("IsRunning", IsMoving);
+        //Debug.Log("" + rb.velocity.x);
+        moveAnimator.SetBool("IsRunning", IsMoving);
+        
+        
+        if(!isDashing && !dashReady && Time.time >= dashTimer && touchingDirections.isGrounded){
+            dashReady = true;
+        }
     }
 
     private void FixedUpdate() {
-        if(!touchingDirections.isOnWall && !GetComponent<GrapplingScript>().IsGrappling){
+        if(!touchingDirections.isOnWall && !animationLock){
             rb.velocity = new Vector2(moveInput.x * speed, rb.velocity.y);
+        }
+        if(isDashing){
+            rb.MovePosition(new Vector2(transform.position.x + (dashSign * 8f * Time.fixedDeltaTime), transform.position.y));
+        }
+        if(isDashing){
+            if(Time.fixedTime >= dashTimer){
+                animationLock = false;
+                isDashing = false;
+                rb.gravityScale = 1;
+                dashTimer = Time.time + 0.5f;
+                num++;
+                all+=Mathf.Abs(transform.position.x - dashDist);
+                if(Mathf.Abs(transform.position.x - dashDist)<max){max = Mathf.Abs(transform.position.x - dashDist);}
+                Debug.Log("avg: "+all/num + " max: "+max);
+            }
         }
     }
 
@@ -60,11 +87,23 @@ public class PlayerController : MonoBehaviour
 
     public void onJump(InputAction.CallbackContext context){
         //TODO check if alive so no jumping during death animations
-        if(context.started && touchingDirections.isGrounded){
+        if(context.performed && touchingDirections.isGrounded && !animationLock){
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
             moveAnimator.SetTrigger("Player Jump");
             Debug.Log("jump trigger");
         }
         
+    }
+    public void onDash(InputAction.CallbackContext context){
+        if(context.performed && dashReady && !animationLock){
+            dashSign = transform.localScale.x;
+            dashTimer = Time.fixedTime + 0.135f;
+            dashReady = false;
+            animationLock = true;
+            isDashing = true;
+            rb.velocity = new Vector2(0, 0);
+            rb.gravityScale = 0;
+            dashDist = transform.position.x;
+        }
     }
 }
