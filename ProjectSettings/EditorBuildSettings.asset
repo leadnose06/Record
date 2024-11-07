@@ -8,5 +8,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/GrappleTesting.unity
+    guid: e8c03338d603f43ca846fed2082649f3
+  - enabled: 1
+    path: Assets/Scenes/Doortest1.unity
+    guid: c64527f9d92194a4ca60b3f461580c88
+  - enabled: 1
+    path: Assets/Scenes/Doortest2.unity
+    guid: 98e1b4c8802f5434db03dd605ade3750
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 1c81c3bf28e9542aeadd157cf4d7a7a1, type: 2}

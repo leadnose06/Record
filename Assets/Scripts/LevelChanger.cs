@@ -11,7 +11,7 @@ public class LevelChanger : MonoBehaviour
     private LevelConnection _connection;
 
     [SerializeField]
-    private String targetSceneName;
+    private string targetSceneName;
 
     [SerializeField]
     private Transform spawnPoint;
@@ -31,9 +31,9 @@ public class LevelChanger : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision){
+    private void OnTriggerEnter2D(Collider2D other){
         Debug.Log("o");
-        if (collision.collider.tag.Equals("Player")){
+        if (other.gameObject.tag.Equals("Player")){
             LevelConnection.ActiveConnection = _connection;
             SceneManager.LoadScene(targetSceneName);
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(targetSceneName));
