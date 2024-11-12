@@ -68,7 +68,7 @@ public class GrapplingScript : MonoBehaviour
                 Vector2 direction = attached.transform.position - transform.position;
                 rb.velocity = direction.normalized * grappleSpeed;
                 distToTarget = grappleCheck.distance;
-            } else{
+            } else if(grappleCheck.collider.tag == "Wall"){
                 onDisconnect();
             }
 

@@ -40,7 +40,7 @@ public class GrappleHookScript : MonoBehaviour
 
             }else if(collision.tag == "Elite" || collision.tag == "Boss"){
 
-            }else{
+            }else if(collision.tag == "Wall"){
                 Destroy(gameObject);
                 line.Reset();
             }
