@@ -68,7 +68,7 @@ public class GrapplingScript : MonoBehaviour
                 Vector2 direction = attached.transform.position - transform.position;
                 rb.velocity = direction.normalized * grappleSpeed;
                 distToTarget = grappleCheck.distance;
-            } else{
+            } else if(grappleCheck.collider.tag == "Wall"){
                 onDisconnect();
             }
 
@@ -107,11 +107,7 @@ public class GrapplingScript : MonoBehaviour
                 grappleHook = Instantiate(grappleHookPattern);
                 grappleHook.transform.position = new Vector3(transform.position.x, transform.position.y);
                 grappleHook.GetComponent<GrappleHookScript>().player = gameObject;
-                //Debug.Log("Angle: "+ JoystickAngle);
-                //Debug.Log("min: "+ min);
-                //Debug.Log("max: "+ max);
                 if(LegalTargets.Count > 0 && LegalAngleDiffs.Count > 0){
-                    //Debug.Log("Target Angle: "+ (Mathf.Rad2Deg * Mathf.Atan2(LegalTargets[LegalAngleDiffs.IndexOf(LegalAngleDiffs.Min())].position.y-transform.position.y, LegalTargets[LegalAngleDiffs.IndexOf(LegalAngleDiffs.Min())].position.x-transform.position.x)+360)%360);
                     grappleHook.GetComponent<GrappleHookScript>().targetPos = LegalTargets[LegalAngleDiffs.IndexOf(LegalAngleDiffs.Min())].position;
                     grappleHook.GetComponent<GrappleHookScript>().target = true;
                 }else{

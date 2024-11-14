@@ -9,6 +9,7 @@ TagManager:
   - Elite
   - Boss
   - Door
+  - OutOfBounds
   layers:
   - Default
   - TransparentFX
