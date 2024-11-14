@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7634590210713666207}
   - component: {fileID: 6043481835807731125}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: safezone
   m_TagString: Respawn
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -87,7 +87,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4372017633867325754}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: respawnpoint
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}

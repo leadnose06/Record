@@ -374,6 +374,7 @@ GameObject:
   - component: {fileID: 6312982330994747747}
   - component: {fileID: 5207465625908167829}
   - component: {fileID: 3539525719518454412}
+  - component: {fileID: 1974148997766765618}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -754,3 +755,16 @@ MonoBehaviour:
   attached: {fileID: 0}
   grappleSpeed: 15
   line: {fileID: 0}
+--- !u!114 &1974148997766765618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7893413262101768708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 090ba9cdfd0c3425b9c1b7b0242f89a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastSafeZone: {fileID: 0}

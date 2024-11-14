@@ -12,9 +12,12 @@ public class RespawnScript : MonoBehaviour
         get { return lastSafeZone.transform.GetChild(0).transform;}
     }
     
-    void OnTriggerEnter2D(Collider2D collision){
+    void OnTriggerStay2D(Collider2D collision){
         if(gameObject.GetComponent<TouchingDirections>().isGrounded){
-            if(collision.tag.Equals("Respawn")){
+            Debug.Log("grounded");
+            if(collision.CompareTag("Respawn"))
+            {
+                Debug.Log("New spawnpoint");
                 lastSafeZone = collision.gameObject;
             }
         }
