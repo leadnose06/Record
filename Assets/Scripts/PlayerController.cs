@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
         //TODO check if alive so no jumping during death animations
         if(context.performed && touchingDirections.isGrounded && !animationLock){
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
-            moveAnimator.SetTrigger("Player Jump");
+            moveAnimator.SetTrigger("PlayerJump");
             Debug.Log("jump trigger");
         }
         

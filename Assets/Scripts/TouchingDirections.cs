@@ -50,7 +50,15 @@ public class TouchingDirections : MonoBehaviour
     void FixedUpdate()
     {
         isGrounded = touchingCol.Cast(Vector2.down, castFilter, groundHits, groundDistance) > 0;
-        if (isGrounded) {moveAnimator.SetBool("IsFalling", false);}
+        if (isGrounded) {
+            if (moveAnimator.GetBool("IsFalling")) {Debug.Log("not falling");}
+            moveAnimator.SetBool("IsFalling", false);
+        } else {
+            if (!moveAnimator.GetBool("IsFalling")) {
+                Debug.Log("falling");
+            }
+            moveAnimator.SetBool("IsFalling", true);
+        }
         isOnWall = touchingCol.Cast(wallCheckDirection, castFilter, wallHits, wallDistance) > 0;
         isOnCeiling = touchingCol.Cast(Vector2.up, castFilter, ceilingHits, ceilingDistance) > 0;
         
