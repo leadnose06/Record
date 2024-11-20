@@ -10,6 +10,7 @@ TagManager:
   - Boss
   - Door
   - OutOfBounds
+  - Bench
   layers:
   - Default
   - TransparentFX

@@ -13,7 +13,10 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        maxHealth = DataManager.Instance.playerMaxHealth;
         checkMax();
+        health = DataManager.Instance.playerHealth;
+
     }
 
     // Update is called once per frame

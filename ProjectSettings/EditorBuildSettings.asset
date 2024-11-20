@@ -17,5 +17,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Doortest2.unity
     guid: 98e1b4c8802f5434db03dd605ade3750
+  - enabled: 1
+    path: Assets/Scenes/Fall Testing.unity
+    guid: dc55c5823951b40f9b44612f8cb6ecab
+  - enabled: 1
+    path: Assets/Scenes/Continuity Testing.unity
+    guid: a12521ff1b04e45d6a740afa3495f20f
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 1c81c3bf28e9542aeadd157cf4d7a7a1, type: 2}
