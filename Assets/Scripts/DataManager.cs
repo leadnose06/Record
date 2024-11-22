@@ -10,6 +10,7 @@ public class DataManager : MonoBehaviour
     public int playerMaxHealth;
     public bool dead = false;
     public string lastBench;
+    public GameObject bench;
 
     private void Awake(){
         if(Instance != null){
@@ -23,8 +24,5 @@ public class DataManager : MonoBehaviour
         playerHealth = playerMaxHealth;
     }
 
-    public void death(){
-        dead = true;
-        SceneManager.LoadScene(lastBench);
-    }
+
 }
