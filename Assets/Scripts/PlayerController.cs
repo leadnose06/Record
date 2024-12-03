@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private float max=100;
     private float all=0;
     private int num = 0;
+    private bool inBench = false;
 
 
     private void Awake(){
@@ -107,9 +109,48 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void onInteract(InputAction.CallbackContext context){
+        if(inBench){
+            GetComponent<Health>().health = DataManager.Instance.playerMaxHealth;
+            DataManager.Instance.playerHealth = DataManager.Instance.playerMaxHealth;
+            DataManager.Instance.lastBench = SceneManager.GetActiveScene().name;
+            Debug.Log("new bench");
+        }
+    }
+
+    public void damage(int amount){
+        GetComponent<Health>().health -= 1;
+        DataManager.Instance.playerHealth -= 1;
+        if(DataManager.Instance.playerHealth < 1){
+            death();
+        }
+
+    }
+    public void death(){
+        DataManager.Instance.dead = true;
+        if(SceneManager.GetActiveScene().name.Equals(DataManager.Instance.lastBench)){
+            DataManager.Instance.bench.GetComponent<BenchScript>().respawn();
+        }else{
+            SceneManager.LoadScene(DataManager.Instance.lastBench);
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D col){
         if(col.gameObject.tag.Equals("OutOfBounds")){
             transform.position = gameObject.GetComponent<RespawnScript>().getRespawn.position;
+            damage(1);
+            GetComponent<GrapplingScript>().onDisconnect();
+        }
+    }
+
+    void OnTriggerEnter2D(UnityEngine.Collider2D col){
+        if(col.tag.Equals("Bench")){
+            inBench = true;
+        }
+    }
+        void OnTriggerExit2D(UnityEngine.Collider2D col){
+        if(col.tag.Equals("Bench")){
+            inBench = false;
         }
     }
 }

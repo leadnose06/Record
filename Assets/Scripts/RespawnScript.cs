@@ -14,7 +14,7 @@ public class RespawnScript : MonoBehaviour
     
     void OnTriggerStay2D(Collider2D collision){
         if(gameObject.GetComponent<TouchingDirections>().isGrounded){
-            Debug.Log("grounded");
+            //Debug.Log("grounded");
             if(collision.CompareTag("Respawn"))
             {
                 Debug.Log("New spawnpoint");

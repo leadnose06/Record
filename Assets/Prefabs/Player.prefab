@@ -375,7 +375,8 @@ GameObject:
   - component: {fileID: 5207465625908167829}
   - component: {fileID: 3539525719518454412}
   - component: {fileID: 1974148997766765618}
-  m_Layer: 0
+  - component: {fileID: 8475946894994901156}
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -645,6 +646,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: fd165ff0-263c-4645-b3b6-521ee997d078
     m_ActionName: Player/Dash
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6560506927824295817}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: onInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 71cc6f3d-41bd-4d51-96df-cc98c37210dd
+    m_ActionName: Player/Interact[/XboxOneGampadMacOSWireless/buttonNorth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
@@ -768,3 +785,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastSafeZone: {fileID: 0}
+--- !u!114 &8475946894994901156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7893413262101768708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb3f8d91c3300471aa4e800e2d5d731d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  maxHealth: 3
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  fullHeart: {fileID: 21300000, guid: 4dc26222fe1e4441492f3588dfb21bde, type: 3}
+  emptyHeart: {fileID: 21300000, guid: d61f520ab3eca4d6ea3a1eb532685069, type: 3}
