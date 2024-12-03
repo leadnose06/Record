@@ -810,5 +810,5 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  fullHeart: {fileID: 21300000, guid: 4dc26222fe1e4441492f3588dfb21bde, type: 3}
-  emptyHeart: {fileID: 21300000, guid: d61f520ab3eca4d6ea3a1eb532685069, type: 3}
+  fullHeart: {fileID: 21300000, guid: 28a23c61796a24d50a83766d63e8b2c2, type: 3}
+  emptyHeart: {fileID: 21300000, guid: 02c09903289b548e8b0b02664ce2d7eb, type: 3}
