@@ -11,6 +11,7 @@ TagManager:
   - Door
   - OutOfBounds
   - Bench
+  - Enemy
   layers:
   - Default
   - TransparentFX
