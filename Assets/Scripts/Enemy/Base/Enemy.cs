@@ -9,37 +9,38 @@ public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable
     [field: SerializeField] public float MaxHealth { get; set; } = 100f;
     public float CurrentHealth { get; set; }
     public Rigidbody2D RB { get; set;}
-    [field: SerializeField] public bool IsFacingRight { get; set;}
+    [field: SerializeField] public bool IsFacingRight { get; set;} = false;
 
     public EnemyStateMachine StateMachine {get; set;}
-    public PatrolState patrolState {get; set;}
-    public ChaseState chaseState {get; set;}
+    public PatrolState EnemyPatrolState {get; set;}
+    public ChaseState EnemyChaseState {get; set;}
 
     #region PatrolVariables
         public Transform LeftPoint;
         public Transform RightPoint;
-        public float VariancePercent = 15;
-        public float speed = 5;
+        //public float VariancePercent = 15;
+        public float speed = 5f;
 
     #endregion
     
-    void Awake(){
-        patrolState = new PatrolState(this, StateMachine);
-        chaseState = new ChaseState(this, StateMachine);
+    public void Awake(){
+        StateMachine =  new EnemyStateMachine();
+        EnemyPatrolState = new PatrolState(this, StateMachine);
+        EnemyChaseState = new ChaseState(this, StateMachine);
     }
-    void Start()
+    public void Start()
     {
         CurrentHealth = MaxHealth;
         RB = GetComponent<Rigidbody2D>();
-        StateMachine.Initialize(patrolState);
+        StateMachine.Initialize(EnemyPatrolState);
     }
 
-    void Update()
+    public void Update()
     {
         StateMachine.CurrentEnemyState.FrameUpdate();
     }
 
-    void FixedUpdate(){
+    public void FixedUpdate(){
         StateMachine.CurrentEnemyState.PhysicsUpdate();
     }
 
@@ -65,8 +66,10 @@ public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable
     public void CheckFacing(Vector2 velocity){
         if (IsFacingRight && velocity.x < 0f){
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y);
-        } else if (!IsFacingRight && velocity.x < 0f){
+            IsFacingRight = false;
+        } else if (!IsFacingRight && velocity.x > 0f){
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y);
+            IsFacingRight = true;
         }
     }
 
