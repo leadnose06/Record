@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable
+public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable, ITriggerCheckable
 {
     [field: SerializeField] public float MaxHealth { get; set; } = 100f;
     public float CurrentHealth { get; set; }
@@ -12,27 +12,39 @@ public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable
     [field: SerializeField] public bool IsFacingRight { get; set;} = false;
 
     public EnemyStateMachine StateMachine {get; set;}
-    public PatrolState EnemyPatrolState {get; set;}
+    public IdleState EnemyIdleState {get; set;}
     public ChaseState EnemyChaseState {get; set;}
+    public AttackState EnemyAttackState {get; set; }
+    public bool IsAggroed { get; set; }
+    public bool IswithinStrikingDistance { get; set; }
 
-    #region PatrolVariables
-        public Transform LeftPoint;
-        public Transform RightPoint;
-        //public float VariancePercent = 15;
-        public float speed = 5f;
 
-    #endregion
+    [SerializeField] private EnemyIdleSOBase EnemyIdleBase;
+    [SerializeField] private EnemyChaseSOBase EnemyChaseBase;
+    [SerializeField] private EnemyAttackSOBase EnemyAttackBase;
+
+    public EnemyIdleSOBase EnemyIdleBaseInstance {get; set;}
+    public EnemyChaseSOBase EnemyChaseBaseInstance {get; set;}
+    public EnemyAttackSOBase EnemyAttackBaseInstance {get; set;}
     
-    public void Awake(){
+    private void Awake(){
+        EnemyIdleBaseInstance = Instantiate(EnemyIdleBase);
+        EnemyChaseBaseInstance = Instantiate(EnemyChaseBase);
+        EnemyAttackBaseInstance = Instantiate(EnemyAttackBase);
         StateMachine =  new EnemyStateMachine();
-        EnemyPatrolState = new PatrolState(this, StateMachine);
+        EnemyIdleState = new IdleState(this, StateMachine);
         EnemyChaseState = new ChaseState(this, StateMachine);
+        EnemyAttackState = new AttackState(this, StateMachine);
     }
-    public void Start()
+    public virtual void Start()
     {
+        EnemyIdleBaseInstance.Initialize(gameObject, this);
+        EnemyChaseBaseInstance.Initialize(gameObject, this);
+        EnemyAttackBaseInstance.Initialize(gameObject, this);
+
         CurrentHealth = MaxHealth;
         RB = GetComponent<Rigidbody2D>();
-        StateMachine.Initialize(EnemyPatrolState);
+        StateMachine.Initialize(EnemyIdleState);
     }
 
     public void Update()
@@ -75,6 +87,16 @@ public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable
 
     private void AnimationTriggerEvent( AnimationTriggerType triggerType){
         StateMachine.CurrentEnemyState.AnimationTriggerEvent(triggerType);
+    }
+
+    public void SetAggroStatus(bool isAggroed)
+    {
+        IsAggroed = isAggroed;
+    }
+
+    public void SetStrikingDistanceBool(bool iswithinStrikingDistance)
+    {
+        IswithinStrikingDistance = iswithinStrikingDistance;
     }
 
     public enum AnimationTriggerType{

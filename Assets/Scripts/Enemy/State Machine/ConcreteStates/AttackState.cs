@@ -2,36 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChaseState : EnemyState
+public class AttackState : EnemyState
 {
-        public ChaseState(Enemy enemy, EnemyStateMachine enemyStateMachine) : base(enemy, enemyStateMachine)
+    public AttackState(Enemy enemy, EnemyStateMachine enemyStateMachine) : base(enemy, enemyStateMachine)
     {
     }
 
     public override void AnimationTriggerEvent(Enemy.AnimationTriggerType triggerType)
     {
         base.AnimationTriggerEvent(triggerType);
-        enemy.EnemyChaseBaseInstance.DoAnimationTriggerEventLogic(triggerType);
+        enemy.EnemyAttackBaseInstance.DoAnimationTriggerEventLogic(triggerType);
     }
 
     public override void EnterState()
     {
         base.EnterState();
-        enemy.EnemyChaseBaseInstance.DoEnterLogic();
+        enemy.EnemyAttackBaseInstance.DoEnterLogic();
     }
     public override void ExitState()
     {
         base.ExitState();
-        enemy.EnemyChaseBaseInstance.DoExitLogic();
+        enemy.EnemyAttackBaseInstance.DoExitLogic();
     }
     public override void FrameUpdate()
     {
         base.FrameUpdate();
-        enemy.EnemyChaseBaseInstance.DoFrameUpdateLogic();
+        enemy.EnemyAttackBaseInstance.DoFrameUpdateLogic();
     }
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        enemy.EnemyChaseBaseInstance.DoPhysicsLogic();
+        enemy.EnemyAttackBaseInstance.DoPhysicsLogic();
     }
+    
 }
