@@ -12,7 +12,14 @@ public class EnemyIdleFlyingPatrol : EnemyIdleSOBase
     private Vector3 _direction;
     private bool rightPoint;
     [SerializeField]private float speed = 5f;
+    
 
+    public override void Initialize(GameObject gameObject, Enemy enemy, Transform LeftPoint, Transform RightPoint){
+        base.Initialize(gameObject, enemy, LeftPoint, RightPoint);
+        this.LeftPoint = LeftPoint;
+        Debug.Log("---------------"+this.LeftPoint.position.x);
+        this.RightPoint = RightPoint;
+    }
     public override void DoAnimationTriggerEventLogic(Enemy.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
@@ -21,8 +28,6 @@ public class EnemyIdleFlyingPatrol : EnemyIdleSOBase
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
-        LeftPoint = enemy.GetComponent<FlyingBase>().LeftPoint;
-        RightPoint = enemy.GetComponent<FlyingBase>().RightPoint;
         if(Random.Range(0,1) <= 0.5){
             _targetPos = LeftPoint.position;
             rightPoint = false;
@@ -38,6 +43,7 @@ public class EnemyIdleFlyingPatrol : EnemyIdleSOBase
     public override void DoFrameUpdateLogic()
     {
         base.DoFrameUpdateLogic();
+        Debug.Log(LeftPoint);
         if((enemy.transform.position - _targetPos).sqrMagnitude < 0.1f){
             if(rightPoint){
                 _targetPos = LeftPoint.position;

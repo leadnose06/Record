@@ -8,8 +8,8 @@ public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable, ITriggerCheckable
 {
     [field: SerializeField] public float MaxHealth { get; set; } = 100f;
     public float CurrentHealth { get; set; }
-    public Rigidbody2D RB { get; set;}
-    [field: SerializeField] public bool IsFacingRight { get; set;} = false;
+    public Rigidbody2D RB { get; set; }
+    [field: SerializeField] public bool IsFacingRight { get; set; } = false;
 
     public EnemyStateMachine StateMachine {get; set;}
     public IdleState EnemyIdleState {get; set;}
@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable, ITriggerCheckable
     public EnemyChaseSOBase EnemyChaseBaseInstance {get; set;}
     public EnemyAttackSOBase EnemyAttackBaseInstance {get; set;}
     
-    private void Awake(){
+    protected virtual void Awake(){
         EnemyIdleBaseInstance = Instantiate(EnemyIdleBase);
         EnemyChaseBaseInstance = Instantiate(EnemyChaseBase);
         EnemyAttackBaseInstance = Instantiate(EnemyAttackBase);

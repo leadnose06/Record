@@ -914,10 +914,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 10
+  <CurrentHealth>k__BackingField: 0
+  <RB>k__BackingField: {fileID: 0}
   <IsFacingRight>k__BackingField: 0
-  LeftPoint: {fileID: 0}
-  RightPoint: {fileID: 0}
-  speed: 5
+  <IsAggroed>k__BackingField: 0
+  <IswithinStrikingDistance>k__BackingField: 0
+  EnemyIdleBase: {fileID: 0}
+  EnemyChaseBase: {fileID: 0}
+  EnemyAttackBase: {fileID: 0}
+  <EnemyIdleBaseInstance>k__BackingField: {fileID: 0}
+  <EnemyChaseBaseInstance>k__BackingField: {fileID: 0}
+  <EnemyAttackBaseInstance>k__BackingField: {fileID: 0}
 --- !u!114 &1023796855 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4535950369516578063, guid: bb7809aa3b8a240c1981c699e6643881, type: 3}
@@ -1114,14 +1121,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1231553879}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fa0edac72e554ef491c81d5ed325f43, type: 3}
+  m_Script: {fileID: 11500000, guid: 6162bc03b0cc140c6b46ce9e86e0f490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 10
   <IsFacingRight>k__BackingField: 0
+  EnemyIdleBase: {fileID: 11400000, guid: 46cee05d54c0a42e0b05491a6c26aa72, type: 2}
+  EnemyChaseBase: {fileID: 0}
+  EnemyAttackBase: {fileID: 0}
   LeftPoint: {fileID: 1302001572}
   RightPoint: {fileID: 458567445}
-  speed: 1
 --- !u!1001 &1259239079
 PrefabInstance:
   m_ObjectHideFlags: 0
