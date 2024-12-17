@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable, ITriggerCheckable
         CheckFacing(velocity);
     }
 
-    public void CheckFacing(Vector2 velocity){
+    public virtual void CheckFacing(Vector2 velocity){
         if (IsFacingRight && velocity.x < 0f){
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y);
             IsFacingRight = false;

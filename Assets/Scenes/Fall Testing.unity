@@ -327,6 +327,18 @@ PrefabInstance:
       propertyPath: lastSafeZone
       value: 
       objectReference: {fileID: 235269272}
+    - target: {fileID: 2073347094335690050, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
+      propertyPath: castFilter.useOutsideDepth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073347094335690050, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
+      propertyPath: castFilter.layerMask.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844030936977336112, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3397217332123835267, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.19
@@ -751,13 +763,15 @@ GameObject:
   - component: {fileID: 976074673}
   - component: {fileID: 976074672}
   - component: {fileID: 976074674}
+  - component: {fileID: 976074675}
+  - component: {fileID: 976074676}
   m_Layer: 6
   m_Name: Cleaner_enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &976074670
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -809,7 +823,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!4 &976074671
 Transform:
   m_ObjectHideFlags: 0
@@ -819,7 +833,7 @@ Transform:
   m_GameObject: {fileID: 976074669}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 2, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -887,7 +901,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -896,12 +910,102 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.1, y: -0.1}
-      - {x: 0.1, y: -0.1}
-      - {x: 0.3, y: -0.5}
-      - {x: -0.3, y: -0.5}
+    - - {x: -0.1, y: 0.3}
+      - {x: 0.1, y: 0.3}
+      - {x: 0.3, y: 0}
+      - {x: -0.3, y: 0}
   m_UseDelaunayMesh: 0
---- !u!114 &976074674
+--- !u!61 &976074674
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976074669}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 94
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.05}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.25, y: 0.1}
+  m_EdgeRadius: 0
+--- !u!61 &976074675
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976074669}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 94
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.15, y: 0.05}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.25, y: 0.1}
+  m_EdgeRadius: 0
+--- !u!114 &976074676
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -910,21 +1014,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 976074669}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be747237ab03d44dca25504d6733b3a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c738b8a0155e47d08790bc8e05117d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 10
-  <CurrentHealth>k__BackingField: 0
-  <RB>k__BackingField: {fileID: 0}
-  <IsFacingRight>k__BackingField: 0
-  <IsAggroed>k__BackingField: 0
-  <IswithinStrikingDistance>k__BackingField: 0
-  EnemyIdleBase: {fileID: 0}
-  EnemyChaseBase: {fileID: 0}
-  EnemyAttackBase: {fileID: 0}
-  <EnemyIdleBaseInstance>k__BackingField: {fileID: 0}
-  <EnemyChaseBaseInstance>k__BackingField: {fileID: 0}
-  <EnemyAttackBaseInstance>k__BackingField: {fileID: 0}
+  <MaxHealth>k__BackingField: 100
+  <IsFacingRight>k__BackingField: 1
+  EnemyIdleBase: {fileID: 11400000, guid: b2862af1656f14b179087e5e2ebfe103, type: 2}
+  EnemyChaseBase: {fileID: 11400000, guid: 5ca74b4cfa41349ed812b2c82e5d82d2, type: 2}
+  EnemyAttackBase: {fileID: 11400000, guid: e41e4bd12804841ab9a16ef3cc860499, type: 2}
+  FloorCheck: {fileID: 976074674}
+  WallCheck: {fileID: 976074675}
 --- !u!114 &1023796855 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4535950369516578063, guid: bb7809aa3b8a240c1981c699e6643881, type: 3}
@@ -1127,10 +1226,11 @@ MonoBehaviour:
   <MaxHealth>k__BackingField: 10
   <IsFacingRight>k__BackingField: 0
   EnemyIdleBase: {fileID: 11400000, guid: 46cee05d54c0a42e0b05491a6c26aa72, type: 2}
-  EnemyChaseBase: {fileID: 0}
-  EnemyAttackBase: {fileID: 0}
+  EnemyChaseBase: {fileID: 11400000, guid: 5ca74b4cfa41349ed812b2c82e5d82d2, type: 2}
+  EnemyAttackBase: {fileID: 11400000, guid: e41e4bd12804841ab9a16ef3cc860499, type: 2}
   LeftPoint: {fileID: 1302001572}
   RightPoint: {fileID: 458567445}
+  speed: 1.5
 --- !u!1001 &1259239079
 PrefabInstance:
   m_ObjectHideFlags: 0
