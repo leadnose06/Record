@@ -25,7 +25,7 @@ public class EnemyIdleSOBase : ScriptableObject
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
     //loop: 1 is top wall, clockwise from there 
-    public virtual void Initialize(GameObject gameObject, Enemy enemy, int wall, Collider2D FloorCheck, Collider2D WallCheck){
+    public virtual void Initialize(GameObject gameObject, Enemy enemy, int wall, float speed, float leftX, float rightX, float topY, float bottomY){
         this.gameObject = gameObject;
         transform = gameObject.transform;
         this.enemy = enemy;

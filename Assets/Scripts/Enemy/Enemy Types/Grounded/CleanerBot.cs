@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class CleanerBot : Enemy
 {
-    [SerializeField] private Collider2D FloorCheck;
-    [SerializeField] private Collider2D WallCheck;
+    [SerializeField] private int wall = 1;
+    [SerializeField] private float leftX;
+    [SerializeField] private float rightX;
+    [SerializeField] private float topY;
+    [SerializeField] private float bottomY;
+    [SerializeField] private float speed;
+
     public override void Start()
     {
-        EnemyIdleBaseInstance.Initialize(gameObject, this, 1, FloorCheck, WallCheck);
+        EnemyIdleBaseInstance.Initialize(gameObject, this, wall, speed, leftX, rightX, topY, bottomY);
         EnemyChaseBaseInstance.Initialize(gameObject, this);
         EnemyAttackBaseInstance.Initialize(gameObject, this);
 
@@ -16,7 +21,7 @@ public class CleanerBot : Enemy
         RB = GetComponent<Rigidbody2D>();
         StateMachine.Initialize(EnemyIdleState);
         if(IsFacingRight){
-            transform.localScale = new Vector3(1, 1, -1);
+            transform.localScale = new Vector3(-1, 1, 1);
         }
 
     }
