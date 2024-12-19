@@ -376,6 +376,7 @@ GameObject:
   - component: {fileID: 3539525719518454412}
   - component: {fileID: 1974148997766765618}
   - component: {fileID: 8475946894994901156}
+  - component: {fileID: -544422068729832941}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -662,6 +663,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 71cc6f3d-41bd-4d51-96df-cc98c37210dd
     m_ActionName: Player/Interact[/XboxOneGampadMacOSWireless/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6560506927824295817}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: onAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: bf5547d6-2c84-4f2b-a554-2ecd8474a8ff
+    m_ActionName: Player/Normal Attack[/DualShock4GamepadHID/buttonWest]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
@@ -812,3 +829,15 @@ MonoBehaviour:
   - {fileID: 0}
   fullHeart: {fileID: 21300000, guid: 4dc26222fe1e4441492f3588dfb21bde, type: 3}
   emptyHeart: {fileID: 21300000, guid: d61f520ab3eca4d6ea3a1eb532685069, type: 3}
+--- !u!114 &-544422068729832941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7893413262101768708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5990383c7f9c45969bb0400d352bfff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

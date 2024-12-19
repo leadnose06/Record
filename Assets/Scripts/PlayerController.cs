@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
     private float all=0;
     private int num = 0;
     private bool inBench = false;
+    private float idleTimer = 20f;
+    private float bladeTimer;
+    private bool bladeOut;
 
 
     private void Awake(){
@@ -42,8 +45,16 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //flips player based on horizontal movement
-        if (Input.GetAxis("Horizontal") > 0.01f) {transform.localScale = Vector3.one;}
-        else if (Input.GetAxis("Horizontal") < -0.01f) {transform.localScale = new Vector3(-1,1,1);}
+        if (Input.GetAxis("Horizontal") > 0.01f) {
+            moveAnimator.SetBool("Idle",false);
+            idleTimer = 0f;
+            transform.localScale = Vector3.one;
+        }
+        else if (Input.GetAxis("Horizontal") < -0.01f) {
+            transform.localScale = new Vector3(-1,1,1);
+            moveAnimator.SetBool("Idle",false);
+            idleTimer = 0f;
+            }
         
         //triggers movement/idle animation based on whether or not the player is moving
     
@@ -53,6 +64,15 @@ public class PlayerController : MonoBehaviour
         
         if(!isDashing && !dashReady && Time.time >= dashTimer && touchingDirections.isGrounded){
             dashReady = true;
+        }
+        if (idleTimer >= 20f) {moveAnimator.SetBool("Idle", true);}
+        else {idleTimer += Time.deltaTime;}
+
+        if (bladeOut) {bladeTimer += Time.deltaTime;}
+        if (bladeTimer >= 5f) {
+            bladeOut = false;
+            bladeTimer = 0f;
+            moveAnimator.SetBool("Blade Out",false);
         }
     }
 
@@ -78,6 +98,8 @@ public class PlayerController : MonoBehaviour
     }
 
     public void onMove(InputAction.CallbackContext context) {
+        moveAnimator.SetBool("Idle",false);
+        idleTimer = 0f;
         moveInput = context.ReadValue<Vector2>();
 
         //IsMoving = moveInput != Vector2.zero;
@@ -91,9 +113,12 @@ public class PlayerController : MonoBehaviour
         //TODO check if alive so no jumping during death animations
         if(context.performed && touchingDirections.isGrounded && !animationLock){
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
+            moveAnimator.SetBool("Idle",false);
+            idleTimer = 0f;
             moveAnimator.SetTrigger("PlayerJump");
             Debug.Log("jump trigger");
         }
+        
         
     }
     public void onDash(InputAction.CallbackContext context){
@@ -107,6 +132,8 @@ public class PlayerController : MonoBehaviour
             rb.gravityScale = 0;
             dashDist = transform.position.x;
         }
+        moveAnimator.SetBool("Idle",false);
+        idleTimer = 0f;
     }
 
     public void onInteract(InputAction.CallbackContext context){
@@ -116,6 +143,21 @@ public class PlayerController : MonoBehaviour
             DataManager.Instance.lastBench = SceneManager.GetActiveScene().name;
             Debug.Log("new bench");
         }
+
+    }
+
+    public void onAttack(InputAction.CallbackContext context){
+        Debug.Log("Attack");
+        //Play attack animation
+        moveAnimator.SetBool("Idle",false);
+        moveAnimator.SetTrigger("Attack");
+        idleTimer = 0;
+        bladeOut = true;
+        moveAnimator.SetBool("Blade Out",true);
+        //Detect enemies in range of attack
+
+        //Damage them
+
     }
 
     public void damage(int amount){
@@ -124,7 +166,8 @@ public class PlayerController : MonoBehaviour
         if(DataManager.Instance.playerHealth < 1){
             death();
         }
-
+        moveAnimator.SetBool("Idle",false);
+        idleTimer = 0f;
     }
     public void death(){
         DataManager.Instance.dead = true;
