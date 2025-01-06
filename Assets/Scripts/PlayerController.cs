@@ -27,8 +27,13 @@ public class PlayerController : MonoBehaviour
     private int num = 0;
     private bool inBench = false;
     private float idleTimer = 20f;
+    
+    //Attack Variables
     private float bladeTimer;
     private bool bladeOut;
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
 
 
     private void Awake(){
@@ -146,6 +151,8 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    //Attacking Methods
+
     public void onAttack(InputAction.CallbackContext context){
         Debug.Log("Attack");
         //Play attack animation
@@ -155,10 +162,20 @@ public class PlayerController : MonoBehaviour
         bladeOut = true;
         moveAnimator.SetBool("Blade Out",true);
         //Detect enemies in range of attack
-
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         //Damage them
-
+        foreach(Collider2D enemy in hitEnemies) {
+            Debug.Log("Hit");
+        }
     }
+
+    void onDrawGizmosSelected(){
+        if (attackPoint == null) {return;}
+        //Gizmos.DrawWireSphere(attackPoint.postion, attackRange);
+    }
+
+
+
 
     public void damage(int amount){
         GetComponent<Health>().health -= 1;
@@ -169,6 +186,9 @@ public class PlayerController : MonoBehaviour
         moveAnimator.SetBool("Idle",false);
         idleTimer = 0f;
     }
+
+
+
     public void death(){
         DataManager.Instance.dead = true;
         if(SceneManager.GetActiveScene().name.Equals(DataManager.Instance.lastBench)){
