@@ -17,6 +17,10 @@ public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable, ITriggerCheckable
     public AttackState EnemyAttackState {get; set; }
     public bool IsAggroed { get; set; }
     public bool IswithinStrikingDistance { get; set; }
+    public Vector2 origin;
+    public float maxDist;
+    public float speed;
+    public ContactFilter2D contactFilter;
 
 
     [SerializeField] private EnemyIdleSOBase EnemyIdleBase;
