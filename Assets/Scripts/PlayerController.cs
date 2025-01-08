@@ -154,18 +154,20 @@ public class PlayerController : MonoBehaviour
     //Attacking Methods
 
     public void onAttack(InputAction.CallbackContext context){
-        Debug.Log("Attack");
-        //Play attack animation
-        moveAnimator.SetBool("Idle",false);
-        moveAnimator.SetTrigger("Attack");
-        idleTimer = 0;
-        bladeOut = true;
-        moveAnimator.SetBool("Blade Out",true);
-        //Detect enemies in range of attack
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-        //Damage them
-        foreach(Collider2D enemy in hitEnemies) {
-            Debug.Log("Hit");
+        if(context.performed){
+            Debug.Log("Attack");
+            //Play attack animation
+            moveAnimator.SetBool("Idle",false);
+            moveAnimator.SetTrigger("Attack");
+            idleTimer = 0;
+            bladeOut = true;
+            moveAnimator.SetBool("Blade Out",true);
+            //Detect enemies in range of attack
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+            //Damage them
+            foreach(Collider2D enemy in hitEnemies) {
+                Debug.Log("Hit");
+            }
         }
     }
 
