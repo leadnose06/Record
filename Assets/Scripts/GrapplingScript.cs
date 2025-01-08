@@ -22,6 +22,7 @@ public class GrapplingScript : MonoBehaviour
     public float grappleSpeed;
     private float distToTarget = 100f;
     public lr_LineController line;
+    public ContactFilter2D contactFilter;
     // Start is called before the first frame update
     void Start()
     {
@@ -63,15 +64,14 @@ public class GrapplingScript : MonoBehaviour
     //todo: update for elites and bosses
     private void FixedUpdate(){
         if(IsGrappling){
-            RaycastHit2D grappleCheck = Physics2D.Raycast(transform.position, attached.transform.position - transform.position);
-            if(grappleCheck.collider.tag == "Grappleable" || grappleCheck.collider.tag == "Enemy" ){
+            RaycastHit2D grappleCheck = Physics2D.Raycast(transform.position, attached.transform.position - transform.position, Vector2.Distance(new Vector2(attached.transform.position.x, attached.transform.position.y), new Vector2(transform.position.x, transform.position.y)));
+            if(grappleCheck.collider.tag == "Wall"){
+                onDisconnect();
+            } else{
                 Vector2 direction = attached.transform.position - transform.position;
                 rb.velocity = direction.normalized * grappleSpeed;
-                distToTarget = grappleCheck.distance;
-            } else if(grappleCheck.collider.tag == "Wall"){
-                onDisconnect();
+                distToTarget = Vector2.Distance(new Vector2(attached.transform.position.x, attached.transform.position.y), new Vector2(transform.position.x, transform.position.y));
             }
-
         }
     }
 
