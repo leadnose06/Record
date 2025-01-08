@@ -864,7 +864,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-<<<<<<< HEAD
   fullHeart: {fileID: 21300000, guid: 4dc26222fe1e4441492f3588dfb21bde, type: 3}
   emptyHeart: {fileID: 21300000, guid: d61f520ab3eca4d6ea3a1eb532685069, type: 3}
 --- !u!114 &-544422068729832941
@@ -879,7 +878,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5990383c7f9c45969bb0400d352bfff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-=======
-  fullHeart: {fileID: 21300000, guid: 28a23c61796a24d50a83766d63e8b2c2, type: 3}
-  emptyHeart: {fileID: 21300000, guid: 02c09903289b548e8b0b02664ce2d7eb, type: 3}
->>>>>>> 49a178b03a1da00b282ede889dde41a183f1b0d3
+
