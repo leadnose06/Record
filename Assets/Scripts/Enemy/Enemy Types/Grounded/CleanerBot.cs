@@ -9,7 +9,6 @@ public class CleanerBot : Enemy
     [SerializeField] private float rightX;
     [SerializeField] private float topY;
     [SerializeField] private float bottomY;
-    [SerializeField] private float speed;
 
     public override void Start()
     {

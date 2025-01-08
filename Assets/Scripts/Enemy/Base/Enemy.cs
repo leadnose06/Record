@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable, ITriggerCheckable
     public float maxDist;
     public float speed;
     public ContactFilter2D contactFilter;
+    public GameObject SightChecker;
 
 
     [SerializeField] private EnemyIdleSOBase EnemyIdleBase;
@@ -87,6 +88,14 @@ public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable, ITriggerCheckable
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y);
             IsFacingRight = true;
         }
+    }
+
+    public virtual void CheckSight(Collider2D collider){
+        RaycastHit2D results = Physics2D.Raycast(transform.position, collider.gameObject.transform.position - transform.position, Mathf.Infinity, contactFilter.layerMask);
+            if(results.collider.tag == "Player"){
+                SetAggroStatus(true);
+                StateMachine.ChangeState(EnemyChaseState);
+            }
     }
 
     private void AnimationTriggerEvent( AnimationTriggerType triggerType){
