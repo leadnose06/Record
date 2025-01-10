@@ -167,13 +167,14 @@ public class PlayerController : MonoBehaviour
             //Damage them
             foreach(Collider2D enemy in hitEnemies) {
                 Debug.Log("Hit");
+                enemy.GetComponent<Enemy>().Damage(5.0f);
             }
         }
     }
 
-    void onDrawGizmosSelected(){
+    void OnDrawGizmosSelected(){
         if (attackPoint == null) {return;}
-        //Gizmos.DrawWireSphere(attackPoint.postion, attackRange);
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
 
