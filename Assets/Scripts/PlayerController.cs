@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     TouchingDirections touchingDirections;
     Vector2 moveInput;
-    private Animator moveAnimator;
+    public Animator moveAnimator;
+    public Animator attackPointAnimator;
     private bool firstFrameOfInput;
     public bool animationLock;
     public float dashTimer = 0f;
@@ -39,7 +40,6 @@ public class PlayerController : MonoBehaviour
     private void Awake(){
         rb = GetComponent<Rigidbody2D>();
         touchingDirections = GetComponent<TouchingDirections>();
-        moveAnimator = GetComponent<Animator>();
         animationLock = false;
         dashReady = true;
     }
@@ -159,6 +159,7 @@ public class PlayerController : MonoBehaviour
             //Play attack animation
             moveAnimator.SetBool("Idle",false);
             moveAnimator.SetTrigger("Attack");
+            attackPointAnimator.SetTrigger("Attack");
             idleTimer = 0;
             bladeOut = true;
             moveAnimator.SetBool("Blade Out",true);
