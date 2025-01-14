@@ -607,7 +607,7 @@ MonoBehaviour:
   dashReady: 0
   isDashing: 0
   attackPoint: {fileID: 6373580571688724288}
-  attackRange: 0.5
+  attackRange: 1
   enemyLayers:
     serializedVersion: 2
     m_Bits: 64

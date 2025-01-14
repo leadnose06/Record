@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
 
+    public float attackTimer = 1.0f;
+
 
     private void Awake(){
         rb = GetComponent<Rigidbody2D>();
@@ -78,6 +80,10 @@ public class PlayerController : MonoBehaviour
             bladeOut = false;
             bladeTimer = 0f;
             moveAnimator.SetBool("Blade Out",false);
+        }
+        if (attackTimer < 1.0f) {
+            attackTimer += Time.deltaTime;
+            Debug.Log(attackTimer);
         }
     }
 
@@ -155,21 +161,26 @@ public class PlayerController : MonoBehaviour
 
     public void onAttack(InputAction.CallbackContext context){
         if(context.performed){
-            Debug.Log("Attack");
-            //Play attack animation
-            moveAnimator.SetBool("Idle",false);
-            moveAnimator.SetTrigger("Attack");
-            attackPointAnimator.SetTrigger("Attack");
-            idleTimer = 0;
-            bladeOut = true;
-            moveAnimator.SetBool("Blade Out",true);
-            //Detect enemies in range of attack
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-            //Damage them
-            foreach(Collider2D enemy in hitEnemies) {
-                Debug.Log("Hit");
-                enemy.GetComponent<Enemy>().Damage(5.0f);
+            if (attackTimer >= 1.0f) {
+                Debug.Log("Attack");
+                //Play attack animation
+                moveAnimator.SetBool("Idle",false);
+                moveAnimator.SetTrigger("Attack");
+                attackPointAnimator.SetTrigger("Attack");
+                idleTimer = 0;
+                bladeOut = true;
+                moveAnimator.SetBool("Blade Out",true);
+                //Detect enemies in range of attack
+                Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+                //Damage them
+                foreach(Collider2D enemy in hitEnemies) {
+                    Debug.Log("Hit");
+                    enemy.GetComponent<Enemy>().Damage(5.0f);
+                }
+                attackTimer =0f;
             }
+
+            
         }
     }
 
