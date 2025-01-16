@@ -407,7 +407,6 @@ GameObject:
   - component: {fileID: 3539525719518454412}
   - component: {fileID: 1974148997766765618}
   - component: {fileID: 8475946894994901156}
-  - component: {fileID: -544422068729832941}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -526,6 +525,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpImpulse: 7
+  moveAnimator: {fileID: 0}
+  attackPointAnimator: {fileID: 0}
   animationLock: 0
   dashTimer: 0
   dashReady: 0
@@ -880,15 +881,3 @@ MonoBehaviour:
   - {fileID: 0}
   fullHeart: {fileID: 21300000, guid: 9d00c6063983646d3930f9dedc03ed2a, type: 3}
   emptyHeart: {fileID: 21300000, guid: 2b4ced9859a8044769efb670aa848160, type: 3}
---- !u!114 &-544422068729832941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7893413262101768708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5990383c7f9c45969bb0400d352bfff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

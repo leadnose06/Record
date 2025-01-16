@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate() {
         if(!touchingDirections.isOnWall && !animationLock){
-            rb.velocity = new Vector2(moveInput.x * speed, rb.velocity.y);
+            rb.velocity = new Vector2(moveInput.normalized.x * speed, rb.velocity.y);
         }
         if(isDashing){
             rb.MovePosition(new Vector2(transform.position.x + (dashSign * 8f * Time.fixedDeltaTime), transform.position.y));
