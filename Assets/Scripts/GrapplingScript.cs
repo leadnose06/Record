@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Scripting.APIUpdating;
@@ -22,7 +23,7 @@ public class GrapplingScript : MonoBehaviour
     public float grappleSpeed;
     private float distToTarget = 100f;
     public lr_LineController line;
-    public ContactFilter2D contactFilter;
+    [SerializeField] private LayerMask please;
     // Start is called before the first frame update
     void Start()
     {
@@ -87,7 +88,7 @@ public class GrapplingScript : MonoBehaviour
                 float min = (JoystickAngle - minMax + 360)%360;
                 float max = (JoystickAngle + minMax)%360;
                 foreach(GameObject a in grappleables){
-                    RaycastHit2D grappleCheck = Physics2D.Raycast(transform.position, a.transform.position - transform.position, 100f);
+                    RaycastHit2D grappleCheck = Physics2D.Raycast(transform.position, a.transform.position - transform.position, 100f, please);
                     float TargetAngle = (Mathf.Rad2Deg * Mathf.Atan2(grappleCheck.transform.position.y-transform.position.y, grappleCheck.transform.position.x-transform.position.x)+360)%360;
                     if(grappleCheck.collider.tag == "Grappleable" || grappleCheck.collider.tag == "Enemy" ){
                         if(max + 180 < min) {

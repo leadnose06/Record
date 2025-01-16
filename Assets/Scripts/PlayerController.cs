@@ -50,12 +50,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //flips player based on horizontal movement
-        if (Input.GetAxis("Horizontal") > 0.01f) {
+        if (Input.GetAxis("Horizontal") > 0.01f || rb.velocity.x > 0) {
             moveAnimator.SetBool("Idle",false);
             idleTimer = 0f;
             transform.localScale = Vector3.one;
         }
-        else if (Input.GetAxis("Horizontal") < -0.01f) {
+        else if (Input.GetAxis("Horizontal") < -0.01f || rb.velocity.x < 0) {
             transform.localScale = new Vector3(-1,1,1);
             moveAnimator.SetBool("Idle",false);
             idleTimer = 0f;
@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate() {
         if(!touchingDirections.isOnWall && !animationLock){
-            rb.velocity = new Vector2(moveInput.x * speed, rb.velocity.y);
+            rb.velocity = new Vector2(moveInput.normalized.x * speed, rb.velocity.y);
         }
         if(isDashing){
             rb.MovePosition(new Vector2(transform.position.x + (dashSign * 8f * Time.fixedDeltaTime), transform.position.y));
