@@ -51,19 +51,20 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //flips player based on horizontal movement
-        if (Input.GetAxis("Horizontal") > 0.01f) {
-            moveAnimator.SetBool("Idle",false);
-            idleTimer = 0f;
-            transform.localScale = Vector3.one;
-        }
-        else if (Input.GetAxis("Horizontal") < -0.01f) {
-            transform.localScale = new Vector3(-1,1,1);
-            moveAnimator.SetBool("Idle",false);
-            idleTimer = 0f;
+        //flips player based on horizontal movement, does not work wheb attacking
+        if (attackTimer > 0.45f) {
+            if (Input.GetAxis("Horizontal") > 0.01f) {
+                moveAnimator.SetBool("Idle",false);
+                idleTimer = 0f;
+                transform.localScale = Vector3.one;
             }
-        
-        //triggers movement/idle animation based on whether or not the player is moving
+            else if (Input.GetAxis("Horizontal") < -0.01f) {
+                transform.localScale = new Vector3(-1,1,1);
+                moveAnimator.SetBool("Idle",false);
+                idleTimer = 0f;
+            }
+        }
+       
     
         //Debug.Log("" + rb.velocity.x);
         moveAnimator.SetBool("IsRunning", IsMoving);
@@ -81,6 +82,7 @@ public class PlayerController : MonoBehaviour
             bladeTimer = 0f;
             moveAnimator.SetBool("Blade Out",false);
         }
+        //attacking timer
         if (attackTimer < 1.0f) {
             attackTimer += Time.deltaTime;
             Debug.Log(attackTimer);

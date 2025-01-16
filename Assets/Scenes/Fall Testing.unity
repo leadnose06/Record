@@ -959,6 +959,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3158674342122997599, guid: 8f669abe5bf7d4965b0df39c0ed20f14, type: 3}
+      propertyPath: m_PixelSnapping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7452726664283869349, guid: 8f669abe5bf7d4965b0df39c0ed20f14, type: 3}
       propertyPath: m_Name
       value: Main Camera (1)
@@ -1938,6 +1942,10 @@ PrefabInstance:
     - target: {fileID: 1798442637697065140, guid: acd185d8e0e484aea9fb5ec1d165c7ea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2253259927416603111, guid: acd185d8e0e484aea9fb5ec1d165c7ea, type: 3}
+      propertyPath: sprite
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2253259927416603111, guid: acd185d8e0e484aea9fb5ec1d165c7ea, type: 3}
       propertyPath: LeftPoint

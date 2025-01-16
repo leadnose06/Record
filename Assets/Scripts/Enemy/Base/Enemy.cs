@@ -22,6 +22,9 @@ public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable, ITriggerCheckable
     public float speed;
     public ContactFilter2D contactFilter;
     public GameObject SightChecker;
+    public SpriteRenderer sprite;
+    public bool colorIsRed;
+    public float colorHitTimer;
 
 
     [SerializeField] private EnemyIdleSOBase EnemyIdleBase;
@@ -40,6 +43,7 @@ public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable, ITriggerCheckable
         EnemyIdleState = new IdleState(this, StateMachine);
         EnemyChaseState = new ChaseState(this, StateMachine);
         EnemyAttackState = new AttackState(this, StateMachine);
+        sprite = GetComponent<SpriteRenderer>();
     }
     public virtual void Start()
     {
@@ -55,6 +59,8 @@ public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable, ITriggerCheckable
     public void Update()
     {
         StateMachine.CurrentEnemyState.FrameUpdate();
+        if (colorIsRed && colorHitTimer <= 0) {sprite.color = Color.white;}
+        else {colorHitTimer -= Time.deltaTime;}
     }
 
     public void FixedUpdate(){
@@ -63,11 +69,21 @@ public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable, ITriggerCheckable
 
     public void Damage(float damageAmount)
     {
+        sprite.color = Color.red;
+        colorIsRed = true;
+        colorHitTimer = 0.1f;
         CurrentHealth -= damageAmount;
         if(CurrentHealth <= 0f){
-            Die();
+            this.enabled = false;
+            Invoke ("Die", 0.1f);
         }
     }
+
+    /*public IEnumerator ColorFlashOnDamage() {
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = Color.white;
+    }*/
 
     public void Die()
     {
