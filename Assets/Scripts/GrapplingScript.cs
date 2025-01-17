@@ -80,7 +80,11 @@ public class GrapplingScript : MonoBehaviour
         if(Time.time >= grappleCooldown && !IsGrappling && context.performed == true && !gameObject.GetComponent<PlayerController>().animationLock){
             var gamepad = Gamepad.current;
             Vector2 move = gamepad.rightStick.ReadValue();
-            grappleables = objectTracker.GetComponent<ObjectTrackerScript>().enemies.Concat(objectTracker.GetComponent<ObjectTrackerScript>().grapples).ToArray();
+            if(objectTracker.GetComponent<ObjectTrackerScript>().enemies != null){
+                grappleables = objectTracker.GetComponent<ObjectTrackerScript>().enemies.Concat(objectTracker.GetComponent<ObjectTrackerScript>().grapples).ToArray();
+            } else{
+                grappleables = objectTracker.GetComponent<ObjectTrackerScript>().grapples.ToArray();
+            }
             LegalTargets = new List<Transform>();
             LegalAngleDiffs = new List<float>();
             if(Mathf.Abs(move.x) > 0.001f || Mathf.Abs(move.y) > 0.001f){
@@ -88,22 +92,22 @@ public class GrapplingScript : MonoBehaviour
                 float min = (JoystickAngle - minMax + 360)%360;
                 float max = (JoystickAngle + minMax)%360;
                 foreach(GameObject a in grappleables){
-                    RaycastHit2D grappleCheck = Physics2D.Raycast(transform.position, a.transform.position - transform.position, 100f, please);
-                    float TargetAngle = (Mathf.Rad2Deg * Mathf.Atan2(grappleCheck.transform.position.y-transform.position.y, grappleCheck.transform.position.x-transform.position.x)+360)%360;
-                    if(grappleCheck.collider.tag == "Grappleable" || grappleCheck.collider.tag == "Enemy" ){
-                        if(max + 180 < min) {
-                            if(TargetAngle > min || TargetAngle < max){
-                                LegalTargets.Add(grappleCheck.transform);
-                                LegalAngleDiffs.Add(Mathf.Abs(((JoystickAngle+180)%360)-((TargetAngle+180)%360)));
+                        RaycastHit2D grappleCheck = Physics2D.Raycast(transform.position, a.transform.position - transform.position, 100f, please);
+                        float TargetAngle = (Mathf.Rad2Deg * Mathf.Atan2(grappleCheck.transform.position.y-transform.position.y, grappleCheck.transform.position.x-transform.position.x)+360)%360;
+                        if(grappleCheck.collider.tag == "Grappleable" || grappleCheck.collider.tag == "Enemy" ){
+                            if(max + 180 < min) {
+                                if(TargetAngle > min || TargetAngle < max){
+                                    LegalTargets.Add(grappleCheck.transform);
+                                    LegalAngleDiffs.Add(Mathf.Abs(((JoystickAngle+180)%360)-((TargetAngle+180)%360)));
+                                }
+                            }
+                            else{
+                                if(TargetAngle > min && TargetAngle < max){
+                                    LegalTargets.Add(grappleCheck.transform);
+                                    LegalAngleDiffs.Add(Mathf.Abs(JoystickAngle-TargetAngle));
+                                }
                             }
                         }
-                        else{
-                            if(TargetAngle > min && TargetAngle < max){
-                                LegalTargets.Add(grappleCheck.transform);
-                                LegalAngleDiffs.Add(Mathf.Abs(JoystickAngle-TargetAngle));
-                            }
-                        }
-                    }
                 }                                
                 grappleHook = Instantiate(grappleHookPattern);
                 grappleHook.transform.position = new Vector3(transform.position.x, transform.position.y);
