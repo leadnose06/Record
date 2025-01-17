@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask enemyLayers;
 
     public float attackTimer = 1.0f;
+    public float attackDelay = 0.5f;
 
 
     private void Awake(){
@@ -83,7 +84,7 @@ public class PlayerController : MonoBehaviour
             moveAnimator.SetBool("Blade Out",false);
         }
         //attacking timer
-        if (attackTimer < 1.0f) {
+        if (attackTimer < attackDelay) {
             attackTimer += Time.deltaTime;
             Debug.Log(attackTimer);
         }
@@ -163,7 +164,7 @@ public class PlayerController : MonoBehaviour
 
     public void onAttack(InputAction.CallbackContext context){
         if(context.performed){
-            if (attackTimer >= 1.0f) {
+            if (attackTimer >= attackDelay) {
                 Debug.Log("Attack");
                 //Play attack animation
                 moveAnimator.SetBool("Idle",false);
