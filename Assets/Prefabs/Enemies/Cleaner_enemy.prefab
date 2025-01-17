@@ -175,8 +175,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c738b8a0155e47d08790bc8e05117d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 100
+  <MaxHealth>k__BackingField: 10
   <IsFacingRight>k__BackingField: 0
+  origin: {x: 0, y: 0}
+  maxDist: 0
+  speed: 0.6
+  contactFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  SightChecker: {fileID: 0}
+  sprite: {fileID: 0}
+  colorIsRed: 0
+  colorHitTimer: 0
   EnemyIdleBase: {fileID: 11400000, guid: 12321a24c92cb4097b335ef0a78bd7a2, type: 2}
   EnemyChaseBase: {fileID: 11400000, guid: 5ca74b4cfa41349ed812b2c82e5d82d2, type: 2}
   EnemyAttackBase: {fileID: 11400000, guid: e41e4bd12804841ab9a16ef3cc860499, type: 2}
@@ -185,4 +206,3 @@ MonoBehaviour:
   rightX: 2.7
   topY: 100
   bottomY: -100
-  speed: 0.6

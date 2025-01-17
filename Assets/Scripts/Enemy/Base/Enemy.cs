@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable, ITriggerCheckable
 
     public void Die()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public void MoveEnemy(Vector2 velocity)
