@@ -43,4 +43,8 @@ public class Health : MonoBehaviour
             }
         }
     }
+
+    public int GetMaxHealth() {return maxHealth;}
+    public int GetCurrentHealth() {return health;}
+
 }

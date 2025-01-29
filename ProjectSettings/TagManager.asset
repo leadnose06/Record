@@ -49,3 +49,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Battery Background
+    uniqueID: 1099845417
+    locked: 0
+  - name: BatteryEnergy Level
+    uniqueID: 871366595
+    locked: 0
+  - name: Battery
+    uniqueID: 2276702195
+    locked: 0
