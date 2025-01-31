@@ -12,6 +12,7 @@ TagManager:
   - OutOfBounds
   - Bench
   - Enemy
+  - Canvas
   layers:
   - Default
   - TransparentFX

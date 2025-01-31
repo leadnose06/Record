@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
         //attacking timer
         if (attackTimer < attackDelay) {
             attackTimer += Time.deltaTime;
-            Debug.Log(attackTimer);
+            //Debug.Log(attackTimer);
         }
     }
 
@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
                 num++;
                 all+=Mathf.Abs(transform.position.x - dashDist);
                 if(Mathf.Abs(transform.position.x - dashDist)<max){max = Mathf.Abs(transform.position.x - dashDist);}
-                Debug.Log("avg: "+all/num + " max: "+max);
+                //Debug.Log("avg: "+all/num + " max: "+max);
             }
         }
     }
