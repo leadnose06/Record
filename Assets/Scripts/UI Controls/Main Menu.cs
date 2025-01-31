@@ -6,10 +6,20 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void OnStart(InputAction.CallbackContext context){
-        if(context.performed){
-            //TODO: switch to save select
-            SceneManager.LoadScene("Demo Scene 0");
+    public GameObject main;
+    public GameObject settings;
+    public void onPlay(){
+        //TODO: switch to save select
+        SceneManager.LoadScene("Demo Scene 0");
+    }
+    public void onSettings(){
+        main.SetActive(false);
+        settings.SetActive(true);
+    }
+    public void onBack(){
+        if(settings.activeSelf){
+            settings.SetActive(false);
+            main.SetActive(true);
         }
     }
 }
