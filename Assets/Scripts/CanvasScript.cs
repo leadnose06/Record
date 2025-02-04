@@ -17,9 +17,9 @@ public class CanvasScript : MonoBehaviour
     public GameObject MainNano;
     public Sprite fullHeart;
     public Sprite emptyHeart;
-    public GameObject energyBar;
-    public int energyLevel = 0;
-    private Vector3 energyBarSize;
+    public float energyLevel;
+    public float maxEnergy;
+    public Slider energySlider;
 
 
     // Start is called before the first frame update
@@ -27,17 +27,17 @@ public class CanvasScript : MonoBehaviour
     {
         //Get info from player's scripts
         player = GameObject.Find("Player");
-        playerMaxHealth = player.GetComponent<Health>().GetMaxHealth();
-        playerHealth = player.GetComponent<Health>().GetCurrentHealth();
+        playerMaxHealth = DataManager.Instance.playerMaxHealth;
+        playerHealth = DataManager.Instance.playerHealth;
         Debug.Log(playerHealth + " ");
         Debug.Log(playerMaxHealth + " ");
 
         playerNanos = 4;
         playerMaxNanos = 4;
+        
+        maxEnergy = DataManager.Instance.playerMaxEnergy;
+        energyLevel = DataManager.Instance.playerEnergy;
 
-        energyLevel = 5;
-        energyBarSize = energyBar.GetComponent<RectTransform>().localScale;
-        energyBar.GetComponent<RectTransform>().localScale = energyBarSize * 0.1f * energyLevel;
         // Initialize UI setup
         Hearts = new GameObject[playerMaxHealth];
         Nanos = new GameObject[playerMaxNanos];
@@ -65,14 +65,19 @@ public class CanvasScript : MonoBehaviour
             Nanos[i].transform.SetParent (GameObject.FindGameObjectWithTag("Canvas").transform, false);
         }
         //Set energy bar to correct level
-        energyBar.GetComponent<RectTransform>().localScale = energyBarSize * 0.1f * energyLevel;
+        energyLevel = 5;
+        energySlider.maxValue = maxEnergy;
+        energySlider.value = energyLevel;        
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerMaxHealth = player.GetComponent<Health>().GetMaxHealth();
-        playerHealth = player.GetComponent<Health>().GetCurrentHealth();
+        playerMaxHealth = DataManager.Instance.playerMaxHealth;
+        playerHealth = DataManager.Instance.playerHealth;
+        maxEnergy = DataManager.Instance.playerMaxEnergy;
+        energyLevel = DataManager.Instance.playerEnergy;
+        energySlider.value = energyLevel;
         for (int i = Hearts.Length - 1; i >= 0 ; i--){
             if (i+1 > playerHealth) {
                 Hearts[i].GetComponent<Image>().sprite = emptyHeart;

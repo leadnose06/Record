@@ -13,6 +13,7 @@ TagManager:
   - Bench
   - Enemy
   - Canvas
+  - EnergyBar
   layers:
   - Default
   - TransparentFX

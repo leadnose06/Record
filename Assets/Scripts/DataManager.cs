@@ -11,6 +11,8 @@ public class DataManager : MonoBehaviour
     public bool dead = false;
     public string lastBench;
     public GameObject bench;
+    public float playerMaxEnergy = 10;
+    public float playerEnergy = 5;
 
     private void Awake(){
         if(Instance != null){

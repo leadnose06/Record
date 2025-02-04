@@ -4,9 +4,12 @@ using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+
+    public GameObject dataManager;
     public float speed = 5f;
     public bool IsMoving { get; private set; }
     public float jumpImpulse = 10f;
@@ -38,6 +41,8 @@ public class PlayerController : MonoBehaviour
 
     public float attackTimer = 1.0f;
     public float attackDelay = 0.5f;
+
+    
 
 
     private void Awake(){
@@ -174,11 +179,17 @@ public class PlayerController : MonoBehaviour
                 bladeOut = true;
                 moveAnimator.SetBool("Blade Out",true);
                 //Detect enemies in range of attack
+                bool hit = false;
                 Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
                 //Damage them
                 foreach(Collider2D enemy in hitEnemies) {
                     Debug.Log("Hit");
+                    hit = true;
                     enemy.GetComponent<Enemy>().Damage(5.0f);
+                }
+                if (hit) {
+                    DataManager.Instance.playerEnergy += 1;
+                    Debug.Log("energy level up");
                 }
                 attackTimer =0f;
             }
@@ -186,6 +197,8 @@ public class PlayerController : MonoBehaviour
             
         }
     }
+
+
 
     void OnDrawGizmosSelected(){
         if (attackPoint == null) {return;}
