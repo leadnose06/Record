@@ -177,7 +177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2253259927416603111, guid: acd185d8e0e484aea9fb5ec1d165c7ea, type: 3}
       propertyPath: origin.y
-      value: 235
+      value: 23.5
       objectReference: {fileID: 0}
     - target: {fileID: 2253259927416603111, guid: acd185d8e0e484aea9fb5ec1d165c7ea, type: 3}
       propertyPath: LeftPoint
