@@ -8,6 +8,8 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject main;
     public GameObject settings;
+
+
     public void onPlay(){
         //TODO: switch to save select
         SceneManager.LoadScene("Demo Scene 0");
