@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
 
     public void onPlay(){
         //TODO: switch to save select
-        SceneManager.LoadScene("Demo Scene 0");
+        SceneManager.LoadScene("Continuity Testing");
     }
     public void onSettings(){
         main.SetActive(false);
