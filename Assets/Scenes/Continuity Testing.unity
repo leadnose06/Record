@@ -477,6 +477,10 @@ PrefabInstance:
       propertyPath: m_MatchWidthOrHeight
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2923740685611441666, guid: bb7809aa3b8a240c1981c699e6643881, type: 3}
+      propertyPath: settings
+      value: 
+      objectReference: {fileID: 1446703318}
     - target: {fileID: 3379168580216253651, guid: bb7809aa3b8a240c1981c699e6643881, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1288,6 +1292,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95b8b43c390fa4c91b28f7d13610c41b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1446703318 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5105278133482485884, guid: 03465211731c5441bb79ff9a9e2cbb22, type: 3}
+  m_PrefabInstance: {fileID: 1210544267}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1504291700
 PrefabInstance:
   m_ObjectHideFlags: 0

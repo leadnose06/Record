@@ -20,6 +20,7 @@ public class CanvasScript : MonoBehaviour
     public float energyLevel;
     public float maxEnergy;
     public Slider energySlider;
+    public GameObject settings;
 
 
     // Start is called before the first frame update
@@ -82,6 +83,15 @@ public class CanvasScript : MonoBehaviour
             if (i+1 > playerHealth) {
                 Hearts[i].GetComponent<Image>().sprite = emptyHeart;
             }
+        }
+    }
+
+    public void onMenu(){
+        settings.SetActive(true);
+    }
+    public void onCancel(){
+        if(settings.activeSelf){
+            settings.SetActive(false);
         }
     }
 
