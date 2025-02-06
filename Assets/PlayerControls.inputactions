@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Heal",
+                    "type": "Button",
+                    "id": "27c07e8c-bd4e-4d1c-87fc-b9926812aa42",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -384,6 +393,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Normal Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fbd759aa-05cc-4f5a-970f-3cf1628dd058",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Heal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

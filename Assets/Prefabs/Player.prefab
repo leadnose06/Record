@@ -598,6 +598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8d8c8e619374ca0885aa661117677e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataManager: {fileID: 0}
   speed: 5
   jumpImpulse: 7
   moveAnimator: {fileID: 5207465625908167829}
@@ -611,6 +612,9 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 64
+  attackTimer: 1
+  attackDelay: 0.5
+  healAmount: 2
 --- !u!114 &895536855968062351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -792,6 +796,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: bf5547d6-2c84-4f2b-a554-2ecd8474a8ff
     m_ActionName: Player/Normal Attack[/DualShock4GamepadHID/buttonWest]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6560506927824295817}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: onHeal
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 27c07e8c-bd4e-4d1c-87fc-b9926812aa42
+    m_ActionName: Player/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
@@ -932,16 +952,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   maxHealth: 3
-  hearts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  fullHeart: {fileID: 21300000, guid: 28a23c61796a24d50a83766d63e8b2c2, type: 3}
-  emptyHeart: {fileID: 21300000, guid: 02c09903289b548e8b0b02664ce2d7eb, type: 3}

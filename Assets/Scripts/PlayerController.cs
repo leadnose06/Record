@@ -42,7 +42,8 @@ public class PlayerController : MonoBehaviour
     public float attackTimer = 1.0f;
     public float attackDelay = 0.5f;
 
-    
+    // Heal Variables
+    public int healAmount = 2;
 
 
     private void Awake(){
@@ -196,6 +197,18 @@ public class PlayerController : MonoBehaviour
 
             
         }
+    }
+
+    public void onHeal(InputAction.CallbackContext context){
+        if (context.performed) {
+            DataManager.Instance.playerHealth += healAmount;
+            Debug.Log("healed " + healAmount);
+            if (DataManager.Instance.playerHealth > DataManager.Instance.playerMaxHealth) {
+                DataManager.Instance.playerHealth = DataManager.Instance.playerMaxHealth;
+            }
+            
+        }
+        
     }
 
 

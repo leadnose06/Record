@@ -82,6 +82,7 @@ public class CanvasScript : MonoBehaviour
             if (i+1 > playerHealth) {
                 Hearts[i].GetComponent<Image>().sprite = emptyHeart;
             }
+            else {Hearts[i].GetComponent<Image>().sprite = fullHeart;}
         }
     }
 
