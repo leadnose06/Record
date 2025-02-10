@@ -17,7 +17,7 @@ public class RespawnScript : MonoBehaviour
             //Debug.Log("grounded");
             if(collision.CompareTag("Respawn"))
             {
-                Debug.Log("New spawnpoint");
+                //Debug.Log("New spawnpoint");
                 lastSafeZone = collision.gameObject;
             }
         }

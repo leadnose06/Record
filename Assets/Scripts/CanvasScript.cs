@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 
@@ -21,11 +22,14 @@ public class CanvasScript : MonoBehaviour
     public float maxEnergy;
     public Slider energySlider;
     public GameObject settings;
+    public InputActionAsset inputActions;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        inputActions.Enable();
+        inputActions["Pause"].performed += context => onMenu();
         //Get info from player's scripts
         player = GameObject.Find("Player");
         playerMaxHealth = DataManager.Instance.playerMaxHealth;
@@ -86,7 +90,7 @@ public class CanvasScript : MonoBehaviour
         }
     }
 
-    public void onMenu(){
+    public void onMenu(InputAction.CallbackContext context){
         settings.SetActive(true);
     }
     public void onCancel(){

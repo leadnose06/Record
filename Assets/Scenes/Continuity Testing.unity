@@ -941,6 +941,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 895536855968062351, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Gamepad
+      objectReference: {fileID: 0}
+    - target: {fileID: 895536855968062351, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 895536855968062351, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 895536855968062351, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_ActionId
+      value: e689049c-803d-4cf8-ab46-86c738b30032
+      objectReference: {fileID: 0}
+    - target: {fileID: 895536855968062351, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_ActionId
+      value: e689049c-803d-4cf8-ab46-86c738b30032
+      objectReference: {fileID: 0}
+    - target: {fileID: 895536855968062351, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_ActionName
+      value: Pause/Pause[/XboxOneGampadMacOSWireless/select,/Keyboard/escape]
+      objectReference: {fileID: 0}
+    - target: {fileID: 895536855968062351, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_ActionName
+      value: Pause/Pause[/XboxOneGampadMacOSWireless/select,/Keyboard/escape]
+      objectReference: {fileID: 0}
     - target: {fileID: 1974148997766765618, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
       propertyPath: lastSafeZone
       value: 
@@ -1144,7 +1172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8640130208096915972, guid: 03465211731c5441bb79ff9a9e2cbb22, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8640130208096915972, guid: 03465211731c5441bb79ff9a9e2cbb22, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1185,7 +1213,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5105278133482485884, guid: 03465211731c5441bb79ff9a9e2cbb22, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1446703321}
+    - targetCorrespondingSourceObject: {fileID: 5105278133482485884, guid: 03465211731c5441bb79ff9a9e2cbb22, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1446703320}
   m_SourcePrefab: {fileID: 100100000, guid: 03465211731c5441bb79ff9a9e2cbb22, type: 3}
 --- !u!224 &1210544268 stripped
 RectTransform:
@@ -1297,6 +1331,46 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5105278133482485884, guid: 03465211731c5441bb79ff9a9e2cbb22, type: 3}
   m_PrefabInstance: {fileID: 1210544267}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1446703320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446703318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!223 &1446703321
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446703318}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 10000
+  m_TargetDisplay: 0
 --- !u!1001 &1504291700
 PrefabInstance:
   m_ObjectHideFlags: 0
