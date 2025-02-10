@@ -730,6 +730,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2073347094335690050}
+        m_TargetAssemblyTypeName: TouchingDirections, Assembly-CSharp
+        m_MethodName: jump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 1cff0914-6316-419f-8247-db034e2a9c44
     m_ActionName: Player/Jump[/Keyboard/space,/XboxOneGampadMacOSWireless/buttonSouth]
   - m_PersistentCalls:
@@ -846,6 +858,7 @@ MonoBehaviour:
   groundDistance: 0.05
   wallDistance: 0.2
   ceilingDistance: 0.05
+  jumped: 0
   _isGrounded: 0
 --- !u!70 &6312982330994747747
 CapsuleCollider2D:

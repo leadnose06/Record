@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("" + rb.velocity.x);
         moveAnimator.SetBool("IsRunning", IsMoving);
         
-        
+        //Dashing
         if(!isDashing && !dashReady && Time.time >= dashTimer && touchingDirections.isGrounded){
             dashReady = true;
         }
@@ -89,6 +89,7 @@ public class PlayerController : MonoBehaviour
             bladeTimer = 0f;
             moveAnimator.SetBool("Blade Out",false);
         }
+
         //attacking timer
         if (attackTimer < attackDelay) {
             attackTimer += Time.deltaTime;
@@ -131,7 +132,8 @@ public class PlayerController : MonoBehaviour
 
     public void onJump(InputAction.CallbackContext context){
         //TODO check if alive so no jumping during death animations
-        if(context.performed && touchingDirections.isGrounded && !animationLock){
+        if(context.performed && (touchingDirections.isGrounded || DataManager.Instance.doubleJumpReady) && !animationLock){
+            if (!touchingDirections.isGrounded) {DataManager.Instance.doubleJumpReady = false;}
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
             moveAnimator.SetBool("Idle",false);
             idleTimer = 0f;
@@ -200,12 +202,14 @@ public class PlayerController : MonoBehaviour
     }
 
     public void onHeal(InputAction.CallbackContext context){
-        if (context.performed) {
+        if (context.performed && DataManager.Instance.playerHeals > 0 && DataManager.Instance.playerHealth != DataManager.Instance.playerMaxHealth) {
             DataManager.Instance.playerHealth += healAmount;
             Debug.Log("healed " + healAmount);
             if (DataManager.Instance.playerHealth > DataManager.Instance.playerMaxHealth) {
                 DataManager.Instance.playerHealth = DataManager.Instance.playerMaxHealth;
             }
+            DataManager.Instance.playerHeals -= 1;
+            Debug.Log(DataManager.Instance.playerHeals + " heals left");
             
         }
         
@@ -246,6 +250,7 @@ public class PlayerController : MonoBehaviour
         if(col.gameObject.tag.Equals("OutOfBounds")){
             transform.position = gameObject.GetComponent<RespawnScript>().getRespawn.position;
             damage(1);
+            Debug.Log("Hit by enemy");
             GetComponent<GrapplingScript>().onDisconnect();
         }
     }

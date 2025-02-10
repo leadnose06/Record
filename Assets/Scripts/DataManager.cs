@@ -13,7 +13,9 @@ public class DataManager : MonoBehaviour
     public GameObject bench;
     public float playerMaxEnergy = 10;
     public float playerEnergy = 5;
-
+    public int playerHeals;
+    public int playerMaxHeals = 4;
+    public bool doubleJumpReady = true;
     private void Awake(){
         if(Instance != null){
             Destroy(gameObject);
@@ -24,6 +26,7 @@ public class DataManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         playerMaxHealth = 4;
         playerHealth = playerMaxHealth;
+        playerHeals = playerMaxHeals;
     }
 
 

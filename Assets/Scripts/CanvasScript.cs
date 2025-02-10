@@ -78,11 +78,19 @@ public class CanvasScript : MonoBehaviour
         maxEnergy = DataManager.Instance.playerMaxEnergy;
         energyLevel = DataManager.Instance.playerEnergy;
         energySlider.value = energyLevel;
+        //update hearts
         for (int i = Hearts.Length - 1; i >= 0 ; i--){
             if (i+1 > playerHealth) {
                 Hearts[i].GetComponent<Image>().sprite = emptyHeart;
             }
             else {Hearts[i].GetComponent<Image>().sprite = fullHeart;}
+        }
+        //update nanos
+        for (int i = Nanos.Length - 1; i >= 0 ; i--){
+            if (i+1 > DataManager.Instance.playerHeals) {
+                Nanos[i].GetComponent<Image>().enabled = false;
+            }
+            else {Nanos[i].GetComponent<Image>().enabled = true;}
         }
     }
 
