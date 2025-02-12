@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     TouchingDirections touchingDirections;
     Vector2 moveInput;
     public Animator moveAnimator;
-    public Animator attackPointAnimator;
+    
     private bool firstFrameOfInput;
     public bool animationLock;
     public float dashTimer = 0f;
@@ -35,12 +35,18 @@ public class PlayerController : MonoBehaviour
     //Attack Variables
     private float bladeTimer;
     private bool bladeOut;
-    public Transform attackPoint;
+    public Transform frontAttackPoint;
+    public Transform upAttackPoint;
+    public Transform downAttackPoint;
+    public Animator frontAttackPointAnimator;
+    public Animator upAttackPointAnimator;
+    public Animator downAttackPointAnimator;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
-
+    public bool downHit; 
     public float attackTimer = 1.0f;
     public float attackDelay = 0.5f;
+    public int downHitBounceAmount = 3;
 
     // Heal Variables
     public int healAmount = 2;
@@ -58,7 +64,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //flips player based on horizontal movement, does not work wheb attacking
+        //flips player based on horizontal movement, does not work when attacking
         if (attackTimer > 0.45f) {
             if (Input.GetAxis("Horizontal") > 0.01f) {
                 moveAnimator.SetBool("Idle",false);
@@ -177,13 +183,27 @@ public class PlayerController : MonoBehaviour
                 //Play attack animation
                 moveAnimator.SetBool("Idle",false);
                 moveAnimator.SetTrigger("Attack");
-                attackPointAnimator.SetTrigger("Attack");
                 idleTimer = 0;
                 bladeOut = true;
                 moveAnimator.SetBool("Blade Out",true);
-                //Detect enemies in range of attack
+            
+                //Detect enemies in range of attack, choosing certain attack point based on direction of input
                 bool hit = false;
-                Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+                Collider2D[] hitEnemies;
+                if (Input.GetAxis("Vertical") > 0.5f){
+                    hitEnemies = Physics2D.OverlapCircleAll(upAttackPoint.position, attackRange, enemyLayers);
+                    upAttackPointAnimator.SetTrigger("Attack");
+                }
+                else if (Input.GetAxis("Vertical") < -0.5f && !GetComponent<TouchingDirections>().isGrounded){
+                    hitEnemies = Physics2D.OverlapCircleAll(downAttackPoint.position, attackRange, enemyLayers);
+                    downAttackPointAnimator.SetTrigger("Attack");
+                    downHit = true;
+                }
+                else {
+                    hitEnemies = Physics2D.OverlapCircleAll(frontAttackPoint.position, attackRange, enemyLayers);
+                    frontAttackPointAnimator.SetTrigger("Attack");
+                    }
+                
                 //Damage them
                 foreach(Collider2D enemy in hitEnemies) {
                     Debug.Log("Hit");
@@ -194,7 +214,15 @@ public class PlayerController : MonoBehaviour
                     DataManager.Instance.playerEnergy += 1;
                     Debug.Log("energy level up");
                 }
+                else {downHit = false;}
                 attackTimer =0f;
+                //propel player upwards if hitting enemy below
+                if (downHit) {
+                    rb.velocity = new Vector2(rb.velocity.x, downHitBounceAmount);
+                    downHit = false;
+                    dashReady = true;
+                    DataManager.Instance.doubleJumpReady = true;
+                }
             }
 
             
@@ -218,8 +246,8 @@ public class PlayerController : MonoBehaviour
 
 
     void OnDrawGizmosSelected(){
-        if (attackPoint == null) {return;}
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        if (frontAttackPoint == null) {return;}
+        Gizmos.DrawWireSphere(frontAttackPoint.position, attackRange);
     }
 
 
