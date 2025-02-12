@@ -21,15 +21,14 @@ public class CanvasScript : MonoBehaviour
     public float energyLevel;
     public float maxEnergy;
     public Slider energySlider;
-    public GameObject settings;
-    public InputActionAsset inputActions;
+    public GameObject menu;
+    public static bool paused = false;
+    public InputActionAsset playerInput;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        inputActions.Enable();
-        inputActions["Pause"].performed += context => onMenu();
         //Get info from player's scripts
         player = GameObject.Find("Player");
         playerMaxHealth = DataManager.Instance.playerMaxHealth;
@@ -91,12 +90,22 @@ public class CanvasScript : MonoBehaviour
     }
 
     public void onMenu(InputAction.CallbackContext context){
-        settings.SetActive(true);
+        Debug.Log("stopped");
+        if(playerInput == null) playerInput = context.action.actionMap.asset;
+        playerInput.FindActionMap("Player").Disable();
+        playerInput.FindActionMap("UI").Enable();
+        menu.SetActive(true);
+        Time.timeScale = 0;
+        AudioListener.pause = true;
+        paused = true;
     }
-    public void onCancel(){
-        if(settings.activeSelf){
-            settings.SetActive(false);
-        }
+    public void onCancel(InputAction.CallbackContext context){
+        menu.SetActive(false);
+        if(playerInput == null) playerInput = context.action.actionMap.asset;
+        playerInput.FindActionMap("Player").Enable();
+        Time.timeScale = 1;
+        AudioListener.pause = false;
+        paused = false;
     }
 
     

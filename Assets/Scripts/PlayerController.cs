@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(CanvasScript.paused == true) return;
         //flips player based on horizontal movement, does not work wheb attacking
         if (attackTimer > 0.45f) {
             if (Input.GetAxis("Horizontal") > 0.01f) {
