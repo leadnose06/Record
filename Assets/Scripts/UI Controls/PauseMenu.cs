@@ -17,9 +17,18 @@ public class PauseMenu : MonoBehaviour
     void OnEnable()
     {
         UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject (resume.gameObject);
+        transform.SetAsLastSibling();
     }
-    public void onBack(){
-        
+    public bool onBack(){
+        if(inSettings){
+            settings.SetActive(false);
+            contents.SetActive(true);
+            inSettings = false;
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject (resume.gameObject);
+            return false;
+        }else{
+            return true;
+        }
     }
 
     public void onSettings(){
@@ -30,5 +39,8 @@ public class PauseMenu : MonoBehaviour
 
     public void onMain(){
         SceneManager.LoadScene("Main Menu");
+        Time.timeScale = 1;
+        AudioListener.pause = false;
+        CanvasScript.paused = false;
     }
 }

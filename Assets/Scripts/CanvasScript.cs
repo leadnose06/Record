@@ -26,6 +26,7 @@ public class CanvasScript : MonoBehaviour
     public InputActionAsset playerInput;
 
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -100,8 +101,19 @@ public class CanvasScript : MonoBehaviour
         paused = true;
     }
     public void onCancel(InputAction.CallbackContext context){
+        if(context.performed){
+            if(menu.GetComponent<PauseMenu>().onBack()){
+                menu.SetActive(false);
+                if(playerInput == null) playerInput = context.action.actionMap.asset;
+                playerInput.FindActionMap("Player").Enable();
+                Time.timeScale = 1;
+                AudioListener.pause = false;
+                paused = false;
+            }
+        }
+    }
+    public void onResumeButton(){
         menu.SetActive(false);
-        if(playerInput == null) playerInput = context.action.actionMap.asset;
         playerInput.FindActionMap("Player").Enable();
         Time.timeScale = 1;
         AudioListener.pause = false;

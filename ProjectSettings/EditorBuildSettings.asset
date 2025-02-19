@@ -26,22 +26,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BenchTesting.unity
     guid: 9679133a2459949f2a60714f1a03b228
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Demo Scenes/Demo Scene 1.unity
     guid: 49fcb7cc30d294670931f0f7532c3cbd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Demo Scenes/Demo Scene 2.unity
     guid: d1514bb67e22a43d29a13517b51f61c3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Demo Scenes/Demo Scene 3.unity
     guid: 80d83b93b69de497193af289888f62eb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Demo Scenes/Demo Scene 0.unity
     guid: 97824d5dc90654d59b399f756e1885c3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Demo Scenes/Demo Scene 4.unity
     guid: 2142f6b95149b4c6fbceb63857aec24c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Demo Scenes/Demo Scene 5.unity
     guid: aeda5dadfe6de42669688d877eb265b5
   - enabled: 1

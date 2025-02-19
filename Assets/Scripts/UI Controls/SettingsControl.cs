@@ -21,6 +21,7 @@ public class SettingsControl : MonoBehaviour
     void OnEnable(){
         VolumeSlider.value = volume;
         UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject (VolumeSlider.gameObject);
+        transform.SetAsLastSibling();
         
     }
 
