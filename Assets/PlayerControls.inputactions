@@ -79,8 +79,17 @@
                 },
                 {
                     "name": "Pause",
-                    "type": "Button",
                     "id": "b57c651b-83e9-459e-9a70-499530db08d5",
+                    "type": "Button",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Heal",
+                    "type": "Button",
+                    "id": "27c07e8c-bd4e-4d1c-87fc-b9926812aa42",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",

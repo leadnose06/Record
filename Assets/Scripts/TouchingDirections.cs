@@ -16,6 +16,9 @@ public class TouchingDirections : MonoBehaviour
     public float wallDistance = 0.2f;
     public float ceilingDistance = 0.05f;
 
+    public bool jumped;
+    public bool initialFall = true;
+
     [SerializeField]
     private bool _isGrounded;
     private bool _isOnWall;
@@ -47,17 +50,36 @@ public class TouchingDirections : MonoBehaviour
         moveAnimator = GetComponent<Animator>();
     }
 
+    public void jump(){
+        jumped = true;
+    }
+
     void FixedUpdate()
     {
+        
         isGrounded = touchingCol.Cast(Vector2.down, castFilter, groundHits, groundDistance) > 0;
+        moveAnimator.SetBool("IsGrounded",isGrounded);
         if (isGrounded) {
             if (moveAnimator.GetBool("IsFalling")) {Debug.Log("not falling");}
             moveAnimator.SetBool("IsFalling", false);
+            initialFall = true;
+            jumped = false;
+            //double jump refresh
+            DataManager.Instance.doubleJumpReady = true;
         } else {
             if (!moveAnimator.GetBool("IsFalling")) {
                 Debug.Log("falling");
             }
-            moveAnimator.SetBool("IsFalling", true);
+            if (jumped) {
+                moveAnimator.SetBool("IsFalling", true);
+                jumped = false;
+            }
+            else if (initialFall){
+                moveAnimator.SetTrigger("FallingNoJump");
+                initialFall = false;
+            }
+            
+            
         }
         isOnWall = touchingCol.Cast(wallCheckDirection, castFilter, wallHits, wallDistance) > 0;
         isOnCeiling = touchingCol.Cast(Vector2.up, castFilter, ceilingHits, ceilingDistance) > 0;

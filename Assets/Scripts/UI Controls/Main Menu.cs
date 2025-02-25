@@ -8,15 +8,43 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject main;
     public GameObject settings;
+    public GameObject saves;
 
 
     public void onPlay(){
-        //TODO: switch to save select
-        SceneManager.LoadScene("Continuity Testing");
+        DataManager.Instance.CreateSave1();
+        DataManager.Instance.LoadGame();
+        if(DataManager.Instance.playerData.lastBench != null){
+            SceneManager.LoadScene(DataManager.Instance.playerData.lastBench);
+        }else{
+            SceneManager.LoadScene("Continuity Testing");
+        }
+    }
+    public void onPlay2(){
+        DataManager.Instance.CreateSave2();
+        DataManager.Instance.LoadGame();
+        if(DataManager.Instance.playerData.lastBench != null){
+            SceneManager.LoadScene(DataManager.Instance.playerData.lastBench);
+        }else{
+            SceneManager.LoadScene("Continuity Testing");
+        }
+    }
+    public void onPlay3(){
+        DataManager.Instance.CreateSave3();
+        DataManager.Instance.LoadGame();
+        if(DataManager.Instance.playerData.lastBench != null){
+            SceneManager.LoadScene(DataManager.Instance.playerData.lastBench);
+        }else{
+            SceneManager.LoadScene("Continuity Testing");
+        }
     }
     public void onSettings(){
         main.SetActive(false);
         settings.SetActive(true);
+    }
+    public void onSaves(){
+        main.SetActive(false);
+        saves.SetActive(true);
     }
     public void onBack(){
         if(settings.activeSelf){

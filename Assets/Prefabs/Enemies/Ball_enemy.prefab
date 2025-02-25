@@ -182,6 +182,9 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   SightChecker: {fileID: 0}
+  sprite: {fileID: 0}
+  colorIsRed: 0
+  colorHitTimer: 0
   EnemyIdleBase: {fileID: 11400000, guid: 46cee05d54c0a42e0b05491a6c26aa72, type: 2}
   EnemyChaseBase: {fileID: 11400000, guid: 6afefa5c90bc44323b6c4b8544ab84f6, type: 2}
   EnemyAttackBase: {fileID: 11400000, guid: e41e4bd12804841ab9a16ef3cc860499, type: 2}
