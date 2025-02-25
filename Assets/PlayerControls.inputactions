@@ -79,8 +79,8 @@
                 },
                 {
                     "name": "Pause",
-                    "id": "b57c651b-83e9-459e-9a70-499530db08d5",
                     "type": "Button",
+                    "id": "b57c651b-83e9-459e-9a70-499530db08d5",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -424,6 +424,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse;Gamepad",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aadd874e-bd10-4347-8bb5-99019bb053d1",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Heal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d1806918-aff4-4b1f-a2c3-3f4d97db5f1f",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Heal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
