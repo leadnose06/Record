@@ -278,7 +278,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col){
         if(col.gameObject.tag.Equals("OutOfBounds")){
-            transform.position = gameObject.GetComponent<RespawnScript>().getRespawn.position;
+            transform.position = new Vector3(gameObject.GetComponent<RespawnScript>().getRespawn.position.x, gameObject.GetComponent<RespawnScript>().getRespawn.position.y, transform.position.z);
             damage(1);
             Debug.Log("Hit by enemy");
             GetComponent<GrapplingScript>().onDisconnect();
