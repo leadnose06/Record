@@ -1312,38 +1312,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Giant_enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 1533187966815372281, guid: 6c03e02c6e20546949f229428310d615, type: 3}
-      propertyPath: topY
-      value: 10000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1533187966815372281, guid: 6c03e02c6e20546949f229428310d615, type: 3}
-      propertyPath: leftX
-      value: -1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1533187966815372281, guid: 6c03e02c6e20546949f229428310d615, type: 3}
-      propertyPath: speed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1533187966815372281, guid: 6c03e02c6e20546949f229428310d615, type: 3}
-      propertyPath: rightX
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1533187966815372281, guid: 6c03e02c6e20546949f229428310d615, type: 3}
-      propertyPath: bottomY
-      value: -10000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1533187966815372281, guid: 6c03e02c6e20546949f229428310d615, type: 3}
-      propertyPath: maxDist
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1533187966815372281, guid: 6c03e02c6e20546949f229428310d615, type: 3}
-      propertyPath: origin.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1533187966815372281, guid: 6c03e02c6e20546949f229428310d615, type: 3}
-      propertyPath: origin.y
-      value: -0.42
-      objectReference: {fileID: 0}
     - target: {fileID: 8518486590012494743, guid: 6c03e02c6e20546949f229428310d615, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2
