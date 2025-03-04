@@ -56,11 +56,16 @@ public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable, ITriggerCheckable
         StateMachine.Initialize(EnemyIdleState);
     }
 
-    public void Update()
+    public virtual void Update()
     {
         StateMachine.CurrentEnemyState.FrameUpdate();
         if (colorIsRed && colorHitTimer <= 0) {sprite.color = Color.white;}
         else {colorHitTimer -= Time.deltaTime;}
+        if(!IsFacingRight && RB.velocity.x > 0){
+            transform.localScale = new Vector3 (-1, 1, 1);
+        } else if(IsFacingRight && RB.velocity.x < 0){
+            transform.localScale = new Vector3 (1, 1, 1);
+        }
     }
 
     public void FixedUpdate(){
@@ -108,7 +113,7 @@ public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable, ITriggerCheckable
 
     public virtual void CheckSight(Collider2D collider){
         RaycastHit2D results = Physics2D.Raycast(transform.position, collider.gameObject.transform.position - transform.position, Mathf.Infinity, contactFilter.layerMask);
-            if(results.collider.tag == "Player"){
+            if(results.collider.tag == "Player" && StateMachine.CurrentEnemyState == EnemyIdleState){
                 SetAggroStatus(true);
                 StateMachine.ChangeState(EnemyChaseState);
             }
