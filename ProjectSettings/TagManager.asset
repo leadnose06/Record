@@ -24,7 +24,7 @@ TagManager:
   - Enemy
   - Checkers
   - Walls
-  - 
+  - Background
   - 
   - 
   - 
@@ -59,4 +59,7 @@ TagManager:
     locked: 0
   - name: Battery
     uniqueID: 2276702195
+    locked: 0
+  - name: Background
+    uniqueID: 2545154817
     locked: 0
