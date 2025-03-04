@@ -100,11 +100,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60585e0c0630d40678cd912a10822a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 100
+  <MaxHealth>k__BackingField: 30
   <IsFacingRight>k__BackingField: 0
-  origin: {x: 0, y: 0}
-  maxDist: 0
-  speed: 0
+  origin: {x: 2, y: -0.42}
+  maxDist: 1000
+  speed: 2
   contactFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -126,10 +126,10 @@ MonoBehaviour:
   EnemyIdleBase: {fileID: 11400000, guid: 12321a24c92cb4097b335ef0a78bd7a2, type: 2}
   EnemyChaseBase: {fileID: 11400000, guid: 5ca74b4cfa41349ed812b2c82e5d82d2, type: 2}
   EnemyAttackBase: {fileID: 11400000, guid: e41e4bd12804841ab9a16ef3cc860499, type: 2}
-  leftX: 0
-  rightX: 0
-  topY: 0
-  bottomY: 0
+  leftX: -1000
+  rightX: 1000
+  topY: 10000
+  bottomY: -10000
 --- !u!60 &679906351862895772
 PolygonCollider2D:
   m_ObjectHideFlags: 0
