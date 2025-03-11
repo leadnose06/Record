@@ -535,7 +535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f6c908f457242538a0aa2c9bb74052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 7893413262101768708}
   targetPos: {x: 0, y: 0, z: 0}
   targetDir: 0
   Direction: {x: 0, y: 0, z: 0}
@@ -1044,6 +1044,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 27c07e8c-bd4e-4d1c-87fc-b9926812aa42
     m_ActionName: Player/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b57c651b-83e9-459e-9a70-499530db08d5
+    m_ActionName: Player/Pause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
@@ -1062,15 +1066,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   castFilter:
-    useTriggers: 0
-    useLayerMask: 0
+    useTriggers: 1
+    useLayerMask: 1
     useDepth: 0
     useOutsideDepth: 0
     useNormalAngle: 0
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 256
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0

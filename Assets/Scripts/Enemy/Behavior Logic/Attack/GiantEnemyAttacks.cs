@@ -7,7 +7,7 @@ using UnityEngine;
 public class GiantEnemyAttacks : EnemyAttackSOBase
 {
     private bool jumping = false;
-    private float startingY;
+    private float prevVelocity;
     public override void Initialize(GameObject gameObject, Enemy enemy)
     {
         base.Initialize(gameObject, enemy);
@@ -16,10 +16,10 @@ public class GiantEnemyAttacks : EnemyAttackSOBase
     {
         base.DoEnterLogic();
         Debug.Log("jumptrigger");
-        startingY = transform.position.y;
+        prevVelocity = enemy.RB.velocity.y;
         if(Vector2.Distance(playerTransform.position, transform.position) > 1 &! jumping){
-            enemy.RB.velocity = new Vector2(-2f*transform.localScale.x, 5);
-            enemy.RB.gravityScale = 1;
+            enemy.RB.velocity = new Vector2(-4f*transform.localScale.x, 10);
+            enemy.RB.gravityScale = 3;
             jumping = true;
         }
     }
@@ -30,10 +30,11 @@ public class GiantEnemyAttacks : EnemyAttackSOBase
     public override void DoFrameUpdateLogic()
     {
         base.DoFrameUpdateLogic();
-        if(enemy.RB.velocity.y == 0 && enemy.transform.position.y == startingY && jumping){
+        if(enemy.RB.velocity.y == 0 && enemy.RB.velocity.y == prevVelocity && jumping){
             jumping = false;
             enemy.StateMachine.ChangeState(enemy.EnemyChaseState);
         }
+        prevVelocity = enemy.RB.velocity.y;
     }
     public override void DoPhysicsLogic()
     {

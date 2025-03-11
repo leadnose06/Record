@@ -30,6 +30,7 @@ public class EnemyIdleGroundPatrol : EnemyIdleSOBase
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
+        Debug.Log("Idle");
         if(right){
             enemy.transform.localScale = new Vector3(-1, 1, 1);
         }

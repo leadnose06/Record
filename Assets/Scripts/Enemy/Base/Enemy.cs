@@ -113,10 +113,12 @@ public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable, ITriggerCheckable
 
     public virtual void CheckSight(Collider2D collider){
         RaycastHit2D results = Physics2D.Raycast(transform.position, collider.gameObject.transform.position - transform.position, Mathf.Infinity, contactFilter.layerMask);
+        if(results){
             if(results.collider.tag == "Player" && StateMachine.CurrentEnemyState == EnemyIdleState){
                 SetAggroStatus(true);
                 StateMachine.ChangeState(EnemyChaseState);
             }
+        }
     }
 
     private void AnimationTriggerEvent( AnimationTriggerType triggerType){

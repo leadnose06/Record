@@ -769,11 +769,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2391548824660371307, guid: 8f669abe5bf7d4965b0df39c0ed20f14, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.2680831
+      value: -4.711905
       objectReference: {fileID: 0}
     - target: {fileID: 2391548824660371307, guid: 8f669abe5bf7d4965b0df39c0ed20f14, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.68964
+      value: 3.6767
       objectReference: {fileID: 0}
     - target: {fileID: 2391548824660371307, guid: 8f669abe5bf7d4965b0df39c0ed20f14, type: 3}
       propertyPath: m_LocalPosition.z
@@ -899,13 +899,9 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1914753733}
-    - target: {fileID: 1211469873432021740, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 874822989}
     - target: {fileID: 3397217332123835267, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.216
+      value: -4.66
       objectReference: {fileID: 0}
     - target: {fileID: 3397217332123835267, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -951,18 +947,6 @@ PrefabInstance:
       propertyPath: objectTracker
       value: 
       objectReference: {fileID: 1064056702}
-    - target: {fileID: 3539525719518454412, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
-      propertyPath: contactFilter.useTriggers
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3539525719518454412, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
-      propertyPath: contactFilter.useLayerMask
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3539525719518454412, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
-      propertyPath: contactFilter.layerMask.m_Bits
-      value: 321
-      objectReference: {fileID: 0}
     - target: {fileID: 5328889099186597452, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
       propertyPath: m_BoundingShape2D
       value: 
@@ -1503,7 +1487,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: f32bc00d7d743485ea525d4b83520677, type: 2}
     - target: {fileID: 1533187966815372281, guid: 6c03e02c6e20546949f229428310d615, type: 3}
       propertyPath: attackInterval
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1533187966815372281, guid: 6c03e02c6e20546949f229428310d615, type: 3}
       propertyPath: EnemyAttackBase
@@ -1515,11 +1499,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1533187966815372281, guid: 6c03e02c6e20546949f229428310d615, type: 3}
       propertyPath: contactFilter.useLayerMask
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1533187966815372281, guid: 6c03e02c6e20546949f229428310d615, type: 3}
       propertyPath: contactFilter.layerMask.m_Bits
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597987055475729090, guid: 6c03e02c6e20546949f229428310d615, type: 3}
+      propertyPath: m_Mass
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7521519748040727538, guid: 6c03e02c6e20546949f229428310d615, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].x

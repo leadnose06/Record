@@ -8,6 +8,7 @@ public class EnemyGroundChase : EnemyChaseSOBase
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
+        Debug.Log("Chase");
         player = GameObject.FindWithTag("Player");
 
     }
@@ -22,7 +23,7 @@ public class EnemyGroundChase : EnemyChaseSOBase
     public override void DoFrameUpdateLogic()
     {
         base.DoFrameUpdateLogic();
-        if(Vector3.Distance(transform.position, player.transform.position) > 10 || Physics2D.Raycast(transform.position, player.gameObject.transform.position - transform.position, Mathf.Infinity, enemy.contactFilter.layerMask).collider.tag != "Player" || Vector2.Distance(enemy.origin, new Vector2(transform.position.x, transform.position.y)) > enemy.maxDist){
+        if(Vector3.Distance(enemy.transform.position, player.transform.position) > 7 || Physics2D.Raycast(enemy.transform.position, player.gameObject.transform.position - enemy.transform.position, Mathf.Infinity, enemy.contactFilter.layerMask).collider.tag != "Player" || Vector2.Distance(enemy.origin, new Vector2(transform.position.x, transform.position.y)) > enemy.maxDist){
             enemy.SetAggroStatus(false);
             enemy.StateMachine.ChangeState(enemy.EnemyIdleState);
         } else {
