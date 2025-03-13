@@ -106,15 +106,15 @@ MonoBehaviour:
   maxDist: 1000
   speed: 2
   contactFilter:
-    useTriggers: 0
-    useLayerMask: 0
+    useTriggers: 1
+    useLayerMask: 1
     useDepth: 0
     useOutsideDepth: 0
     useNormalAngle: 0
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 1
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
@@ -130,6 +130,7 @@ MonoBehaviour:
   rightX: 1000
   topY: 10000
   bottomY: -10000
+  attackInterval: 0
 --- !u!60 &679906351862895772
 PolygonCollider2D:
   m_ObjectHideFlags: 0

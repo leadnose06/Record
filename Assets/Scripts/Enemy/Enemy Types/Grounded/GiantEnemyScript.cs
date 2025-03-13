@@ -28,6 +28,11 @@ public class GiantEnemyScript : Enemy
     public override void Update()
     {
         base.Update();
+        if(RB.velocity.x > 0){
+            transform.localScale = new Vector2(-1, 1);
+        }else if(RB.velocity.x < 0){
+            transform.localScale = new Vector2(1, 1);
+        }
         if(IsAggroed && Time.time >= lastAttack + attackInterval && StateMachine.CurrentEnemyState == EnemyChaseState){
             StateMachine.ChangeState(EnemyAttackState);
         }

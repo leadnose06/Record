@@ -20,7 +20,6 @@ public class EnemyIdleGroundPatrol : EnemyIdleSOBase
         this.rightX = rightX;
         this.topY = topY;
         this.bottomY = bottomY;
-        right = enemy.IsFacingRight;
     }
 
     public override void DoAnimationTriggerEventLogic(Enemy.AnimationTriggerType triggerType)
@@ -31,7 +30,7 @@ public class EnemyIdleGroundPatrol : EnemyIdleSOBase
     {
         base.DoEnterLogic();
         Debug.Log("Idle");
-        if(right){
+        if(enemy.IsFacingRight){
             enemy.transform.localScale = new Vector3(-1, 1, 1);
         }
         if(wall == 1){
@@ -52,17 +51,17 @@ public class EnemyIdleGroundPatrol : EnemyIdleSOBase
     {
         base.DoFrameUpdateLogic();
         if(
-        (wall == 1 && ((enemy.transform.position.x >= rightX && right) || ((enemy.transform.position.x < leftX) &! right))) ||
-        (wall == 2  && ((enemy.transform.position.y >= topY &! right) || ((enemy.transform.position.y < bottomY) && right))) ||
-        (wall == 3 && ((enemy.transform.position.x >= rightX &! right) || ((enemy.transform.position.x < leftX) && right))) ||
-        (wall == 4 && ((enemy.transform.position.y >= topY && right) || ((enemy.transform.position.y < bottomY) &! right)))
+        (wall == 1 && ((enemy.transform.position.x >= rightX && enemy.IsFacingRight) || ((enemy.transform.position.x < leftX) &! enemy.IsFacingRight))) ||
+        (wall == 2  && ((enemy.transform.position.y >= topY &! enemy.IsFacingRight) || ((enemy.transform.position.y < bottomY) && enemy.IsFacingRight))) ||
+        (wall == 3 && ((enemy.transform.position.x >= rightX &! enemy.IsFacingRight) || ((enemy.transform.position.x < leftX) && enemy.IsFacingRight))) ||
+        (wall == 4 && ((enemy.transform.position.y >= topY && enemy.IsFacingRight) || ((enemy.transform.position.y < bottomY) &! enemy.IsFacingRight)))
         ){
-            if(right){
+            if(enemy.IsFacingRight){
                 enemy.transform.localScale = new Vector3(1, 1, 1);
             }else{
                 enemy.transform.localScale = new Vector3(-1, 1, 1);
             }
-            right = !right;
+            enemy.IsFacingRight = !enemy.IsFacingRight;
             if(wall == 1){
                 enemy.RB.velocity = new Vector2(-speed*enemy.transform.localScale.x, 0);
             } else if(wall == 2){

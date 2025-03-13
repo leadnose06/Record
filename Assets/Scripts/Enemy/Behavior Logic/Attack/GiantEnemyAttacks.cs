@@ -30,15 +30,17 @@ public class GiantEnemyAttacks : EnemyAttackSOBase
     public override void DoFrameUpdateLogic()
     {
         base.DoFrameUpdateLogic();
-        if(enemy.RB.velocity.y == 0 && enemy.RB.velocity.y == prevVelocity && jumping){
-            jumping = false;
-            enemy.StateMachine.ChangeState(enemy.EnemyChaseState);
-        }
-        prevVelocity = enemy.RB.velocity.y;
     }
     public override void DoPhysicsLogic()
     {
         base.DoPhysicsLogic();
+        if(enemy.RB.velocity.y == 0 && enemy.RB.velocity.y == prevVelocity && jumping){
+            jumping = false;
+            enemy.RB.gravityScale = 0;
+            Debug.Log("attackends");
+            enemy.StateMachine.ChangeState(enemy.EnemyChaseState);
+        }
+        prevVelocity = enemy.RB.velocity.y;
     }
     public override void DoAnimationTriggerEventLogic(Enemy.AnimationTriggerType triggerType)
     {

@@ -1499,11 +1499,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1533187966815372281, guid: 6c03e02c6e20546949f229428310d615, type: 3}
       propertyPath: contactFilter.useLayerMask
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1533187966815372281, guid: 6c03e02c6e20546949f229428310d615, type: 3}
       propertyPath: contactFilter.layerMask.m_Bits
-      value: 9
+      value: 265
       objectReference: {fileID: 0}
     - target: {fileID: 5597987055475729090, guid: 6c03e02c6e20546949f229428310d615, type: 3}
       propertyPath: m_Mass
