@@ -1044,6 +1044,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 27c07e8c-bd4e-4d1c-87fc-b9926812aa42
     m_ActionName: Player/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b57c651b-83e9-459e-9a70-499530db08d5
+    m_ActionName: Player/Pause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
@@ -1113,8 +1117,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.38, y: 1}
+  m_Offset: {x: 0, y: 0.019193769}
+  m_Size: {x: 0.38, y: 0.96161246}
   m_Direction: 0
 --- !u!95 &5207465625908167829
 Animator:

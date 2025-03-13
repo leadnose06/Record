@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
     public int healAmount = 2;
 
 
+
     private void Awake(){
         rb = GetComponent<Rigidbody2D>();
         touchingDirections = GetComponent<TouchingDirections>();
