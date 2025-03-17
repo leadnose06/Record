@@ -22,6 +22,7 @@ public class DataManager : MonoBehaviour
     public int playerHeals;
     public int playerMaxHeals = 4;
     public bool doubleJumpReady = true;
+    public bool dashReady = true;
     private void Awake(){
         if(Instance != null){
             Destroy(gameObject);

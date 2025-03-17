@@ -85,8 +85,10 @@ public class PlayerController : MonoBehaviour
         moveAnimator.SetBool("IsRunning", IsMoving);
         
         //Dashing
+        dashReady = DataManager.Instance.dashReady;
         if(!isDashing && !dashReady && Time.time >= dashTimer && touchingDirections.isGrounded){
             dashReady = true;
+            DataManager.Instance.dashReady = true;
         }
         if (idleTimer >= 20f) {moveAnimator.SetBool("Idle", true);}
         else {idleTimer += Time.deltaTime;}
@@ -156,6 +158,7 @@ public class PlayerController : MonoBehaviour
             dashSign = transform.localScale.x;
             dashTimer = Time.fixedTime + 0.135f;
             dashReady = false;
+            DataManager.Instance.dashReady = false;
             animationLock = true;
             isDashing = true;
             rb.velocity = new Vector2(0, 0);

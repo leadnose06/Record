@@ -49,6 +49,8 @@ public class GrapplingScript : MonoBehaviour
         gameObject.GetComponent<PlayerController>().animationLock = true;
         rb.gravityScale = 0;
         rb.velocity = new Vector2(0, 0);
+        DataManager.Instance.doubleJumpReady = true;
+        DataManager.Instance.dashReady = true;
     }
     //todo: refresh dash and double jump
     public void onDisconnect(){

@@ -97,6 +97,10 @@ public class CanvasScript : MonoBehaviour
             }
             else {Nanos[i].GetComponent<Image>().enabled = true;}
         }
+        if (energyLevel == maxEnergy && DataManager.Instance.playerHeals < DataManager.Instance.playerMaxHeals) {
+            DataManager.Instance.playerHeals += 1;
+            DataManager.Instance.playerEnergy = 0;
+        }
     }
 
     public void onMenu(InputAction.CallbackContext context){
