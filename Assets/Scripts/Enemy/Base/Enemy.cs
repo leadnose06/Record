@@ -61,10 +61,15 @@ public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable, ITriggerCheckable
         StateMachine.CurrentEnemyState.FrameUpdate();
         if (colorIsRed && colorHitTimer <= 0) {sprite.color = Color.white;}
         else {colorHitTimer -= Time.deltaTime;}
-        if(!IsFacingRight && RB.velocity.x > 0){
+        /*if(!IsFacingRight && RB.velocity.x > 0){
             transform.localScale = new Vector3 (-1, 1, 1);
         } else if(IsFacingRight && RB.velocity.x < 0){
             transform.localScale = new Vector3 (1, 1, 1);
+        }*/
+        if(RB.velocity.x > 0){
+            transform.localScale = new Vector2(-1, 1);
+        }else if(RB.velocity.x < 0){
+            transform.localScale = new Vector2(1, 1);
         }
     }
 

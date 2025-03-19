@@ -21,6 +21,9 @@ public class GiantEnemyAttacks : EnemyAttackSOBase
             enemy.RB.velocity = new Vector2(-4f*transform.localScale.x, 10);
             enemy.RB.gravityScale = 3;
             jumping = true;
+        } else{
+            Debug.Log("attackends");
+            enemy.StateMachine.ChangeState(enemy.EnemyChaseState);
         }
     }
     public override void DoExitLogic()

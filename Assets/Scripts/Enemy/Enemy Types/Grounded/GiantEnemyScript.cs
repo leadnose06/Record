@@ -28,13 +28,19 @@ public class GiantEnemyScript : Enemy
     public override void Update()
     {
         base.Update();
-        if(RB.velocity.x > 0){
-            transform.localScale = new Vector2(-1, 1);
-        }else if(RB.velocity.x < 0){
-            transform.localScale = new Vector2(1, 1);
-        }
         if(IsAggroed && Time.time >= lastAttack + attackInterval && StateMachine.CurrentEnemyState == EnemyChaseState){
             StateMachine.ChangeState(EnemyAttackState);
+            lastAttack = Time.time;
+        }
+    }
+    public override void CheckSight(Collider2D collider){
+        RaycastHit2D results = Physics2D.Raycast(transform.position, collider.gameObject.transform.position - transform.position, Mathf.Infinity, contactFilter.layerMask);
+        if(results){
+            if(results.collider.tag == "Player" && StateMachine.CurrentEnemyState == EnemyIdleState){
+                SetAggroStatus(true);
+                StateMachine.ChangeState(EnemyChaseState);
+                lastAttack = Time.time - 1f;
+            }
         }
     }
 }

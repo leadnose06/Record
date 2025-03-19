@@ -103,8 +103,8 @@ MonoBehaviour:
   <MaxHealth>k__BackingField: 30
   <IsFacingRight>k__BackingField: 0
   origin: {x: 2, y: -0.42}
-  maxDist: 1000
-  speed: 2
+  maxDist: 100000
+  speed: 1
   contactFilter:
     useTriggers: 1
     useLayerMask: 1
@@ -114,7 +114,7 @@ MonoBehaviour:
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 1
+      m_Bits: 265
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
@@ -124,13 +124,13 @@ MonoBehaviour:
   colorIsRed: 1
   colorHitTimer: 0
   EnemyIdleBase: {fileID: 11400000, guid: 12321a24c92cb4097b335ef0a78bd7a2, type: 2}
-  EnemyChaseBase: {fileID: 11400000, guid: 5ca74b4cfa41349ed812b2c82e5d82d2, type: 2}
-  EnemyAttackBase: {fileID: 11400000, guid: e41e4bd12804841ab9a16ef3cc860499, type: 2}
-  leftX: -1000
-  rightX: 1000
-  topY: 10000
-  bottomY: -10000
-  attackInterval: 0
+  EnemyChaseBase: {fileID: 11400000, guid: f32bc00d7d743485ea525d4b83520677, type: 2}
+  EnemyAttackBase: {fileID: 11400000, guid: 8d9c0630c3dd744cf8ae623076cbb40e, type: 2}
+  leftX: -13
+  rightX: 21
+  topY: 100
+  bottomY: -100
+  attackInterval: 3
 --- !u!60 &679906351862895772
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -175,18 +175,23 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.71875, y: 0.125}
-      - {x: 0.5625, y: 0.34375}
-      - {x: 0.25, y: 0.5625}
-      - {x: 0.03125, y: 0.78125}
-      - {x: -0.34375, y: 0.78125}
-      - {x: -0.5625, y: 0.6875}
-      - {x: -0.625, y: 0.3125}
-      - {x: -0.625, y: -0.40625}
-      - {x: -0.40625, y: -0.78125}
-      - {x: 0.5, y: -0.78125}
-      - {x: 0.5625, y: -0.71875}
-      - {x: 0.71875, y: -0.28125}
+    - - {x: 0.68495846, y: 0.11051792}
+      - {x: 0.5335357, y: 0.31478587}
+      - {x: 0.17486954, y: 0.38223705}
+      - {x: 0.09529209, y: 0.65080327}
+      - {x: -0.07773423, y: 0.75494343}
+      - {x: -0.32120156, y: 0.75870144}
+      - {x: -0.45351565, y: 0.69501615}
+      - {x: -0.54608023, y: 0.41772625}
+      - {x: -0.4846865, y: 0.21240029}
+      - {x: -0.61748385, y: -0.30478185}
+      - {x: -0.50401616, y: -0.4358392}
+      - {x: -0.34608495, y: -0.43674323}
+      - {x: -0.34612072, y: -0.7850081}
+      - {x: 0.46617746, y: -0.7925242}
+      - {x: 0.46595287, y: -0.6704763}
+      - {x: 0.5230408, y: -0.36367413}
+      - {x: 0.69461346, y: -0.28607732}
   m_UseDelaunayMesh: 0
 --- !u!50 &5597987055475729090
 Rigidbody2D:
@@ -262,6 +267,30 @@ PrefabInstance:
     - target: {fileID: 282496112453553541, guid: 66c015440487f4bc78ca30271b492fd6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3901438625853789648, guid: 66c015440487f4bc78ca30271b492fd6, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].x
+      value: -4.721055
+      objectReference: {fileID: 0}
+    - target: {fileID: 3901438625853789648, guid: 66c015440487f4bc78ca30271b492fd6, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].y
+      value: -0.6322297
+      objectReference: {fileID: 0}
+    - target: {fileID: 3901438625853789648, guid: 66c015440487f4bc78ca30271b492fd6, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[5].x
+      value: -4.735943
+      objectReference: {fileID: 0}
+    - target: {fileID: 3901438625853789648, guid: 66c015440487f4bc78ca30271b492fd6, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[5].y
+      value: -0.10059667
+      objectReference: {fileID: 0}
+    - target: {fileID: 3901438625853789648, guid: 66c015440487f4bc78ca30271b492fd6, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].x
+      value: -4.7297363
+      objectReference: {fileID: 0}
+    - target: {fileID: 3901438625853789648, guid: 66c015440487f4bc78ca30271b492fd6, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].y
+      value: 0.93241036
       objectReference: {fileID: 0}
     - target: {fileID: 7018368515800881914, guid: 66c015440487f4bc78ca30271b492fd6, type: 3}
       propertyPath: m_Name

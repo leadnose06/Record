@@ -1071,7 +1071,7 @@ MonoBehaviour:
     useDepth: 0
     useOutsideDepth: 0
     useNormalAngle: 0
-    useOutsideNormalAngle: 0
+    useOutsideNormalAngle: 1
     layerMask:
       serializedVersion: 2
       m_Bits: 256
