@@ -32,7 +32,7 @@ public class LevelChanger : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other){
-        Debug.Log("o");
+        //Debug.Log("o");
         if (other.gameObject.tag.Equals("Player")){
             LevelConnection.ActiveConnection = _connection;
             SceneManager.LoadScene(targetSceneName);

@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable, ITriggerCheckable
         StateMachine.Initialize(EnemyIdleState);
     }
 
-    public void Update()
+    public virtual void Update()
     {
         StateMachine.CurrentEnemyState.FrameUpdate();
         if (colorIsRed && colorHitTimer <= 0) {sprite.color = Color.white;}

@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class ShootLaser : EnemyAttackSOBase
 {
+    /*
     public GameObject laser;
     public float timer;
     public float shootFrequency = 2f;
@@ -18,10 +19,11 @@ public class ShootLaser : EnemyAttackSOBase
             timer = 0f;
             shoot();
         }
+        
     }
     public void shoot(){
-        Vector2 laserPos = new Vector2((enemy.transform.position.x - (0.2*enemy.transform.localScale.x)), enemy.transform.position.y-0.15);
+        Vector2 laserPos = new Vector2((enemy.transform.position.x - (0.2f*enemy.transform.localScale.x)), enemy.transform.position.y-0.15f);
         Instantiate(laser, laserPos, Quaternion.identity);
         Debug.Log("shot laser");
-    }
+    }*/
 }

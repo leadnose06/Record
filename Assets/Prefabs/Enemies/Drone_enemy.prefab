@@ -232,6 +232,10 @@ MonoBehaviour:
   EnemyAttackBase: {fileID: 11400000, guid: 2505c747fe5324a67ad8bb599b04cc5b, type: 2}
   LeftPoint: {fileID: 0}
   RightPoint: {fileID: 0}
+  laser: {fileID: 8362942299137533091, guid: f1ea7f56b78644b0dba18399990c42df, type: 3}
+  timer: 0
+  shootFrequency: 2
+  enemy: {fileID: 7416649372038707645}
 --- !u!1001 &2836439053032716638
 PrefabInstance:
   m_ObjectHideFlags: 0

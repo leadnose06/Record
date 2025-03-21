@@ -60,7 +60,9 @@ public class TouchingDirections : MonoBehaviour
         isGrounded = touchingCol.Cast(Vector2.down, castFilter, groundHits, groundDistance) > 0;
         moveAnimator.SetBool("IsGrounded",isGrounded);
         if (isGrounded) {
-            if (moveAnimator.GetBool("IsFalling")) {Debug.Log("not falling");}
+            if (moveAnimator.GetBool("IsFalling")) {
+                //Debug.Log("not falling");
+            }
             moveAnimator.SetBool("IsFalling", false);
             initialFall = true;
             jumped = false;
@@ -68,7 +70,7 @@ public class TouchingDirections : MonoBehaviour
             DataManager.Instance.doubleJumpReady = true;
         } else {
             if (!moveAnimator.GetBool("IsFalling")) {
-                Debug.Log("falling");
+                //Debug.Log("falling");
             }
             if (jumped) {
                 moveAnimator.SetBool("IsFalling", true);

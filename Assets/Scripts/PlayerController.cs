@@ -148,7 +148,7 @@ public class PlayerController : MonoBehaviour
             moveAnimator.SetBool("Idle",false);
             idleTimer = 0f;
             moveAnimator.SetTrigger("PlayerJump");
-            Debug.Log("jump trigger");
+            //Debug.Log("jump trigger");
         }
         
         
@@ -185,7 +185,7 @@ public class PlayerController : MonoBehaviour
     public void onAttack(InputAction.CallbackContext context){
         if(context.performed){
             if (attackTimer >= attackDelay) {
-                Debug.Log("Attack");
+                //Debug.Log("Attack");
                 //Play attack animation
                 moveAnimator.SetBool("Idle",false);
                 moveAnimator.SetTrigger("Attack");
@@ -212,13 +212,13 @@ public class PlayerController : MonoBehaviour
                 
                 //Damage them
                 foreach(Collider2D enemy in hitEnemies) {
-                    Debug.Log("Hit");
+                    //Debug.Log("Hit");
                     hit = true;
                     enemy.GetComponent<Enemy>().Damage(5.0f);
                 }
                 if (hit) {
                     DataManager.Instance.playerEnergy += 1;
-                    Debug.Log("energy level up");
+                    //Debug.Log("energy level up");
                 }
                 else {downHit = false;}
                 attackTimer =0f;
@@ -238,7 +238,7 @@ public class PlayerController : MonoBehaviour
     public void onHeal(InputAction.CallbackContext context){
         if (context.performed && DataManager.Instance.playerHeals > 0 && DataManager.Instance.playerHealth != DataManager.Instance.playerMaxHealth) {
             DataManager.Instance.playerHealth += healAmount;
-            Debug.Log("healed " + healAmount);
+            //Debug.Log("healed " + healAmount);
             if (DataManager.Instance.playerHealth > DataManager.Instance.playerMaxHealth) {
                 DataManager.Instance.playerHealth = DataManager.Instance.playerMaxHealth;
             }
@@ -284,7 +284,7 @@ public class PlayerController : MonoBehaviour
         if(col.gameObject.tag.Equals("OutOfBounds")){
             transform.position = new Vector3(gameObject.GetComponent<RespawnScript>().getRespawn.position.x, gameObject.GetComponent<RespawnScript>().getRespawn.position.y, transform.position.z);
             damage(1);
-            Debug.Log("Hit by enemy");
+            //Debug.Log("Hit by enemy");
             GetComponent<GrapplingScript>().onDisconnect();
         }
     }
