@@ -9549,6 +9549,10 @@ PrefabInstance:
       propertyPath: <MaxHealth>k__BackingField
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 4858129281207554625, guid: df5457dbdf511435e9044b0ac2a9af43, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6892442189629458681, guid: df5457dbdf511435e9044b0ac2a9af43, type: 3}
       propertyPath: m_LocalScale.x
       value: 2

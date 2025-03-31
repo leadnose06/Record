@@ -17,6 +17,7 @@ public class MainMenu : MonoBehaviour
         if(DataManager.Instance.playerData.lastBench != null){
             SceneManager.LoadScene(DataManager.Instance.playerData.lastBench);
         }else{
+            DataManager.Instance.toBench = false;
             SceneManager.LoadScene("Opening");
         }
     }
@@ -26,6 +27,7 @@ public class MainMenu : MonoBehaviour
         if(DataManager.Instance.playerData.lastBench != null){
             SceneManager.LoadScene(DataManager.Instance.playerData.lastBench);
         }else{
+            DataManager.Instance.toBench = false;
             SceneManager.LoadScene("Opening");
         }
     }
@@ -35,6 +37,7 @@ public class MainMenu : MonoBehaviour
         if(DataManager.Instance.playerData.lastBench != null){
             SceneManager.LoadScene(DataManager.Instance.playerData.lastBench);
         }else{
+            DataManager.Instance.toBench = false;
             SceneManager.LoadScene("Opening");
         }
     }
