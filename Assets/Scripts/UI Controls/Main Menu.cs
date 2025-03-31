@@ -17,7 +17,7 @@ public class MainMenu : MonoBehaviour
         if(DataManager.Instance.playerData.lastBench != null){
             SceneManager.LoadScene(DataManager.Instance.playerData.lastBench);
         }else{
-            SceneManager.LoadScene("Continuity Testing");
+            SceneManager.LoadScene("Opening");
         }
     }
     public void onPlay2(){
@@ -26,7 +26,7 @@ public class MainMenu : MonoBehaviour
         if(DataManager.Instance.playerData.lastBench != null){
             SceneManager.LoadScene(DataManager.Instance.playerData.lastBench);
         }else{
-            SceneManager.LoadScene("Continuity Testing");
+            SceneManager.LoadScene("Opening");
         }
     }
     public void onPlay3(){
@@ -35,7 +35,7 @@ public class MainMenu : MonoBehaviour
         if(DataManager.Instance.playerData.lastBench != null){
             SceneManager.LoadScene(DataManager.Instance.playerData.lastBench);
         }else{
-            SceneManager.LoadScene("Continuity Testing");
+            SceneManager.LoadScene("Opening");
         }
     }
     public void onSettings(){

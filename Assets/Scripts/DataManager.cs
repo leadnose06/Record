@@ -42,6 +42,7 @@ public class DataManager : MonoBehaviour
         playerData = new PlayerSaveData();
         saveFilePath1 = Application.persistentDataPath + "/PlayerSaveData1.json";
         saveNumber = 1;
+        Debug.Log(saveFilePath1);
 
     }
     public void CreateSave2()
@@ -49,12 +50,14 @@ public class DataManager : MonoBehaviour
         playerData = new PlayerSaveData();
         saveFilePath2 = Application.persistentDataPath + "/PlayerSaveData2.json";
         saveNumber = 2;
+        Debug.Log(saveFilePath2);
     }    
     public void CreateSave3()
     {
         playerData = new PlayerSaveData();
         saveFilePath3 = Application.persistentDataPath + "/PlayerSaveData3.json";
         saveNumber = 3;
+        Debug.Log(saveFilePath3);
     }
     public void delete1(){
         saveFilePath1 = Application.persistentDataPath + "/PlayerSaveData1.json";
