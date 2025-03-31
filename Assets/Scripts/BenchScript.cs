@@ -5,7 +5,7 @@ using UnityEngine;
 public class BenchScript : MonoBehaviour
 {
     public GameObject player;
-    void Start()
+    void Awake()
     {
         DataManager.Instance.bench = gameObject;
         if(DataManager.Instance.dead){

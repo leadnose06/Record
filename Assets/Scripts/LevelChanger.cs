@@ -20,8 +20,15 @@ public class LevelChanger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(_connection == LevelConnection.ActiveConnection){
-            player.transform.position = spawnPoint.position;
+        if(DataManager.Instance.toBench){
+            //Debug.Log("tobench");
+            player.transform.position = DataManager.Instance.bench.transform.position;
+            DataManager.Instance.toBench = false;
+        } else{
+            if(_connection == LevelConnection.ActiveConnection){
+                //Debug.Log("todoor");
+                player.transform.position = spawnPoint.position;
+            }
         }
     }
 

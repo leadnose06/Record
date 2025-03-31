@@ -11,6 +11,7 @@ public class EnemyIdleGroundPatrol : EnemyIdleSOBase
     private float bottomY;
     private bool right;
     private float speed = 0.75f;
+    private bool goright;
     public override void Initialize(GameObject gameObject, Enemy enemy, int wall, float speed, float leftX, float rightX, float topY, float bottomY)
     {
         base.Initialize(gameObject, enemy, wall, speed, leftX, rightX, topY, bottomY);
@@ -20,7 +21,6 @@ public class EnemyIdleGroundPatrol : EnemyIdleSOBase
         this.rightX = rightX;
         this.topY = topY;
         this.bottomY = bottomY;
-        right = enemy.IsFacingRight;
     }
 
     public override void DoAnimationTriggerEventLogic(Enemy.AnimationTriggerType triggerType)
@@ -30,8 +30,13 @@ public class EnemyIdleGroundPatrol : EnemyIdleSOBase
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
-        if(right){
+        Debug.Log("Idle");
+        goright = false;
+        if(enemy.IsFacingRight){
             enemy.transform.localScale = new Vector3(-1, 1, 1);
+            goright = true;
+        } else{
+            enemy.transform.localScale = new Vector3(1, 1, 1);
         }
         if(wall == 1){
             enemy.RB.velocity = new Vector2(-speed*enemy.transform.localScale.x, 0);
@@ -51,17 +56,17 @@ public class EnemyIdleGroundPatrol : EnemyIdleSOBase
     {
         base.DoFrameUpdateLogic();
         if(
-        (wall == 1 && ((enemy.transform.position.x >= rightX && right) || ((enemy.transform.position.x < leftX) &! right))) ||
-        (wall == 2  && ((enemy.transform.position.y >= topY &! right) || ((enemy.transform.position.y < bottomY) && right))) ||
-        (wall == 3 && ((enemy.transform.position.x >= rightX &! right) || ((enemy.transform.position.x < leftX) && right))) ||
-        (wall == 4 && ((enemy.transform.position.y >= topY && right) || ((enemy.transform.position.y < bottomY) &! right)))
+        (wall == 1 && ((enemy.transform.position.x >= rightX && goright) || ((enemy.transform.position.x < leftX) &! goright))) ||
+        (wall == 2  && ((enemy.transform.position.y >= topY &! goright) || ((enemy.transform.position.y < bottomY) && goright))) ||
+        (wall == 3 && ((enemy.transform.position.x >= rightX &! goright) || ((enemy.transform.position.x < leftX) && goright))) ||
+        (wall == 4 && ((enemy.transform.position.y >= topY && goright) || ((enemy.transform.position.y < bottomY) &! goright)))
         ){
-            if(right){
+            if(goright){
                 enemy.transform.localScale = new Vector3(1, 1, 1);
             }else{
                 enemy.transform.localScale = new Vector3(-1, 1, 1);
             }
-            right = !right;
+            goright = !goright;
             if(wall == 1){
                 enemy.RB.velocity = new Vector2(-speed*enemy.transform.localScale.x, 0);
             } else if(wall == 2){

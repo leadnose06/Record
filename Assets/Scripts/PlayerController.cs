@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
         touchingDirections = GetComponent<TouchingDirections>();
         animationLock = false;
         dashReady = true;
+        Physics2D.IgnoreLayerCollision(3,6);
     }
 
 

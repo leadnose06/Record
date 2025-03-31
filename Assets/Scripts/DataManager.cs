@@ -23,11 +23,13 @@ public class DataManager : MonoBehaviour
     public int playerMaxHeals = 4;
     public bool doubleJumpReady = true;
     public bool dashReady = true;
+    public bool toBench;
     private void Awake(){
         if(Instance != null){
             Destroy(gameObject);
             return;
         }
+        toBench = true;
         lastBench = SceneManager.GetActiveScene().name;
         Instance = this;
         DontDestroyOnLoad(gameObject);
