@@ -10,6 +10,7 @@ public class DroneEnemyScript : FlyingBase
     public float shootFrequency = 2f;
     public GameObject enemy;
     public GameObject player;
+    private bool playerSeen = false;
 
     public override void Start()
     {
