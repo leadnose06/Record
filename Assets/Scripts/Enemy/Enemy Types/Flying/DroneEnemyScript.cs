@@ -7,10 +7,10 @@ public class DroneEnemyScript : FlyingBase
 
     public GameObject laser;
     public float timer;
-    public float shootFrequency = 2f;
+    public float shootPeriod = 2f;
     public GameObject enemy;
     public GameObject player;
-    private bool playerSeen = false;
+    
 
     public override void Start()
     {
@@ -32,9 +32,14 @@ public class DroneEnemyScript : FlyingBase
 
         timer += Time.deltaTime;
 
-        if (timer >= shootFrequency){
-            timer = 0f;
-            shoot();
+        if (timer >= shootPeriod){
+                RaycastHit2D results = Physics2D.Raycast(transform.position, player.transform.position - transform.position, Mathf.Infinity, contactFilter.layerMask);
+                if(results && IsAggroed){
+                    if(results.collider.tag == "Player"){
+                        timer = 0f;
+                        shoot();
+                    }
+                }
         }
     }
 

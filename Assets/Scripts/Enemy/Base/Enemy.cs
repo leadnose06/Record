@@ -34,6 +34,8 @@ public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable, ITriggerCheckable
     public EnemyIdleSOBase EnemyIdleBaseInstance {get; set;}
     public EnemyChaseSOBase EnemyChaseBaseInstance {get; set;}
     public EnemyAttackSOBase EnemyAttackBaseInstance {get; set;}
+
+    public float scale;
     
     protected virtual void Awake(){
         EnemyIdleBaseInstance = Instantiate(EnemyIdleBase);
@@ -44,6 +46,7 @@ public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable, ITriggerCheckable
         EnemyChaseState = new ChaseState(this, StateMachine);
         EnemyAttackState = new AttackState(this, StateMachine);
         sprite = GetComponent<SpriteRenderer>();
+        scale = Mathf.Abs(transform.localScale.x);
     }
     public virtual void Start()
     {
@@ -67,9 +70,9 @@ public class Enemy : MonoBehaviour, IDamagable, IEnemyMovable, ITriggerCheckable
             transform.localScale = new Vector3 (1, 1, 1);
         }*/
         if(RB.velocity.x > 0){
-            transform.localScale = new Vector2(-1, 1);
+            transform.localScale = new Vector2(-scale, scale);
         }else if(RB.velocity.x < 0){
-            transform.localScale = new Vector2(1, 1);
+            transform.localScale = new Vector2(scale, scale);
         }
     }
 

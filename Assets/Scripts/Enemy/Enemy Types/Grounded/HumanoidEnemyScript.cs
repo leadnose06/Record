@@ -19,7 +19,7 @@ public class HumanoidEnemyScript : Enemy
         RB = GetComponent<Rigidbody2D>();
         StateMachine.Initialize(EnemyIdleState);
         if(IsFacingRight){
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y);
         }
 
     }

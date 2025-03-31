@@ -23,7 +23,7 @@ public class EnemyFlyingChase : EnemyChaseSOBase
     public override void DoFrameUpdateLogic()
     {
         base.DoFrameUpdateLogic();
-        if(Vector3.Distance(transform.position, player.transform.position) > 10 || Physics2D.Raycast(transform.position, player.gameObject.transform.position - transform.position, Mathf.Infinity, enemy.contactFilter.layerMask).collider.tag != "Player" || Vector2.Distance(enemy.origin, new Vector2(transform.position.x, transform.position.y)) > enemy.maxDist){
+        if(Vector3.Distance(transform.position, player.transform.position) > 10 || Physics2D.Raycast(transform.position, player.transform.position - transform.position, Mathf.Infinity, enemy.contactFilter.layerMask).collider.tag != "Player" || Vector2.Distance(enemy.origin, new Vector2(transform.position.x, transform.position.y)) > enemy.maxDist){
             enemy.SetAggroStatus(false);
             enemy.StateMachine.ChangeState(enemy.EnemyIdleState);
         } else {
