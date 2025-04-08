@@ -2025,7 +2025,7 @@ MonoBehaviour:
   maxEnergy: 10
   energySlider: {fileID: 5342677550203074152}
   menu: {fileID: 7554893591832719744}
-  playerInput: {fileID: 0}
+  playerInput: {fileID: -944628639613478452, guid: 3b582cd52528c4043af2893ff0826dc3, type: 3}
 --- !u!1 &8728226630466942812
 GameObject:
   m_ObjectHideFlags: 0
