@@ -13133,6 +13133,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 895536855968062351, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3397217332123835267, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.381
