@@ -1057,7 +1057,19 @@ MonoBehaviour:
     m_ActionId: b57c651b-83e9-459e-9a70-499530db08d5
     m_ActionName: Player/Pause[/XboxOneGampadMacOSWireless/start,/Keyboard/escape]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6560506927824295817}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: onHeal
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 27c07e8c-bd4e-4d1c-87fc-b9926812aa42
     m_ActionName: Player/Heal[/XboxOneGampadMacOSWireless/dpad/down,/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 1
