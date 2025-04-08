@@ -23,7 +23,6 @@ public class LevelChanger : MonoBehaviour
         if(DataManager.Instance.toBench){
             //Debug.Log("tobench");
             player.transform.position = DataManager.Instance.bench.transform.position;
-            DataManager.Instance.toBench = false;
         } else{
             if(_connection == LevelConnection.ActiveConnection){
                 //Debug.Log("todoor");
@@ -41,6 +40,7 @@ public class LevelChanger : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other){
         //Debug.Log("o");
         if (other.gameObject.tag.Equals("Player")){
+            DataManager.Instance.toBench = false;
             LevelConnection.ActiveConnection = _connection;
             SceneManager.LoadScene(targetSceneName);
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(targetSceneName));
