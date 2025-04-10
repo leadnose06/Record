@@ -91,6 +91,7 @@ public class DataManager : MonoBehaviour
     }
     public void LoadGame(){
         string savePlayerData = JsonUtility.ToJson(playerData);
+        toBench = true;
         if(saveNumber == 1){
             if(File.Exists(saveFilePath1)){
             string loadPlayerData = File.ReadAllText(saveFilePath1);

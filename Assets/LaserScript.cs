@@ -7,6 +7,7 @@ public class LaserScript : MonoBehaviour
 
     private GameObject player;
     private Rigidbody2D rb;
+    private Collider2D c;
     public float speed = 2.0f;
 
 
@@ -22,6 +23,7 @@ public class LaserScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Collider2D[] hits;
         
     }
 }
