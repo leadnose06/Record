@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
@@ -50,6 +51,9 @@ public class PlayerController : MonoBehaviour
 
     // Heal Variables
     public int healAmount = 2;
+    
+    
+   
 
 
 
@@ -129,6 +133,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    
+    
     public void onMove(InputAction.CallbackContext context) {
         moveAnimator.SetBool("Idle",false);
         idleTimer = 0f;
@@ -299,5 +305,12 @@ public class PlayerController : MonoBehaviour
         if(col.tag.Equals("Bench")){
             inBench = false;
         }
+    }
+
+    public void Knockback(bool right,int damageAmount,Collider2D enemyCollider){
+        damage(damageAmount);
+        Vector3 direction = transform.position - enemyCollider.transform.position;
+        rb.velocity = new Vector2(direction.x, direction.y).normalized * -Mathf.Sqrt(damageAmount);
+        Debug.Log("knocked back");
     }
 }
