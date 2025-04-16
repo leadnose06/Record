@@ -10,6 +10,7 @@ public class PlayerColliderScript : MonoBehaviour
 public GameObject player;
 public bool invulnerable = false;
 private float invulnerableTimer = 0.25f;
+public SpriteRenderer sprite;
 
     void Start()
     {
@@ -22,25 +23,50 @@ private float invulnerableTimer = 0.25f;
         if (invulnerable){
             invulnerableTimer -= Time.deltaTime;
         }
-        if (invulnerableTimer <= 0f) {invulnerable = false;}
+        if (invulnerableTimer <= 0f) {
+            invulnerable = false;
+            invulnerableTimer = 0.25f;
+            Debug.Log("No Longer Invulnerable");
+            sprite.color = Color.white;
+        }
     }
 
-    void OnTriggerStay2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("collider triggered");
-        if (!invulnerable){
-            int damageAmount = 1;
-            //int damageAmount = collision.gameObject.getComponent<Enemy>().getDamageAmount();
-            if (collision.gameObject.transform.position.x > transform.position.x){
-                player.GetComponent<PlayerController>().Knockback(true,damageAmount,collision);
+        if(collision.gameObject.tag == "Enemy"){
+            if (!invulnerable){
+                int damageAmount = 1;
+                //int damageAmount = collision.gameObject.getComponent<Enemy>().getDamageAmount();
+                if (collision.gameObject.transform.position.x > transform.position.x){
+                    player.GetComponent<PlayerController>().Knockback(true,damageAmount,collision);
+                }
+                else{
+                    player.GetComponent<PlayerController>().Knockback(false,damageAmount,collision);
+                }
+                invulnerable = true;
+                invulnerableTimer = 1.5f;
+                Debug.Log("Invulnerable");
             }
-            else{
-                player.GetComponent<PlayerController>().Knockback(false,damageAmount,collision);
-            }
-            invulnerable = true;
-            invulnerableTimer = 0.25f;
-            
         }
         
+    }
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy"){
+            if (!invulnerable){
+                int damageAmount = 1;
+                //int damageAmount = collision.gameObject.getComponent<Enemy>().getDamageAmount();
+                if (collision.gameObject.transform.position.x > transform.position.x){
+                    player.GetComponent<PlayerController>().Knockback(true,damageAmount,collision);
+                }
+                else{
+                    player.GetComponent<PlayerController>().Knockback(false,damageAmount,collision);
+                }
+                invulnerable = true;
+                invulnerableTimer = 1.5f;
+                Debug.Log("Invulnerable");
+            }
+        }
     }
 }

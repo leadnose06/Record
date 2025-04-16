@@ -30,7 +30,7 @@ public class EnemyIdleGroundPatrol : EnemyIdleSOBase
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
-        Debug.Log("Idle");
+        //Debug.Log("Idle");
         goright = false;
         if(enemy.IsFacingRight){
             enemy.transform.localScale = new Vector3(-1, 1, 1);

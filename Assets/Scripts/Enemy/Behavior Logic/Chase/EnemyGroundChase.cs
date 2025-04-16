@@ -8,7 +8,7 @@ public class EnemyGroundChase : EnemyChaseSOBase
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
-        Debug.Log("Chase");
+        //Debug.Log("Chase");
         player = GameObject.FindWithTag("Player");
 
     }

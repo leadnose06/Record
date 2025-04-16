@@ -51,6 +51,11 @@ public class PlayerController : MonoBehaviour
 
     // Heal Variables
     public int healAmount = 2;
+    //Variables for getting hit (color change)
+    public SpriteRenderer sprite;
+    public bool colorIsRed;
+    public float colorHitTimer;
+    
     
     
    
@@ -110,6 +115,14 @@ public class PlayerController : MonoBehaviour
             attackTimer += Time.deltaTime;
             //Debug.Log(attackTimer);
         }
+        //hit timer
+        if (colorIsRed && colorHitTimer <= 0) {
+            sprite.color = Color.cyan;
+            colorIsRed = false;
+        }
+        else {colorHitTimer -= Time.deltaTime;}
+       
+
     }
 
     private void FixedUpdate() {
@@ -274,6 +287,9 @@ public class PlayerController : MonoBehaviour
         }
         moveAnimator.SetBool("Idle",false);
         idleTimer = 0f;
+        colorIsRed = true;
+        sprite.color = Color.red;
+        colorHitTimer = 0.1f;
     }
 
 
@@ -307,10 +323,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Knockback(bool right,int damageAmount,Collider2D enemyCollider){
+    public void Knockback(bool right,int damageAmount,Collider2D collision){
         damage(damageAmount);
-        Vector3 direction = transform.position - enemyCollider.transform.position;
-        rb.velocity = new Vector2(direction.x, direction.y).normalized * -Mathf.Sqrt(damageAmount);
+        Vector3 direction = transform.position - collision.gameObject.transform.position;
+        rb.velocity = new Vector2(direction.x, direction.y).normalized * 6; //-Mathf.Sqrt(damageAmount*10);
         Debug.Log("knocked back");
+        Debug.Log("Vector Coordinates: " + direction.x + " " + direction.y);
+        Debug.Log("Velocity: " + rb.velocity.x);
     }
 }
