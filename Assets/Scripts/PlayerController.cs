@@ -51,10 +51,17 @@ public class PlayerController : MonoBehaviour
 
     // Heal Variables
     public int healAmount = 2;
-    //Variables for getting hit (color change)
+    //Variables for getting hit (color change + knockback)
     public SpriteRenderer sprite;
     public bool colorIsRed;
     public float colorHitTimer;
+    private Vector2 knockbackVelocity;
+    public bool experiencingKnockback = false;
+    private float knockbackTimer;
+    
+    //generic timer for debugging
+    private float timer;
+    
     
     
     
@@ -122,11 +129,24 @@ public class PlayerController : MonoBehaviour
         }
         else {colorHitTimer -= Time.deltaTime;}
        
+       /*if (timer <= 0f){
+        timer = 0.25f;
+        Debug.Log("velocity x: " + rb.velocity.x);
+       }
+       else {
+        timer -= Time.deltaTime;
+       }*/
 
+        if (knockbackTimer > 0){
+            knockbackTimer -= Time.deltaTime;
+        }
+        else {
+            experiencingKnockback = false;
+        }
     }
 
     private void FixedUpdate() {
-        if(!touchingDirections.isOnWall && !animationLock){
+        if(!touchingDirections.isOnWall && !animationLock && !experiencingKnockback){
             rb.velocity = new Vector2(moveInput.normalized.x * speed, rb.velocity.y);
         }
         if(isDashing){
@@ -280,8 +300,10 @@ public class PlayerController : MonoBehaviour
 
 
     public void damage(int amount){
-        GetComponent<Health>().health -= 1;
-        DataManager.Instance.playerHealth -= 1;
+        if (DataManager.Instance.playerHealth > 0){
+            GetComponent<Health>().health -= 1;
+            DataManager.Instance.playerHealth -= 1;
+        }
         if(DataManager.Instance.playerHealth < 1){
             death();
         }
@@ -327,8 +349,10 @@ public class PlayerController : MonoBehaviour
         damage(damageAmount);
         Vector3 direction = transform.position - collision.gameObject.transform.position;
         rb.velocity = new Vector2(direction.x, direction.y).normalized * 6; //-Mathf.Sqrt(damageAmount*10);
-        Debug.Log("knocked back");
-        Debug.Log("Vector Coordinates: " + direction.x + " " + direction.y);
-        Debug.Log("Velocity: " + rb.velocity.x);
+        //Debug.Log("knocked back");
+        //Debug.Log("Vector Coordinates: " + direction.x + " " + direction.y);
+        //Debug.Log("Velocity: " + rb.velocity.x);
+        knockbackTimer = 0.25f;
+        experiencingKnockback = true;
     }
 }
