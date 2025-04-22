@@ -119,7 +119,7 @@ public class CanvasScript : MonoBehaviour
     }
 
     public void onInventory(InputAction.CallbackContext context){
-        Debug.Log("2");
+        Debug.Log("Inventory Opened");
         if(context.performed &! paused){
             paused = true;
             if(playerInput == null) playerInput = context.action.actionMap.asset;

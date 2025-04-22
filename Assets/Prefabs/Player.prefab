@@ -873,7 +873,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1409507751, guid: dc2b8ad4a00f344138c1d32d6244940d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -950,6 +950,7 @@ MonoBehaviour:
   sprite: {fileID: 2844030936977336112}
   colorIsRed: 0
   colorHitTimer: 0
+  experiencingKnockback: 0
 --- !u!114 &895536855968062351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1247,7 +1248,7 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: bd883a10-94ac-4e56-aad7-36e9c2c47af6
     m_ActionName: UI/TabRight
-  m_NeverAutoSwitchControlSchemes: 1
+  m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
