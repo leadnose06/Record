@@ -17,8 +17,10 @@ void Awake()
     {
         if(inMap){
             map.SetActive(true);
+            inventory.SetActive(false);
         } else {
             inventory.SetActive(true);
+            map.SetActive(false);
         }
         transform.SetAsLastSibling();
     }
@@ -30,14 +32,16 @@ void Awake()
 
     //TODO: change for more than two tabs
     public void onLeft(){
-        if(inMap){
-            inMap = false;
-            inventory.SetActive(true);
-            map.SetActive(false);
-        } else{
-            inMap = true;
-            map.SetActive(true);
-            inventory.SetActive(false);
+        if(gameObject.activeSelf){
+            if(inMap){
+                inMap = false;
+                inventory.SetActive(true);
+                map.SetActive(false);
+            } else{
+                inMap = true;
+                map.SetActive(true);
+                inventory.SetActive(false);
+            }
         }
     }
 }

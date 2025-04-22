@@ -31,6 +31,7 @@ public class CanvasScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        paused = false;
         //Get info from player's scripts
         player = GameObject.Find("Player");
         playerMaxHealth = DataManager.Instance.playerMaxHealth;
@@ -106,20 +107,26 @@ public class CanvasScript : MonoBehaviour
 
     public void onMenu(InputAction.CallbackContext context){
         Debug.Log("stopped");
-        if(playerInput == null) playerInput = context.action.actionMap.asset;
-        playerInput.FindActionMap("Player").Disable();
-        playerInput.FindActionMap("UI").Enable();
-        menu.SetActive(true);
-        Time.timeScale = 0;
-        AudioListener.pause = true;
-        paused = true;
+        if(!paused){
+            if(playerInput == null) playerInput = context.action.actionMap.asset;
+            playerInput.FindActionMap("Player").Disable();
+            playerInput.FindActionMap("UI").Enable();
+            menu.SetActive(true);
+            Time.timeScale = 0;
+            AudioListener.pause = true;
+            paused = true;
+        }
     }
 
     public void onInventory(InputAction.CallbackContext context){
-        if(playerInput == null) playerInput = context.action.actionMap.asset;
-        playerInput.FindActionMap("Player").Disable();
-        playerInput.FindActionMap("UI").Enable();
-        inventoryMenu.SetActive(true);
+        Debug.Log("2");
+        if(context.performed &! paused){
+            paused = true;
+            if(playerInput == null) playerInput = context.action.actionMap.asset;
+            playerInput.FindActionMap("Player").Disable();
+            playerInput.FindActionMap("UI").Enable();
+            inventoryMenu.SetActive(true);
+        }
     }
     
     public void onCancel(InputAction.CallbackContext context){
@@ -133,6 +140,11 @@ public class CanvasScript : MonoBehaviour
                     AudioListener.pause = false;
                     paused = false;
                 }
+            } else if(inventoryMenu.activeSelf){
+                inventoryMenu.SetActive(false);
+                if(playerInput == null) playerInput = context.action.actionMap.asset;
+                playerInput.FindActionMap("Player").Enable();
+                paused = false;
             }
         }
     }
