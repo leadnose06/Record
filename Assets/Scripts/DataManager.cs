@@ -55,6 +55,9 @@ public class DataManager : MonoBehaviour
     public void CreateSave3()
     {
         playerData = new PlayerSaveData();
+        playerData.dash = false;
+        playerData.grapple = false;
+        playerData.doubleJump = false;
         saveFilePath3 = Application.persistentDataPath + "/PlayerSaveData3.json";
         saveNumber = 3;
         Debug.Log(saveFilePath3);

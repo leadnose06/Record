@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour
 
     public void onJump(InputAction.CallbackContext context){
         //TODO check if alive so no jumping during death animations
-        if(context.performed && (touchingDirections.isGrounded || DataManager.Instance.doubleJumpReady) && !animationLock){
+        if(context.performed && (touchingDirections.isGrounded || DataManager.Instance.playerData.doubleJump) && !animationLock){
             if (!touchingDirections.isGrounded) {DataManager.Instance.doubleJumpReady = false;}
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
             moveAnimator.SetBool("Idle",false);
@@ -194,7 +194,7 @@ public class PlayerController : MonoBehaviour
         
     }
     public void onDash(InputAction.CallbackContext context){
-        if(context.performed && dashReady && !animationLock){
+        if(context.performed && dashReady && !animationLock && DataManager.Instance.playerData.dash){
             dashSign = transform.localScale.x;
             dashTimer = Time.fixedTime + 0.135f;
             dashReady = false;

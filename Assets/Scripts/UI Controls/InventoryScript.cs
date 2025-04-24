@@ -8,6 +8,7 @@ public class InventoryScript : MonoBehaviour
     public Button first;
     void Awake()
     {
+
     }
     void OnEnable()
     {

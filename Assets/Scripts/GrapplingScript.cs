@@ -79,7 +79,7 @@ public class GrapplingScript : MonoBehaviour
     }
 
     public void onFire(InputAction.CallbackContext context){
-        if(Time.time >= grappleCooldown && !IsGrappling && context.performed == true && !gameObject.GetComponent<PlayerController>().animationLock){
+        if(Time.time >= grappleCooldown && !IsGrappling && context.performed == true && !gameObject.GetComponent<PlayerController>().animationLock && DataManager.Instance.playerData.grapple){
             var gamepad = Gamepad.current;
             Vector2 move = gamepad.rightStick.ReadValue();
             if(objectTracker.GetComponent<ObjectTrackerScript>().enemies != null){
