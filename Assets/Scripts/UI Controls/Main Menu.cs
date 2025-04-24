@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
             SceneManager.LoadScene(DataManager.Instance.playerData.lastBench);
         }else{
             DataManager.Instance.toBench = false;
-            SceneManager.LoadScene("Opening");
+            SceneManager.LoadScene("A1");
         }
     }
     public void onPlay2(){

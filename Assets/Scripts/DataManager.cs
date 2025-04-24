@@ -20,7 +20,7 @@ public class DataManager : MonoBehaviour
     string saveFilePath2;
     string saveFilePath3;
     public int playerHeals;
-    public int playerMaxHeals = 4;
+    public int playerMaxHeals = 1;
     public bool doubleJumpReady = true;
     public bool dashReady = true;
     public bool toBench;
@@ -33,7 +33,7 @@ public class DataManager : MonoBehaviour
         lastBench = SceneManager.GetActiveScene().name;
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        playerMaxHealth = 5;
+        playerMaxHealth = 3;
         playerHealth = playerMaxHealth;
         playerHeals = playerMaxHeals;
     }
