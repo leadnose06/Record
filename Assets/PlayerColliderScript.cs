@@ -31,6 +31,14 @@ public SpriteRenderer sprite;
         }
     }
 
+    public void SetInvulnerable(){
+        if (!invulnerable){
+            invulnerable = true;
+            invulnerableTimer = 1.5f;
+            Debug.Log("Invulnerable");
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("collider triggered");
@@ -49,6 +57,7 @@ public SpriteRenderer sprite;
                 Debug.Log("Invulnerable");
             }
         }
+
         
     }
     void OnTriggerStay2D(Collider2D collision)

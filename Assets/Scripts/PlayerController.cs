@@ -329,6 +329,8 @@ public class PlayerController : MonoBehaviour
         if(col.gameObject.tag.Equals("OutOfBounds")){
             transform.position = new Vector3(gameObject.GetComponent<RespawnScript>().getRespawn.position.x, gameObject.GetComponent<RespawnScript>().getRespawn.position.y, transform.position.z);
             damage(1);
+            GameObject playerCollider = GameObject.FindGameObjectWithTag("PlayerCollider");
+            playerCollider.GetComponent<PlayerColliderScript>().SetInvulnerable();
             //Debug.Log("Hit by enemy");
             GetComponent<GrapplingScript>().onDisconnect();
         }

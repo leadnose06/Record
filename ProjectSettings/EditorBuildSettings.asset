@@ -71,5 +71,20 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Final Demo/A1.unity
     guid: f7ca91fbfa9cb4611abd9d775f1df67c
+  - enabled: 1
+    path: Assets/Scenes/Final Demo/C1.unity
+    guid: 5eec83fda4e2345cdafe46eb22108316
+  - enabled: 1
+    path: Assets/Scenes/Final Demo/C2.unity
+    guid: 477a1cb8fe8204fa08f42851dc3a8f77
+  - enabled: 1
+    path: Assets/Scenes/Final Demo/B2.unity
+    guid: d5b89f15772a547388365e9fdda3d3f1
+  - enabled: 1
+    path: Assets/Scenes/Final Demo/A2.unity
+    guid: 5c701ef0815dc4ffe8991676f03ec22d
+  - enabled: 1
+    path: Assets/Scenes/Final Demo/A3.unity
+    guid: b5a877ee9f2cd4fe8885ee6dd62b2f4e
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 1c81c3bf28e9542aeadd157cf4d7a7a1, type: 2}

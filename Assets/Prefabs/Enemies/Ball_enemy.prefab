@@ -107,7 +107,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -188,6 +188,7 @@ MonoBehaviour:
   EnemyIdleBase: {fileID: 11400000, guid: 46cee05d54c0a42e0b05491a6c26aa72, type: 2}
   EnemyChaseBase: {fileID: 11400000, guid: 6afefa5c90bc44323b6c4b8544ab84f6, type: 2}
   EnemyAttackBase: {fileID: 11400000, guid: e41e4bd12804841ab9a16ef3cc860499, type: 2}
+  scale: 0
   LeftPoint: {fileID: 0}
   RightPoint: {fileID: 0}
 --- !u!1001 &4244245776103457222
