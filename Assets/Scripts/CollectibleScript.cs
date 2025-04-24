@@ -8,7 +8,9 @@ public class CollectibleScript : MonoBehaviour
     public enum collectibles{
         Dash,
         Grapple,
-        DoubleJump
+        DoubleJump,
+        Heart,
+        Flask
     }
     public collectibles value;
 
@@ -28,7 +30,17 @@ public class CollectibleScript : MonoBehaviour
                 case collectibles.DoubleJump:
                 DataManager.Instance.playerData.doubleJump = true;
                 break;
-                
+
+                case collectibles.Heart:
+                DataManager.Instance.playerMaxHealth += 1;
+                DataManager.Instance.playerHealth = DataManager.Instance.playerMaxHealth;
+                break;
+
+                case collectibles.Flask:
+                DataManager.Instance.playerMaxHeals += 1;
+                DataManager.Instance.playerHeals = DataManager.Instance.playerMaxHeals;
+                break;
+
                 default:
                 break;
             }
