@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LaserScript : MonoBehaviour
@@ -23,7 +24,14 @@ public class LaserScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Collider2D[] hits;
+        
         
     }
+    void OnTriggerEnter2D(Collider2D collision){
+        if (collision.gameObject.tag == "Player"){
+            player.GetComponent<PlayerController>().Knockback(false, 1 ,collision);
+            player.GetComponent<PlayerColliderScript>().SetInvulnerable();
+        }
+    }
+
 }

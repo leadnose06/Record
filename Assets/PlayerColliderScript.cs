@@ -57,6 +57,7 @@ public SpriteRenderer sprite;
                 Debug.Log("Invulnerable");
             }
         }
+        
 
         
     }
