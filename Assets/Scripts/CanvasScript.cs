@@ -39,8 +39,8 @@ public class CanvasScript : MonoBehaviour
         Debug.Log(playerHealth + " ");
         Debug.Log(playerMaxHealth + " ");
 
-        playerNanos = 4;
-        playerMaxNanos = 4;
+        playerNanos = 1;
+        playerMaxNanos = 1;
         
         maxEnergy = DataManager.Instance.playerMaxEnergy;
         energyLevel = DataManager.Instance.playerEnergy;
