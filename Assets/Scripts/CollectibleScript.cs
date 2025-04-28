@@ -10,9 +10,14 @@ public class CollectibleScript : MonoBehaviour
         Grapple,
         DoubleJump,
         Heart,
-        Flask
+        Nano
     }
+    public GameObject canvas;
     public collectibles value;
+    void Awake()
+    {
+        canvas = GameObject.FindGameObjectWithTag("Canvas");
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -32,19 +37,17 @@ public class CollectibleScript : MonoBehaviour
                 break;
 
                 case collectibles.Heart:
-                DataManager.Instance.playerMaxHealth += 1;
-                DataManager.Instance.playerHealth = DataManager.Instance.playerMaxHealth;
+                canvas.GetComponent<CanvasScript>().addHeart();
                 break;
 
-                case collectibles.Flask:
-                DataManager.Instance.playerMaxHeals += 1;
-                DataManager.Instance.playerHeals = DataManager.Instance.playerMaxHeals;
+                case collectibles.Nano:
+                canvas.GetComponent<CanvasScript>().addNano();
                 break;
 
                 default:
                 break;
             }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }
