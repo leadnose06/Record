@@ -39,7 +39,7 @@ public class GiantEnemyAttacks : EnemyAttackSOBase
         base.DoPhysicsLogic();
         if(enemy.RB.velocity.y == 0 && enemy.RB.velocity.y == prevVelocity && jumping){
             jumping = false;
-            enemy.RB.gravityScale = 0;
+            enemy.RB.gravityScale = 30;
             Debug.Log("attackends");
             enemy.StateMachine.ChangeState(enemy.EnemyChaseState);
         }

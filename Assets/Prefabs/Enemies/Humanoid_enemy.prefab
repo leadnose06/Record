@@ -102,9 +102,9 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_AngularDrag: 0
+  m_GravityScale: 30
+  m_Material: {fileID: 6200000, guid: 13fa5bcfd28e542b6a6e09503a6cf372, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -124,7 +124,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 8982473307700265804}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 13fa5bcfd28e542b6a6e09503a6cf372, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 1024
@@ -171,8 +171,8 @@ PolygonCollider2D:
       - {x: -0.57324004, y: 0.09956622}
       - {x: -0.33475173, y: -0.0987103}
       - {x: -0.13771485, y: -0.09529424}
-      - {x: -0.2047323, y: -0.45009017}
-      - {x: 0.20285198, y: -0.44805455}
+      - {x: -0.2047323, y: -0.475}
+      - {x: 0.19999, y: -0.475}
       - {x: 0.14109851, y: -0.19363093}
       - {x: 0.2585433, y: -0.19540766}
       - {x: 0.25375915, y: -0.064781666}
@@ -304,27 +304,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3901438625853789648, guid: 66c015440487f4bc78ca30271b492fd6, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].x
-      value: -1.9895048
+      value: -1.8994045
       objectReference: {fileID: 0}
     - target: {fileID: 3901438625853789648, guid: 66c015440487f4bc78ca30271b492fd6, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].y
-      value: -0.28431702
+      value: -0.419469
       objectReference: {fileID: 0}
     - target: {fileID: 3901438625853789648, guid: 66c015440487f4bc78ca30271b492fd6, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[5].x
-      value: -6.2436476
+      value: -6.406865
       objectReference: {fileID: 0}
     - target: {fileID: 3901438625853789648, guid: 66c015440487f4bc78ca30271b492fd6, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[5].y
-      value: -0.44158673
+      value: -0.4623323
       objectReference: {fileID: 0}
     - target: {fileID: 3901438625853789648, guid: 66c015440487f4bc78ca30271b492fd6, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].x
-      value: -6.285024
+      value: -6.4101644
       objectReference: {fileID: 0}
     - target: {fileID: 3901438625853789648, guid: 66c015440487f4bc78ca30271b492fd6, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].y
-      value: 1.0484257
+      value: 1.193589
       objectReference: {fileID: 0}
     - target: {fileID: 3901438625853789648, guid: 66c015440487f4bc78ca30271b492fd6, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[7].x

@@ -126,6 +126,7 @@ MonoBehaviour:
   EnemyIdleBase: {fileID: 11400000, guid: 12321a24c92cb4097b335ef0a78bd7a2, type: 2}
   EnemyChaseBase: {fileID: 11400000, guid: f32bc00d7d743485ea525d4b83520677, type: 2}
   EnemyAttackBase: {fileID: 11400000, guid: 8d9c0630c3dd744cf8ae623076cbb40e, type: 2}
+  scale: 0
   leftX: -13
   rightX: 21
   topY: 100
@@ -140,7 +141,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 725287124043488357}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 13fa5bcfd28e542b6a6e09503a6cf372, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -208,8 +209,8 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_GravityScale: 30
+  m_Material: {fileID: 6200000, guid: 13fa5bcfd28e542b6a6e09503a6cf372, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
