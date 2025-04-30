@@ -143,6 +143,10 @@ public class PlayerController : MonoBehaviour
         else {
             experiencingKnockback = false;
         }
+        if (DataManager.Instance.playerMaxEnergy == DataManager.Instance.playerEnergy && DataManager.Instance.playerMaxHeals != DataManager.Instance.playerHeals){
+            DataManager.Instance.playerEnergy = 0;
+            DataManager.Instance.playerHeals += 1;
+        }
     }
 
     private void FixedUpdate() {
@@ -267,6 +271,7 @@ public class PlayerController : MonoBehaviour
                     rb.velocity = new Vector2(rb.velocity.x, downHitBounceAmount);
                     downHit = false;
                     dashReady = true;
+                    DataManager.Instance.dashReady = true;
                     DataManager.Instance.doubleJumpReady = true;
                 }
             }

@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b9711078ae6c44e8b98c2bfbf8eb0f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 30
+  <MaxHealth>k__BackingField: 15
   <IsFacingRight>k__BackingField: 0
   origin: {x: 13, y: -6}
   maxDist: 100
@@ -230,6 +230,7 @@ MonoBehaviour:
   EnemyIdleBase: {fileID: 11400000, guid: 46cee05d54c0a42e0b05491a6c26aa72, type: 2}
   EnemyChaseBase: {fileID: 11400000, guid: 6afefa5c90bc44323b6c4b8544ab84f6, type: 2}
   EnemyAttackBase: {fileID: 11400000, guid: 2505c747fe5324a67ad8bb599b04cc5b, type: 2}
+  scale: 0
   LeftPoint: {fileID: 0}
   RightPoint: {fileID: 0}
   laser: {fileID: 8362942299137533091, guid: f1ea7f56b78644b0dba18399990c42df, type: 3}
