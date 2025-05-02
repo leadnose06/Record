@@ -24,6 +24,7 @@ public class DataManager : MonoBehaviour
     public bool doubleJumpReady = true;
     public bool dashReady = true;
     public bool toBench;
+    public bool invulnerable = false;
     private void Awake(){
         if(Instance != null){
             Destroy(gameObject);

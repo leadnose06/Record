@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
             colorIsRed = false;
         }
         else {colorHitTimer -= Time.deltaTime;}
-       
+          
        /*if (timer <= 0f){
         timer = 0.25f;
         Debug.Log("velocity x: " + rb.velocity.x);

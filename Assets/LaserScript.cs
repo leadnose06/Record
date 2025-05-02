@@ -28,8 +28,8 @@ public class LaserScript : MonoBehaviour
         
     }
     void OnTriggerEnter2D(Collider2D collision){
-        if (collision.gameObject.tag == "Player"){
-            player.GetComponent<PlayerController>().Knockback(false, 1 ,collision);
+        if (collision.gameObject.tag == "Player" && !DataManager.Instance.invulnerable){
+            player.GetComponent<PlayerController>().damage(1);
             player.GetComponent<PlayerColliderScript>().SetInvulnerable();
         }
     }

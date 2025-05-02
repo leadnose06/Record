@@ -25,18 +25,20 @@ public SpriteRenderer sprite;
         }
         if (invulnerableTimer <= 0f) {
             invulnerable = false;
+            DataManager.Instance.invulnerable = false;
             invulnerableTimer = 0.25f;
             Debug.Log("No Longer Invulnerable");
-            sprite.color = Color.white;
+            sprite.color = Color.white;   
         }
+        
+       
     }
 
     public void SetInvulnerable(){
-        if (!invulnerable){
-            invulnerable = true;
-            invulnerableTimer = 1.5f;
-            Debug.Log("Invulnerable");
-        }
+        invulnerable = true;
+        invulnerableTimer = 1.5f;
+        Debug.Log("Invulnerable");
+        DataManager.Instance.invulnerable = true;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -52,9 +54,7 @@ public SpriteRenderer sprite;
                 else{
                     player.GetComponent<PlayerController>().Knockback(false,damageAmount,collision);
                 }
-                invulnerable = true;
-                invulnerableTimer = 1.5f;
-                Debug.Log("Invulnerable");
+                SetInvulnerable();
             }
         }
         
@@ -73,9 +73,7 @@ public SpriteRenderer sprite;
                 else{
                     player.GetComponent<PlayerController>().Knockback(false,damageAmount,collision);
                 }
-                invulnerable = true;
-                invulnerableTimer = 1.5f;
-                Debug.Log("Invulnerable");
+                SetInvulnerable();
             }
         }
     }
