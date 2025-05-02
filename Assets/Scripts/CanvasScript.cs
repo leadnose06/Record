@@ -101,7 +101,10 @@ public class CanvasScript : MonoBehaviour
             }
             else {Nanos[i].GetComponent<Image>().enabled = true;}
         }
-        if (energyLevel == maxEnergy && DataManager.Instance.playerHeals < DataManager.Instance.playerMaxHeals) {
+        
+    }
+    public void onRegainHeal(InputAction.CallbackContext context){
+        if (energyLevel >= maxEnergy && DataManager.Instance.playerHeals == 0 && context.started) {
             DataManager.Instance.playerHeals += 1;
             DataManager.Instance.playerEnergy = 0;
         }
@@ -160,6 +163,7 @@ public class CanvasScript : MonoBehaviour
 
     public void addHeart(){
         DataManager.Instance.playerMaxHealth++;
+        DataManager.Instance.playerData.maxHealth++;
         DataManager.Instance.playerHealth = DataManager.Instance.playerMaxHealth;
         playerMaxHealth = DataManager.Instance.playerMaxHealth;
         float heartX = -300f;
@@ -171,6 +175,7 @@ public class CanvasScript : MonoBehaviour
 
     public void addNano(){
         DataManager.Instance.playerMaxHeals++;
+        DataManager.Instance.playerData.maxHeals++;
         DataManager.Instance.playerHeals = DataManager.Instance.playerMaxHeals;
         playerMaxNanos = DataManager.Instance.playerMaxHeals;
         float nanoX = -294f;

@@ -1022,7 +1022,7 @@ MonoBehaviour:
     m_ActionName: UI/Submit[/Keyboard/enter,/XboxOneGampadMacOSWireless/buttonSouth]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2923740685611441666, guid: bb7809aa3b8a240c1981c699e6643881, type: 3}
         m_TargetAssemblyTypeName: CanvasScript, Assembly-CSharp
         m_MethodName: onCancel
         m_Mode: 0
@@ -1046,9 +1046,9 @@ MonoBehaviour:
     m_ActionName: UI/Click[/Mouse/leftButton,/Pen/tip]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8567985685176349654, guid: bb7809aa3b8a240c1981c699e6643881, type: 3}
         m_TargetAssemblyTypeName: MapScript, Assembly-CSharp
-        m_MethodName: OnScroll
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1170,7 +1170,7 @@ MonoBehaviour:
     m_ActionName: Player/Normal Attack[/DualShock4GamepadHID/buttonWest]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2923740685611441666, guid: bb7809aa3b8a240c1981c699e6643881, type: 3}
         m_TargetAssemblyTypeName: CanvasScript, Assembly-CSharp
         m_MethodName: onMenu
         m_Mode: 0
@@ -1198,13 +1198,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2923740685611441666, guid: bb7809aa3b8a240c1981c699e6643881, type: 3}
+        m_TargetAssemblyTypeName: CanvasScript, Assembly-CSharp
+        m_MethodName: onRegainHeal
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 27c07e8c-bd4e-4d1c-87fc-b9926812aa42
     m_ActionName: Player/Heal[/XboxOneGampadMacOSWireless/dpad/down,/Keyboard/q]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2923740685611441666, guid: bb7809aa3b8a240c1981c699e6643881, type: 3}
         m_TargetAssemblyTypeName: CanvasScript, Assembly-CSharp
-        m_MethodName: onInventory
+        m_MethodName: onMenu
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class DataManager : MonoBehaviour
 {
+    public static int StartingMaxHealth = 5;
+    public static int StartingMaxHeals = 1;
+    public static int StartingMaxEnergy = 10;
     public static DataManager Instance;
     public int playerHealth;
     public int playerMaxHealth;
@@ -24,12 +27,14 @@ public class DataManager : MonoBehaviour
     public bool doubleJumpReady = true;
     public bool dashReady = true;
     public bool toBench;
+    public bool spawning;
     private void Awake(){
         if(Instance != null){
             Destroy(gameObject);
             return;
         }
         toBench = true;
+        spawning = true;
         lastBench = SceneManager.GetActiveScene().name;
         Instance = this;
         DontDestroyOnLoad(gameObject);
@@ -41,6 +46,9 @@ public class DataManager : MonoBehaviour
     public void CreateSave1()
     {
         playerData = new PlayerSaveData();
+        playerData.maxHealth = StartingMaxHealth;
+        playerData.maxHeals = StartingMaxHeals;
+        playerData.maxEnergy = StartingMaxEnergy;
         saveFilePath1 = Application.persistentDataPath + "/PlayerSaveData1.json";
         saveNumber = 1;
         Debug.Log(saveFilePath1);
@@ -49,6 +57,9 @@ public class DataManager : MonoBehaviour
     public void CreateSave2()
     {
         playerData = new PlayerSaveData();
+        playerData.maxHealth = StartingMaxHealth;
+        playerData.maxHeals = StartingMaxHeals;
+        playerData.maxEnergy = StartingMaxEnergy;
         saveFilePath2 = Application.persistentDataPath + "/PlayerSaveData2.json";
         saveNumber = 2;
         Debug.Log(saveFilePath2);
@@ -56,6 +67,9 @@ public class DataManager : MonoBehaviour
     public void CreateSave3()
     {
         playerData = new PlayerSaveData();
+        playerData.maxHealth = StartingMaxHealth;
+        playerData.maxHeals = StartingMaxHeals;
+        playerData.maxEnergy = StartingMaxEnergy;
         playerData.dash = false;
         playerData.grapple = false;
         playerData.doubleJump = false;
@@ -112,7 +126,12 @@ public class DataManager : MonoBehaviour
             playerData = JsonUtility.FromJson<PlayerSaveData>(loadPlayerData);
         }
         }
-        
+        playerMaxHealth = playerData.maxHealth;
+        playerMaxHeals = playerData.maxHeals;
+        playerMaxEnergy = playerData.maxEnergy;
+        playerHealth = playerMaxHealth;
+        playerHeals = playerMaxHeals;
+        playerEnergy = Mathf.Round(playerMaxEnergy/2);
     }
 
 

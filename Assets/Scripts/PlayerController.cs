@@ -219,6 +219,8 @@ public class PlayerController : MonoBehaviour
             DataManager.Instance.playerHealth = DataManager.Instance.playerMaxHealth;
             DataManager.Instance.playerData.lastBench = SceneManager.GetActiveScene().name;
             DataManager.Instance.SaveGame();
+            DataManager.Instance.playerHealth = DataManager.Instance.playerMaxHealth;
+            DataManager.Instance.playerHeals = DataManager.Instance.playerMaxHeals;
             Debug.Log("new bench");
         }
 
@@ -261,7 +263,9 @@ public class PlayerController : MonoBehaviour
                     enemy.GetComponent<Enemy>().Damage(5.0f);
                 }
                 if (hit) {
-                    DataManager.Instance.playerEnergy += 1;
+                    if(DataManager.Instance.playerEnergy < DataManager.Instance.playerMaxEnergy){
+                        DataManager.Instance.playerEnergy += 1;
+                    }
                     //Debug.Log("energy level up");
                 }
                 else {downHit = false;}
@@ -328,6 +332,7 @@ public class PlayerController : MonoBehaviour
         }else{
             SceneManager.LoadScene(DataManager.Instance.playerData.lastBench);
         }
+        DataManager.Instance.LoadGame();
     }
 
     void OnCollisionEnter2D(Collision2D col){

@@ -298,7 +298,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2391548824660371307, guid: 8f669abe5bf7d4965b0df39c0ed20f14, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.0789375
+      value: 1.1111112
       objectReference: {fileID: 0}
     - target: {fileID: 2391548824660371307, guid: 8f669abe5bf7d4965b0df39c0ed20f14, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8080,6 +8080,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1869699145}
     - target: {fileID: 895536855968062351, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1473312079}
+    - target: {fileID: 895536855968062351, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
       propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1869699145}
@@ -8091,6 +8095,10 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[22].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2051554742}
+    - target: {fileID: 895536855968062351, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3397217332123835267, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.15
@@ -8349,6 +8357,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb7809aa3b8a240c1981c699e6643881, type: 3}
+--- !u!1 &1473312079 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8567985685176349654, guid: bb7809aa3b8a240c1981c699e6643881, type: 3}
+  m_PrefabInstance: {fileID: 1473312078}
+  m_PrefabAsset: {fileID: 0}
 --- !u!60 &1511161768 stripped
 PolygonCollider2D:
   m_CorrespondingSourceObject: {fileID: 2540438741265328403, guid: b63a46ed3e0d7498988feb049244509d, type: 3}
@@ -8671,7 +8684,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2923740685611441666, guid: bb7809aa3b8a240c1981c699e6643881, type: 3}
   m_PrefabInstance: {fileID: 1473312078}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1473312079}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9920a658ec7a9473d8fe34988f03cf17, type: 3}

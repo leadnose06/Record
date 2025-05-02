@@ -23,7 +23,7 @@ public class LevelChanger : MonoBehaviour
         if(DataManager.Instance.toBench){
             //Debug.Log("tobench");
             player.transform.position = DataManager.Instance.bench.transform.position;
-        } else{
+        } else if(!DataManager.Instance.spawning){
             if(_connection == LevelConnection.ActiveConnection){
                 //Debug.Log("todoor");
                 player.transform.position = spawnPoint.position;
@@ -41,6 +41,7 @@ public class LevelChanger : MonoBehaviour
         //Debug.Log("o");
         if (other.gameObject.tag.Equals("Player")){
             DataManager.Instance.toBench = false;
+            DataManager.Instance.spawning = false;
             LevelConnection.ActiveConnection = _connection;
             SceneManager.LoadScene(targetSceneName);
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(targetSceneName));
