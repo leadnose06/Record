@@ -33,7 +33,7 @@ public class DataManager : MonoBehaviour
         lastBench = SceneManager.GetActiveScene().name;
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        playerMaxHealth = 3;
+        playerMaxHealth = 5;
         playerHealth = playerMaxHealth;
         playerHeals = playerMaxHeals;
     }

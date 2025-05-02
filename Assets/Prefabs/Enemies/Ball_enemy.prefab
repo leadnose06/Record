@@ -166,7 +166,7 @@ MonoBehaviour:
   <IsFacingRight>k__BackingField: 0
   origin: {x: -4.91291, y: 0.4435753}
   maxDist: 15
-  speed: 1.5
+  speed: 3
   contactFilter:
     useTriggers: 1
     useLayerMask: 1
