@@ -39,8 +39,8 @@ public class CanvasScript : MonoBehaviour
         Debug.Log(playerHealth + " ");
         Debug.Log(playerMaxHealth + " ");
 
-        playerNanos = 1;
-        playerMaxNanos = 1;
+        playerNanos = DataManager.Instance.playerHeals;
+        playerMaxNanos = DataManager.Instance.playerMaxHeals;
         
         maxEnergy = DataManager.Instance.playerMaxEnergy;
         energyLevel = DataManager.Instance.playerEnergy;
@@ -165,7 +165,7 @@ public class CanvasScript : MonoBehaviour
         float heartX = -300f;
         float heartY = 170f;
         Hearts.Add(Instantiate(MainHeart, new Vector3( heartX + (playerMaxHealth - 1) * 30, heartY, 0),Quaternion.identity));
-            Hearts[playerMaxHealth - 1].transform.SetParent (GameObject.FindGameObjectWithTag("Canvas").transform, false);
+        Hearts[playerMaxHealth - 1].transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
 
     }
 
@@ -176,7 +176,7 @@ public class CanvasScript : MonoBehaviour
         float nanoX = -294f;
         float nanoY = 125f;
         Nanos.Add(Instantiate(MainNano, new Vector3( nanoX + (playerMaxNanos - 1) * 30, nanoY, 0),Quaternion.identity));
-            Nanos[playerMaxNanos - 1].transform.SetParent (GameObject.FindGameObjectWithTag("Canvas").transform, false);
+        Nanos[playerMaxNanos - 1].transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
 
     }
 

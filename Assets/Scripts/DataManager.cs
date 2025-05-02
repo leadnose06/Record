@@ -34,6 +34,7 @@ public class DataManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         playerMaxHealth = 5;
+        playerMaxHeals = 1;
         playerHealth = playerMaxHealth;
         playerHeals = playerMaxHeals;
     }
