@@ -84,7 +84,18 @@ public class PlayerController : MonoBehaviour
     {
         if(CanvasScript.paused == true) return;
         //flips player based on horizontal movement, does not work wheb attacking
-        
+        if (attackTimer > 0.45f) {
+            if (moveInput.normalized.x > 0.01f) {
+                moveAnimator.SetBool("Idle",false);
+                idleTimer = 0f;
+                transform.localScale = Vector3.one;
+            }
+            else if (moveInput.normalized.x < -0.01f) {
+                transform.localScale = new Vector3(-1,1,1);
+                moveAnimator.SetBool("Idle",false);
+                idleTimer = 0f;
+            }
+        }
        
     
         //Debug.Log("" + rb.velocity.x);
@@ -137,19 +148,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate() {
         if(!touchingDirections.isOnWall && !animationLock && !experiencingKnockback){
-            if (attackTimer > 0.45f) {
-                if (moveInput.normalized.x > 0.01f) {
-                    moveAnimator.SetBool("Idle",false);
-                    idleTimer = 0f;
-                    transform.localScale = Vector3.one;
-                }
-                else if (moveInput.normalized.x < -0.01f) {
-                    transform.localScale = new Vector3(-1,1,1);
-                    moveAnimator.SetBool("Idle",false);
-                    idleTimer = 0f;
-                }
-            }   
-            rb.velocity = new Vector2(moveInput.normalized.x * speed, rb.velocity.y);
+               
+            rb.velocity = new Vector2(moveInput.x * speed, rb.velocity.y);
         }
         if(isDashing){
             rb.MovePosition(new Vector2(transform.position.x + (dashSign * 8f * Time.fixedDeltaTime), transform.position.y));
@@ -174,7 +174,7 @@ public class PlayerController : MonoBehaviour
         moveAnimator.SetBool("Idle",false);
         idleTimer = 0f;
         moveInput = context.ReadValue<Vector2>();
-
+        
         //IsMoving = moveInput != Vector2.zero;
         IsMoving = moveInput.x != 0f;
       
