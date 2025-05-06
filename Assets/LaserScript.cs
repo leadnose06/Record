@@ -30,7 +30,11 @@ public class LaserScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision){
         if (collision.gameObject.tag == "Player" && !DataManager.Instance.invulnerable){
             player.GetComponent<PlayerController>().damage(1);
-            player.GetComponent<PlayerColliderScript>().SetInvulnerable();
+            player.transform.Find("EnemyCollider").gameObject.GetComponent<PlayerColliderScript>().SetInvulnerable();
+            Debug.Log("hit");
+            Destroy(gameObject);
+        } else if(collision.gameObject.tag == "Wall"){
+            Destroy(gameObject);
         }
     }
 

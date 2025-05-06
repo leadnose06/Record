@@ -89,7 +89,6 @@ public class CanvasScript : MonoBehaviour
         //update hearts
         for (int i = Hearts.Count - 1; i >= 0 ; i--){
             if (i+1 > playerHealth) {
-                Debug.Log(i + " " + Hearts.Count);
                 Hearts[i].GetComponent<Image>().sprite = emptyHeart;
             }
             else {Hearts[i].GetComponent<Image>().sprite = fullHeart;}
@@ -104,7 +103,7 @@ public class CanvasScript : MonoBehaviour
         
     }
     public void onRegainHeal(InputAction.CallbackContext context){
-        if (energyLevel >= maxEnergy && DataManager.Instance.playerHeals == 0 && context.started) {
+        if (DataManager.Instance.playerMaxEnergy == DataManager.Instance.playerEnergy && DataManager.Instance.playerHeals == 0 && context.started) {
             DataManager.Instance.playerHeals += 1;
             DataManager.Instance.playerEnergy = 0;
         }
