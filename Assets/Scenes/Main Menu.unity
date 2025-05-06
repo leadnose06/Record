@@ -626,8 +626,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8591517325345134367, guid: 8dc4c79299c97466499604b90f2452ad, type: 3}
-        m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
+      - m_Target: {fileID: 935521292}
+        m_TargetAssemblyTypeName: SaveMenuScript, Assembly-CSharp
         m_MethodName: delete3
         m_Mode: 1
         m_Arguments:
@@ -912,8 +912,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8591517325345134367, guid: 8dc4c79299c97466499604b90f2452ad, type: 3}
-        m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
+      - m_Target: {fileID: 935521292}
+        m_TargetAssemblyTypeName: SaveMenuScript, Assembly-CSharp
         m_MethodName: delete2
         m_Mode: 1
         m_Arguments:
@@ -1567,17 +1567,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8640130208096915972, guid: 03465211731c5441bb79ff9a9e2cbb22, type: 3}
   m_PrefabInstance: {fileID: 883911588949238670}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1379890152 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8591517325345134367, guid: 8dc4c79299c97466499604b90f2452ad, type: 3}
-  m_PrefabInstance: {fileID: 1865912576}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b58cfc0e048e4dd6a2bc37e384c5687, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1382814842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2398,8 +2387,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1379890152}
-        m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
+      - m_Target: {fileID: 935521292}
+        m_TargetAssemblyTypeName: SaveMenuScript, Assembly-CSharp
         m_MethodName: delete1
         m_Mode: 1
         m_Arguments:
