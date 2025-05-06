@@ -186,7 +186,7 @@ public class PlayerController : MonoBehaviour
 
     public void onJump(InputAction.CallbackContext context){
         //TODO check if alive so no jumping during death animations
-        if(context.performed && (touchingDirections.isGrounded || DataManager.Instance.playerData.doubleJump) && !animationLock){
+        if(context.performed && (touchingDirections.isGrounded || (DataManager.Instance.doubleJumpReady && DataManager.Instance.playerData.doubleJump)) && !animationLock){
             if (!touchingDirections.isGrounded) {DataManager.Instance.doubleJumpReady = false;}
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
             moveAnimator.SetBool("Idle",false);
