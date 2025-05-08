@@ -11,14 +11,12 @@ public class AttachOnEnter : MonoBehaviour
     {
         
     }
-    // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
-        timer = 0.5f;
+        timer = 0.75f;
     }
 
-    // Update is called once per frame
     void Update()
     {
         timer -= Time.deltaTime;
@@ -28,7 +26,10 @@ public class AttachOnEnter : MonoBehaviour
     }
     void OnTriggerStay2D(Collider2D collision)
     {
-        player.GetComponent<GrapplingScript>().attached = grapple;
-        player.GetComponent<GrapplingScript>().onConnect();
+        if(collision.transform.gameObject.tag == "Player"){
+            player.GetComponent<GrapplingScript>().attached = grapple;
+            player.GetComponent<GrapplingScript>().onConnect();
+            Destroy(gameObject);
+        }
     }
 }
