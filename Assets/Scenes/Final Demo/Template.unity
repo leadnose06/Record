@@ -190,11 +190,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2391548824660371307, guid: 8f669abe5bf7d4965b0df39c0ed20f14, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.4988136
+      value: -9.078941
       objectReference: {fileID: 0}
     - target: {fileID: 2391548824660371307, guid: 8f669abe5bf7d4965b0df39c0ed20f14, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.40806
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 2391548824660371307, guid: 8f669abe5bf7d4965b0df39c0ed20f14, type: 3}
       propertyPath: m_LocalPosition.z
@@ -294,6 +294,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c78e5b05e660450a8fe880886152ce9, type: 3}
+--- !u!1 &460612114 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5526975967580013242, guid: 6c78e5b05e660450a8fe880886152ce9, type: 3}
+  m_PrefabInstance: {fileID: 460612113}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &556143452
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -356,7 +361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5366568100950084757, guid: bb7809aa3b8a240c1981c699e6643881, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 224.99991
+      value: 0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 5835401108395662306, guid: bb7809aa3b8a240c1981c699e6643881, type: 3}
       propertyPath: m_AnchorMax.x
@@ -608,6 +613,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3539525719518454412, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
+      propertyPath: line
+      value: 
+      objectReference: {fileID: 2036587228}
+    - target: {fileID: 3539525719518454412, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
+      propertyPath: objectTracker
+      value: 
+      objectReference: {fileID: 460612114}
     - target: {fileID: 5328889099186597452, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
       propertyPath: m_BoundingShape2D
       value: 
@@ -7157,6 +7170,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9543dba4b26374f0689dc34e1e8fe24c, type: 3}
+--- !u!114 &2036587228 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6526753523493817214, guid: 9543dba4b26374f0689dc34e1e8fe24c, type: 3}
+  m_PrefabInstance: {fileID: 2036587227}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95b8b43c390fa4c91b28f7d13610c41b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
