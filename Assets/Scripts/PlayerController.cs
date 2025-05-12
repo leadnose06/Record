@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     private int num = 0;
     private bool inBench = false;
     private float idleTimer = 20f;
+
+    public float maxSpeedY = -10.0f;
     
     //Attack Variables
     private float bladeTimer;
@@ -75,6 +77,7 @@ public class PlayerController : MonoBehaviour
         animationLock = false;
         dashReady = true;
         Physics2D.IgnoreLayerCollision(3,6);
+        maxSpeedY = -10.0f;
     }
 
 
@@ -143,7 +146,7 @@ public class PlayerController : MonoBehaviour
         else {
             experiencingKnockback = false;
         }
-
+        Debug.Log(rb.velocity.y + "");
     }
 
     private void FixedUpdate() {
@@ -165,6 +168,9 @@ public class PlayerController : MonoBehaviour
                 if(Mathf.Abs(transform.position.x - dashDist)<max){max = Mathf.Abs(transform.position.x - dashDist);}
                 //Debug.Log("avg: "+all/num + " max: "+max);
             }
+        }
+        if (rb.velocity.y < maxSpeedY) {
+            rb.velocity = new Vector2(rb.velocity.x, maxSpeedY);
         }
     }
 
@@ -364,5 +370,9 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Velocity: " + rb.velocity.x);
         knockbackTimer = 0.25f;
         experiencingKnockback = true;
+        dashReady = true;
+        DataManager.Instance.dashReady = true;
+        DataManager.Instance.doubleJumpReady = true;
+
     }
 }

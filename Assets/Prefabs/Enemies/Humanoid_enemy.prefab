@@ -354,6 +354,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CollisionChecker
       objectReference: {fileID: 0}
+    - target: {fileID: 7030523556116089041, guid: 66c015440487f4bc78ca30271b492fd6, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7286672006747106992, guid: 66c015440487f4bc78ca30271b492fd6, type: 3}
       propertyPath: enemy
       value: 

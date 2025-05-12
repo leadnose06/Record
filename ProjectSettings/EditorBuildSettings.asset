@@ -134,5 +134,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Final Demo/D1.unity
     guid: 56bd026f660c3429f88d4e0ac778c740
+  - enabled: 1
+    path: Assets/Scenes/Final Demo/D2.unity
+    guid: 08c92a1f40e9646b597877ff32dc52d5
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 1c81c3bf28e9542aeadd157cf4d7a7a1, type: 2}
