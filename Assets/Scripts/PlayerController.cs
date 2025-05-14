@@ -258,7 +258,12 @@ public class PlayerController : MonoBehaviour
                 foreach(Collider2D enemy in hitEnemies) {
                     //Debug.Log("Hit");
                     hit = true;
-                    enemy.GetComponent<Enemy>().Damage(5.0f);
+                    if(enemy.CompareTag("Enemy")){
+                        enemy.GetComponent<Enemy>().Damage(5.0f);
+                    }
+                    if(enemy.CompareTag("Boss")){
+                        enemy.GetComponent<BossScript>().Damage(5.0f);
+                    }
                 }
                 if (hit) {
                     if(DataManager.Instance.playerEnergy < DataManager.Instance.playerMaxEnergy){
