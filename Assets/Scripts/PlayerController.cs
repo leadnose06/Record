@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour
         else {
             experiencingKnockback = false;
         }
-        Debug.Log(rb.velocity.y + "");
+        //Debug.Log(rb.velocity.y + "");
     }
 
     private void FixedUpdate() {

@@ -29,6 +29,10 @@ public class DataManager : MonoBehaviour
     public bool toBench;
     public bool invulnerable = false;
     public bool spawning;
+    //public bool WallsLocked = true;
+    public bool miniboss1Dead = false;
+    public bool miniboss2Dead = false;
+    public bool miniboss3Dead = false;
     private void Awake(){
         if(Instance != null){
             Destroy(gameObject);
