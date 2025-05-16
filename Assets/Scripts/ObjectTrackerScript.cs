@@ -27,11 +27,11 @@ public class ObjectTrackerScript : MonoBehaviour
         for (int x = 0; x < boss.Length; x++) {
             if (boss[x].gameObject.activeSelf) {
                 bossDead = false;
-                Debug.Log("Boss not dead");
+                //Debug.Log("Boss not dead");
             }
         }
         if (bossDead){
-            Debug.Log("A door has opened");
+            //Debug.Log("A door has opened");
             if (level.Equals("B3")){
                 DataManager.Instance.miniboss1Dead = true;
             }

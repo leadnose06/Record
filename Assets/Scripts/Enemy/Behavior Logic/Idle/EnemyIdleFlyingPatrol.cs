@@ -38,6 +38,7 @@ public class EnemyIdleFlyingPatrol : EnemyIdleSOBase
         }
         if(Vector2.Distance(enemy.origin, new Vector2(enemy.transform.position.x, enemy.transform.position.y)) > 1){
             returning = true;
+            Debug.Log("returning");
         }
     }
     public override void DoExitLogic()
@@ -48,23 +49,28 @@ public class EnemyIdleFlyingPatrol : EnemyIdleSOBase
     {
         base.DoFrameUpdateLogic();
         if(!returning){
-            if((enemy.transform.position - _targetPos).sqrMagnitude < 0.1f){
+            if((_targetPos - enemy.transform.position).sqrMagnitude < 0.2f){
                 if(rightPoint){
                     _targetPos = LeftPoint.position;
                     rightPoint = false;
+                    //Debug.Log("targeting left point");
                 } else {
                     _targetPos = RightPoint.position;
                     rightPoint = true;
+                    //Debug.Log("targeting right point");
                 }
             }
             _direction = (_targetPos - enemy.transform.position).normalized;
             enemy.MoveEnemy(_direction * speed);
+            Debug.Log("Moving, Distance: " + (_targetPos - enemy.transform.position).sqrMagnitude);
         } else{
             if(Vector2.Distance(enemy.origin, new Vector2(enemy.transform.position.x, enemy.transform.position.y)) < 1){
                 returning = false;
+                //Debug.Log("not returning");
             } else{
                 _direction = (new Vector3(enemy.origin.x, enemy.origin.y) - enemy.transform.position).normalized;
                 enemy.MoveEnemy(_direction * speed);
+                //Debug.Log("Direction Changed");
             }
         }
     }

@@ -28,7 +28,8 @@ public class LockedWallScript : MonoBehaviour
         }
 
         if (minibossDead) {
-            Destroy(lockedWall);
+            //Destroy(lockedWall);
+            lockedWall.SetActive(false);
         }
     }
 }
