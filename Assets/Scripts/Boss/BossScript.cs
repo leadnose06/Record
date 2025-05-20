@@ -22,7 +22,7 @@ public class BossScript : MonoBehaviour
     void Start()
     {
         phase = 1;
-        activated = true;
+        //activated = true;
         laserArray = new GameObject[15];
         bulletArray = new GameObject[50];
         for (int i = 0; i < 15; i++)
@@ -43,7 +43,7 @@ public class BossScript : MonoBehaviour
     {
         if (phase == 2)
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(46, 24), 4*Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(46, 24), 7 * Time.deltaTime);
         }
         if (colorIsRed && colorHitTimer <= 0) { sprite.color = Color.white; }
         else { colorHitTimer -= Time.deltaTime; }
@@ -68,7 +68,7 @@ public class BossScript : MonoBehaviour
                 }
                 else
                 {
-                    attackChoice = Random.Range(0, 3);
+                    attackChoice = Random.Range(0, 4);
                     switch (attackChoice)
                     {
                         case 0:
@@ -81,6 +81,9 @@ public class BossScript : MonoBehaviour
                             break;
                         case 2:
                             BulletCircle();
+                            break;
+                        case 3:
+                            LaserSpin(5, true);
                             break;
                         default:
                             break;
@@ -173,6 +176,31 @@ public class BossScript : MonoBehaviour
             bulletArray[i].GetComponent<BossBulletScripe>().direction = new Vector3(Mathf.Cos(Mathf.Deg2Rad * angle), Mathf.Sin(Mathf.Deg2Rad * angle), 0);
             bulletArray[i].transform.position = transform.position + new Vector3(0, 0.5f, 0);
             bulletArray[i].SetActive(true);
+        }
+    }
+
+    private void LaserSpin(int number, bool clockwise)
+    {
+        int highestIndex = 14;
+        for (int i = 14; i > 0; i--)
+        {
+            if (laserArray[i].activeSelf == false)
+            {
+                highestIndex = i;
+                break;
+            }
+        }
+        for (int i = highestIndex; i > highestIndex - number; i--)
+        {
+            laserArray[i].transform.eulerAngles = new Vector3(0, 0, 0);
+            laserArray[i].GetComponent<BossLaserScript>().point = transform.position;
+            laserArray[i].transform.position = transform.position + new Vector3(0, 0.75f, 0);
+            laserArray[i].transform.RotateAround(transform.position + new Vector3(0, 0.75f, 0), new Vector3(0, 0, 1), (highestIndex-i) * (360/number));
+            laserArray[i].GetComponent<BossLaserScript>().duration = 4f;
+            laserArray[i].GetComponent<BossLaserScript>().spin = true;
+            laserArray[i].GetComponent<BossLaserScript>().clockwise = clockwise;
+            laserArray[i].GetComponent<BossLaserScript>().turnSpeed = 15;
+            laserArray[i].SetActive(true);
         }
     }
 

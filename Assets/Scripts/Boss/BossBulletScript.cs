@@ -8,7 +8,7 @@ public class BossBulletScripe : MonoBehaviour
     private GameObject player;
     private Rigidbody2D rb;
     private Collider2D c;
-    public float speed = 2.0f;
+    public float speed = 3.0f;
     public Vector3 direction;
     void OnEnable()
     {
