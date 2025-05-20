@@ -33,8 +33,11 @@ public class DataManager : MonoBehaviour
     public bool miniboss1Dead = false;
     public bool miniboss2Dead = false;
     public bool miniboss3Dead = false;
-    private void Awake(){
-        if(Instance != null){
+    
+    private void Awake()
+    {
+        if (Instance != null)
+        {
             Destroy(gameObject);
             return;
         }
@@ -144,12 +147,14 @@ public class DataManager : MonoBehaviour
 
 
 [System.Serializable]
-public class PlayerSaveData{
+public class PlayerSaveData
+{
     public int maxHealth;
     public int maxHeals;
     public int maxEnergy;
     public int currentMoney;
     public string lastBench;
+    public ArrayList collected;
     #region abilites
     public bool dash;
     public bool doubleJump;

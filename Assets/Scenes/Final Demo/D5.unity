@@ -15109,6 +15109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137104ca6af074d5c80323e225730ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectableName: Nano 3
   canvas: {fileID: 0}
   value: 4
 --- !u!212 &1419065620
@@ -15188,7 +15189,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2391548824660371307, guid: 8f669abe5bf7d4965b0df39c0ed20f14, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.751051
+      value: -14.581014
       objectReference: {fileID: 0}
     - target: {fileID: 2391548824660371307, guid: 8f669abe5bf7d4965b0df39c0ed20f14, type: 3}
       propertyPath: m_LocalPosition.y

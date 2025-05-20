@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class CollectibleScript : MonoBehaviour
 {
-    public enum collectibles{
+    public string collectableName;
+    public enum collectibles
+    {
         Dash,
         Grapple,
         DoubleJump,
@@ -16,8 +18,21 @@ public class CollectibleScript : MonoBehaviour
     public collectibles value;
     void Awake()
     {
+        
+        ArrayList collected = DataManager.Instance.playerData.collected;
+
         canvas = GameObject.FindGameObjectWithTag("Canvas");
+        if (collected.Count > 0)
+        {
+            if (collected.IndexOf(collectableName) >= 0)
+            {
+                gameObject.SetActive(false);
+            }
+        }
+
+        
     }
+    public string GetName() { return name; }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -47,6 +62,8 @@ public class CollectibleScript : MonoBehaviour
                 default:
                 break;
             }
+            DataManager.Instance.playerData.collected.Add(collectableName);
+            Debug.Log("Collectable added");
             Destroy(gameObject);
         }
     }
