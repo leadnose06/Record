@@ -9513,6 +9513,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9fbbe3ebf0484b33bf4809f8dcaf301, type: 3}
+--- !u!1 &180640615 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5477614256282553919, guid: bb7809aa3b8a240c1981c699e6643881, type: 3}
+  m_PrefabInstance: {fileID: 2017820673}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &190155392
 GameObject:
   m_ObjectHideFlags: 0
@@ -18766,6 +18771,71 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7893413262101768708, guid: 23c0e33c9a6af460fbdb00d5578dc6f3, type: 3}
   m_PrefabInstance: {fileID: 617172204}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &408598200
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 949048214}
+    m_Modifications:
+    - target: {fileID: 542473548141405947, guid: 71677ef51bade4ed5a85d5866b33675b, type: 3}
+      propertyPath: m_Name
+      value: Message Trigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 2619195295792315507, guid: 71677ef51bade4ed5a85d5866b33675b, type: 3}
+      propertyPath: message
+      value: Press A/X midair to double jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 2619195295792315507, guid: 71677ef51bade4ed5a85d5866b33675b, type: 3}
+      propertyPath: UIMessage
+      value: 
+      objectReference: {fileID: 180640615}
+    - target: {fileID: 6237301704481856522, guid: 71677ef51bade4ed5a85d5866b33675b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237301704481856522, guid: 71677ef51bade4ed5a85d5866b33675b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237301704481856522, guid: 71677ef51bade4ed5a85d5866b33675b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237301704481856522, guid: 71677ef51bade4ed5a85d5866b33675b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237301704481856522, guid: 71677ef51bade4ed5a85d5866b33675b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237301704481856522, guid: 71677ef51bade4ed5a85d5866b33675b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237301704481856522, guid: 71677ef51bade4ed5a85d5866b33675b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237301704481856522, guid: 71677ef51bade4ed5a85d5866b33675b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237301704481856522, guid: 71677ef51bade4ed5a85d5866b33675b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237301704481856522, guid: 71677ef51bade4ed5a85d5866b33675b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 71677ef51bade4ed5a85d5866b33675b, type: 3}
 --- !u!1001 &423089814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18835,6 +18905,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acd185d8e0e484aea9fb5ec1d165c7ea, type: 3}
+--- !u!4 &429255077 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6237301704481856522, guid: 71677ef51bade4ed5a85d5866b33675b, type: 3}
+  m_PrefabInstance: {fileID: 408598200}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &604020182
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19706,7 +19781,8 @@ Transform:
   m_LocalPosition: {x: 1.0266539, y: -0.46104813, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 429255077}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1001 &1012275856
