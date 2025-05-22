@@ -6200,6 +6200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137104ca6af074d5c80323e225730ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectableName: Nano1
   canvas: {fileID: 683420911}
   value: 4
 --- !u!212 &801873058

@@ -19,14 +19,15 @@ public class CollectibleScript : MonoBehaviour
     void Awake()
     {
         
-        ArrayList collected = DataManager.Instance.playerData.collected;
+        List<string> collected = DataManager.Instance.playerData.collected;
 
         canvas = GameObject.FindGameObjectWithTag("Canvas");
         if (collected.Count > 0)
         {
             if (collected.IndexOf(collectableName) >= 0)
             {
-                gameObject.SetActive(false);
+                //gameObject.SetActive(false);
+                Destroy(gameObject);
             }
         }
 
@@ -62,6 +63,7 @@ public class CollectibleScript : MonoBehaviour
                 default:
                 break;
             }
+
             DataManager.Instance.playerData.collected.Add(collectableName);
             Debug.Log("Collectable added");
             Destroy(gameObject);

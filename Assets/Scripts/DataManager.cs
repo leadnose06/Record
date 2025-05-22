@@ -33,7 +33,7 @@ public class DataManager : MonoBehaviour
     public bool miniboss1Dead = false;
     public bool miniboss2Dead = false;
     public bool miniboss3Dead = false;
-    
+
     private void Awake()
     {
         if (Instance != null)
@@ -50,6 +50,10 @@ public class DataManager : MonoBehaviour
         playerMaxHeals = 1;
         playerHealth = playerMaxHealth;
         playerHeals = playerMaxHeals;
+        if (playerData.collected == null)
+        {
+            playerData.collected = new List<string>();
+        }
     }
     public void CreateSave1()
     {
@@ -57,6 +61,8 @@ public class DataManager : MonoBehaviour
         playerData.maxHealth = StartingMaxHealth;
         playerData.maxHeals = StartingMaxHeals;
         playerData.maxEnergy = StartingMaxEnergy;
+        playerData.collected = new List<string>();
+        playerData.collected.Add("test");
         saveFilePath1 = Application.persistentDataPath + "/PlayerSaveData1.json";
         saveNumber = 1;
         Debug.Log(saveFilePath1);
@@ -68,6 +74,8 @@ public class DataManager : MonoBehaviour
         playerData.maxHealth = StartingMaxHealth;
         playerData.maxHeals = StartingMaxHeals;
         playerData.maxEnergy = StartingMaxEnergy;
+        playerData.collected = new List<string>();
+        playerData.collected.Add("test");
         saveFilePath2 = Application.persistentDataPath + "/PlayerSaveData2.json";
         saveNumber = 2;
         Debug.Log(saveFilePath2);
@@ -81,6 +89,8 @@ public class DataManager : MonoBehaviour
         playerData.dash = false;
         playerData.grapple = false;
         playerData.doubleJump = false;
+        playerData.collected = new List<string>();
+        playerData.collected.Add("test");
         saveFilePath3 = Application.persistentDataPath + "/PlayerSaveData3.json";
         saveNumber = 3;
         Debug.Log(saveFilePath3);
@@ -154,7 +164,7 @@ public class PlayerSaveData
     public int maxEnergy;
     public int currentMoney;
     public string lastBench;
-    public ArrayList collected;
+    public List<string> collected;
     #region abilites
     public bool dash;
     public bool doubleJump;

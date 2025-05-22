@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137104ca6af074d5c80323e225730ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectableName: DoubleJump
   canvas: {fileID: 0}
   value: 2
 --- !u!60 &7187341
@@ -452,6 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137104ca6af074d5c80323e225730ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectableName: Grapple
   canvas: {fileID: 0}
   value: 1
 --- !u!60 &109504361
@@ -915,6 +917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137104ca6af074d5c80323e225730ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectableName: Dash
   canvas: {fileID: 0}
   value: 0
 --- !u!60 &437194075
@@ -66005,7 +66008,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2391548824660371307, guid: 8f669abe5bf7d4965b0df39c0ed20f14, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.921044
+      value: -12.751008
       objectReference: {fileID: 0}
     - target: {fileID: 2391548824660371307, guid: 8f669abe5bf7d4965b0df39c0ed20f14, type: 3}
       propertyPath: m_LocalPosition.y
