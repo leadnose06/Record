@@ -12,6 +12,7 @@ public class BossBulletScripe : MonoBehaviour
     public Vector3 direction;
     void OnEnable()
     {
+        speed = 3.5f;
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         rb.velocity = new Vector2(direction.x, direction.y) * speed;

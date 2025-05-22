@@ -89,8 +89,8 @@ public class BossScript : MonoBehaviour
                             attackCooldown = 2.5f;
                             break;
                         case 1:
-                            LaserRows(2.1f);
-                            attackCooldown = 2.75f;
+                            LaserRows(2.2f);
+                            attackCooldown = 2f;
                             break;
                         case 2:
                             BulletCircle();
@@ -228,7 +228,7 @@ public class BossScript : MonoBehaviour
             laserArray[i].GetComponent<BossLaserScript>().point = transform.position;
             laserArray[i].transform.position = transform.position + new Vector3(0, 0.75f, 0);
             laserArray[i].transform.RotateAround(transform.position + new Vector3(0, 0.75f, 0), new Vector3(0, 0, 1), (highestIndex-i) * (360/number));
-            laserArray[i].GetComponent<BossLaserScript>().duration = 4f;
+            laserArray[i].GetComponent<BossLaserScript>().duration = 3.5f;
             laserArray[i].GetComponent<BossLaserScript>().spin = true;
             laserArray[i].GetComponent<BossLaserScript>().clockwise = clockwise;
             laserArray[i].GetComponent<BossLaserScript>().turnSpeed = 15;

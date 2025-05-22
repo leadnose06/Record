@@ -932,6 +932,7 @@ MonoBehaviour:
   dashTimer: 0
   dashReady: 0
   isDashing: 0
+  maxSpeedY: -10
   frontAttackPoint: {fileID: 6373580571688724288}
   upAttackPoint: {fileID: 3636622227690208114}
   downAttackPoint: {fileID: 6946117374019882528}
@@ -1186,21 +1187,9 @@ MonoBehaviour:
     m_ActionName: Player/Pause[/XboxOneGampadMacOSWireless/start,/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6560506927824295817}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: onHeal
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2923740685611441666, guid: bb7809aa3b8a240c1981c699e6643881, type: 3}
         m_TargetAssemblyTypeName: CanvasScript, Assembly-CSharp
-        m_MethodName: onRegainHeal
+        m_MethodName: onHealButton
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
