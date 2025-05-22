@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LockedWallTriggerScript : MonoBehaviour
 {
+    public GameObject boss;
     public GameObject[] lockedWalls;
     // Start is called before the first frame update
     void Start()
@@ -21,9 +22,15 @@ public class LockedWallTriggerScript : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        foreach (GameObject wall in lockedWalls)
-        {
-            wall.SetActive(true);
+        if (collision.gameObject.tag == "Player") {
+            foreach (GameObject wall in lockedWalls)
+            {
+                wall.SetActive(true);
+            }
+            if (boss)
+            {
+                boss.GetComponent<BossScript>().Activate();
+            }
         }
     }
 }

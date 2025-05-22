@@ -10,6 +10,7 @@ public class BossLaserScript : MonoBehaviour
     private float previewDuration;
     public float turnSpeed;
     public GameObject player;
+    public Vector3 point;
 
     void Start()
     {
@@ -42,6 +43,7 @@ public class BossLaserScript : MonoBehaviour
         {
             if (clockwise)
             {
+                //gameObject.transform.RotateAround(point + new Vector3(0, 0.75f, 0), new Vector3(0, 0, 1), turn);
                 transform.Rotate(0, 0, -turnSpeed * Time.deltaTime);
             }
             else

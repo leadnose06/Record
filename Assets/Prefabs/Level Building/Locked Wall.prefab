@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 777608475846270029}
   - component: {fileID: 4076589545906239399}
   - component: {fileID: 3596583453025739846}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Locked Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockedWall: {fileID: 6719047239534874460}
+  minibossNumber: 0
+  minibossDead: 0
 --- !u!61 &3596583453025739846
 BoxCollider2D:
   m_ObjectHideFlags: 0

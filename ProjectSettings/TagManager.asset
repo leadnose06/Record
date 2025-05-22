@@ -28,6 +28,7 @@ TagManager:
   - Walls
   - Background
   - PlayerCollider
+  - EnemyProjectiles
   - EnemyCollider
   - 
   - 
