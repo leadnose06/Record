@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3301793329575221477}
   - component: {fileID: 5889996065536422493}
   - component: {fileID: 1698408731217609585}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: laser
   m_TagString: Enemy Projectile
   m_Icon: {fileID: 0}
@@ -147,3 +147,5 @@ MonoBehaviour:
   spin: 0
   clockwise: 0
   turnSpeed: 0
+  player: {fileID: 0}
+  point: {x: 0, y: 0, z: 0}

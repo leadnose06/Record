@@ -58353,7 +58353,7 @@ PrefabInstance:
       objectReference: {fileID: 2114666113}
     - target: {fileID: 7500381933727548811, guid: 6c78e5b05e660450a8fe880886152ce9, type: 3}
       propertyPath: enemies.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7500381933727548811, guid: 6c78e5b05e660450a8fe880886152ce9, type: 3}
       propertyPath: grapples.Array.size
@@ -58623,6 +58623,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1196503182456619410, guid: a9fbbe3ebf0484b33bf4809f8dcaf301, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 863593551}
+    - target: {fileID: 1196503182456619410, guid: a9fbbe3ebf0484b33bf4809f8dcaf301, type: 3}
+      propertyPath: _connection
+      value: 
+      objectReference: {fileID: 11400000, guid: cbcae5ef9cf9e4a5b94b1ff869b0bceb, type: 2}
+    - target: {fileID: 1196503182456619410, guid: a9fbbe3ebf0484b33bf4809f8dcaf301, type: 3}
+      propertyPath: targetSceneName
+      value: D3
+      objectReference: {fileID: 0}
     - target: {fileID: 4455971641642247674, guid: a9fbbe3ebf0484b33bf4809f8dcaf301, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
