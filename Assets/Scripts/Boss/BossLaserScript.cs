@@ -48,7 +48,7 @@ public class BossLaserScript : MonoBehaviour
             }
             else
             {
-                transform.Rotate(0, 0, -turnSpeed * Time.deltaTime);
+                transform.Rotate(0, 0, turnSpeed * Time.deltaTime);
             }
         }
     }

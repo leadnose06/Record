@@ -102,10 +102,18 @@ public class CanvasScript : MonoBehaviour
         }
         
     }
-    public void onRegainHeal(InputAction.CallbackContext context){
-        if (DataManager.Instance.playerMaxEnergy == DataManager.Instance.playerEnergy && DataManager.Instance.playerHeals == 0 && context.started) {
-            DataManager.Instance.playerHeals += 1;
-            DataManager.Instance.playerEnergy = 0;
+    public void onHealButton(InputAction.CallbackContext context){
+        if (context.performed)
+        {
+            if (DataManager.Instance.playerHeals > 0 && DataManager.Instance.playerHealth != DataManager.Instance.playerMaxHealth)
+            {
+                player.GetComponent<PlayerController>().onHeal(context);
+            }
+            else if (DataManager.Instance.playerMaxEnergy <= DataManager.Instance.playerEnergy && DataManager.Instance.playerHeals < DataManager.Instance.playerMaxHeals)
+            {
+                DataManager.Instance.playerHeals += 1;
+                DataManager.Instance.playerEnergy = 0;
+            }
         }
     }
 
